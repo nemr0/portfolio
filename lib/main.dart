@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/core/const/resource.dart';
+import 'package:portfolio/core/const/font_settings.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
-
+import 'package:portfolio/presentation/helpers/router.dart';
 
 Future<void> main() async {
-   ScreenUtil.ensureScreenSize();
+  ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
 
@@ -18,36 +18,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: context.screenUtilSize,
-      builder:(_,child)=> MaterialApp.router(
+      builder: (_, child) => MaterialApp.router(
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            scaffoldBackgroundColor: AppColors.scaffoldBackground,
-            primaryColor: AppColors.primary,
-            colorScheme: const ColorScheme.light(
-                primary: AppColors.primary, secondary: AppColors.secondary)),
+          fontFamily: FontSettings.kFontWorkSans,
+          scaffoldBackgroundColor: AppColors.scaffoldBackground,
+          primaryColor: AppColors.primary,
+
+          textTheme: FontSettings.textTheme(context),
+          colorScheme: const ColorScheme.light(
+              primary: AppColors.primary, secondary: AppColors.secondary),
+        ),
       ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          color: AppColors.background,
-          image: DecorationImage(
-              repeat: ImageRepeat.repeat,
-              scale: 4,
-              opacity: .75,
-              image: AssetImage(AppAssets.ASSETS_WEBP_BACKGROUND_PATTERN_WEBP,))),
-
     );
   }
 }
