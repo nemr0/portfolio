@@ -4,8 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/resource.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
-import 'package:portfolio/presentation/widgets/header_sliver.dart';
-import 'package:portfolio/presentation/widgets/pattern_background.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/avatar.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/header_sliver.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/intro_text.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/pattern_background.dart';
+
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -29,31 +32,14 @@ class _RootScreenState extends State<RootScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     final List<Widget> body = [
-      SizedBox(
-        height: 100.spMin,
-      ),
-      Image.asset(
-        AppAssets.ASSETS_WEBP_AVATAR_WEBP,
-        // height: context.mobile ? 96.spMin : 132.spMin,
-      ),
-      SizedBox(
-        height: 10.spMin,
-      ),
-      RichText(
-        maxLines: 4,
-        overflow: TextOverflow.visible,
-        text: TextSpan(
-            text: 'Hi, my name is',
-            style: Theme.of(context).textTheme.bodySmall,
-            children: [
-              TextSpan(
-                text: ' Omar Elnemr,\n',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),
-              ),
-              TextSpan(text: 'I DEVELOP\nMOBILE\nAPPLICATIONS,',style: Theme.of(context).textTheme.bodyLarge,),
-            ]),
-      )
+      SizedBox(height: 40.spMin,),
+      const Avatar(),
+      SizedBox(height: 40.spMin,),
+      const IntroText()
     ];
+
+    final EdgeInsets padding =EdgeInsets.only( right: 20.w, left: 20.w,bottom: 10);
+
     return PatternBackground(
         child: SafeArea(
             child: Padding(
@@ -65,23 +51,32 @@ class _RootScreenState extends State<RootScreen> with SingleTickerProviderStateM
         child: ClipRRect(
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           child: Scaffold(
-              body: Padding(
-            padding: EdgeInsets.only(top: 40.h, right: 20.w, left: 20.w,bottom: 10),
-            child: CupertinoScrollbar(
-              child: CustomScrollView(
-                slivers: [
-                  const HeaderSliver(),
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) => Align(
-                          alignment: Alignment.centerLeft, child: body[index]),
-                      childCount: body.length,
-                    ),
+              body: CupertinoScrollbar(
+                controller: controller,
+                child: ScrollConfiguration(
+                  behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+                  child: CustomScrollView(
+                    controller: controller,
+                    slivers: [
+                      SliverPadding(
+                          padding: padding.copyWith(top: 10.h),
+                          sliver:  HeaderSliver(onTap: () {
+                            controller.animateTo(0, duration: Duration(milliseconds: 200), curve: Curves.easeInOut);
+                          },)),
+                      SliverPadding(
+                        padding: padding,
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) => Align(
+                                alignment: Alignment.centerLeft, child: body[index]),
+                            childCount: body.length,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          )),
+                ),
+              )),
         ),
       ),
     )));

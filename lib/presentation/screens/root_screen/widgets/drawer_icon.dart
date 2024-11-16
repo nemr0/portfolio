@@ -46,7 +46,7 @@ class _DrawerIconState extends State<DrawerIcon> with SingleTickerProviderStateM
           icon: AnimatedIcons.close_menu,
           progress: animation,
           color: AppColors.textColor,
-          size: context.mobile ? 35.h : 55.h,
+          size: context.mobile ? 35.spMin : 55.spMin,
         ),
       ),
     );
