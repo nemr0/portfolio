@@ -7,6 +7,8 @@ import 'package:portfolio/core/const/font_settings.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/firebase_options.dart';
 import 'package:portfolio/presentation/helpers/router.dart';
+import 'package:portfolio/presentation/state_manager/get_experience_cubit/get_experience_cubit.dart';
+import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +29,8 @@ class MyApp extends StatelessWidget {
       designSize: context.screenUtilSize,
       builder: (_, child) => MultiBlocProvider(
         providers: [
-          // BlocProvider(create: (_) => GetProjectsCubit()..getData()),
+          BlocProvider(create: (_) => GetProjectsCubit()..getData(),lazy: false,),
+          BlocProvider(create: (_) => GetExperienceCubit()..getData(),lazy: false,),
         ],
         child: MaterialApp.router(
           routerConfig: router,
