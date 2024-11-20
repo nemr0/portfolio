@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IntroText extends StatelessWidget {
-  const IntroText({super.key});
+  const IntroText({super.key,});
 
   @override
   Widget build(BuildContext context) {

@@ -9,6 +9,9 @@ class Assets {
   static const String fontsWorkSansMedium = 'assets/fonts/WorkSans-Medium.ttf';
   static const String fontsWorkSansRegular = 'assets/fonts/WorkSans-Regular.ttf';
   static const String fontsWorkSansSemiBold = 'assets/fonts/WorkSans-SemiBold.ttf';
+  static const String iconsContactMeIcon = 'assets/webp/icons/contact_me_icon.webp';
+  static const String iconsExperienceIcon = 'assets/webp/icons/experience_icon.webp';
+  static const String iconsProjectsIcon = 'assets/webp/icons/projects_icon.webp';
   static const String webpAvatar = 'assets/webp/avatar.webp';
   static const String webpBackgroundPattern = 'assets/webp/background_pattern.webp';
   static const String webpLogo = 'assets/webp/logo.webp';

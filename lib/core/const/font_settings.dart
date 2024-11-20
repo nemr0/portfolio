@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:portfolio/core/extensions/context_extension.dart';
 
 class FontSettings{
   static const String kFontWorkSans='WorkSans';

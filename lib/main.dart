@@ -1,12 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/font_settings.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
+import 'package:portfolio/firebase_options.dart';
 import 'package:portfolio/presentation/helpers/router.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   ScreenUtil.ensureScreenSize();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -18,17 +25,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: context.screenUtilSize,
-      builder: (_, child) => MaterialApp.router(
-        routerConfig: router,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: FontSettings.kFontWorkSans,
-          scaffoldBackgroundColor: AppColors.scaffoldBackground,
-          primaryColor: AppColors.primary,
-
-          textTheme: FontSettings.textTheme(context),
-          colorScheme: const ColorScheme.light(
-              primary: AppColors.primary, secondary: AppColors.secondary),
+      builder: (_, child) => MultiBlocProvider(
+        providers: [
+          // BlocProvider(create: (_) => GetProjectsCubit()..getData()),
+        ],
+        child: MaterialApp.router(
+          routerConfig: router,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              fontFamily: FontSettings.kFontWorkSans,
+              scaffoldBackgroundColor: AppColors.scaffoldBackground,
+              primaryColor: AppColors.primary,
+              textTheme: FontSettings.textTheme(context),
+              colorScheme: const ColorScheme.light(
+                  primary: AppColors.primary, secondary: AppColors.secondary),
+          ),
         ),
       ),
     );
