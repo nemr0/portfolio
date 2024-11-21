@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/font_settings.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
+import 'package:portfolio/core/generated/fonts.gen.dart';
 import 'package:portfolio/presentation/helpers/router.dart';
 import 'package:portfolio/presentation/state_manager/get_experience_cubit/get_experience_cubit.dart';
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           routerConfig: router,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-              fontFamily: FontSettings.kFontWorkSans,
+              fontFamily: FontFamily.workSans,
+
               scaffoldBackgroundColor: AppColors.scaffoldBackground,
               primaryColor: AppColors.primary,
               textTheme: FontSettings.textTheme(context),

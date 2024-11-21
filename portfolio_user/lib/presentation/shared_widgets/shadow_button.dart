@@ -8,11 +8,12 @@ class ShadowButton extends StatefulWidget {
       {super.key,
       required this.child,
       this.onPressed,
-      this.color = AppColors.primary});
+      this.color = AppColors.primary, this.padding});
 
   final Widget child;
   final VoidCallback? onPressed;
   final Color color;
+  final EdgeInsets? padding;
 
   /// Named constructor for creating a button with text
   factory ShadowButton.text({
@@ -21,11 +22,13 @@ class ShadowButton extends StatefulWidget {
     VoidCallback? onPressed,
     Color color = AppColors.primary,
     TextStyle? textStyle,
+    EdgeInsets? padding,
   }) {
     return ShadowButton(
       key: key,
       onPressed: onPressed,
       color: color,
+      padding: padding,
       child: Text(
         text,
         style: textStyle ??
@@ -58,46 +61,49 @@ class _ShadowButtonState extends State<ShadowButton> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) {
-        if (!hideShadow && !pressed) {
-          setState(() {
-            hideShadow = true;
-          });
-        }
-      },
-      onExit: (_) {
-        if (hideShadow) {
-          setState(() {
-            hideShadow = false;
-          });
-        }
-      },
-      child: GestureDetector(
-          onTap: () async {
-            if (widget.onPressed != null) {
-              if (hideShadow) {
-                setState(() {
-                  hideShadow = false;
-                  pressed = true;
-                });
-                await Future.delayed(Duration(milliseconds: 200));
+    return Padding(
+      padding: widget.padding??EdgeInsets.zero,
+      child: MouseRegion(
+        onEnter: (_) {
+          if (!hideShadow && !pressed) {
+            setState(() {
+              hideShadow = true;
+            });
+          }
+        },
+        onExit: (_) {
+          if (hideShadow) {
+            setState(() {
+              hideShadow = false;
+            });
+          }
+        },
+        child: GestureDetector(
+            onTap: () async {
+              if (widget.onPressed != null) {
+                if (hideShadow) {
+                  setState(() {
+                    hideShadow = false;
+                    pressed = true;
+                  });
+                  await Future.delayed(Duration(milliseconds: 200));
+                }
+                hideAndShowShadow();
+                widget.onPressed!();
+                pressed = false;
               }
-              hideAndShowShadow();
-              widget.onPressed!();
-              pressed = false;
-            }
-          },
-          child: AnimatedContainer(
-              decoration: shadowDecoration(
-                  hideShadow: hideShadow,
-                  borderRadius: BorderRadius.circular(5),
-                  color: widget.color),
-              duration: const Duration(milliseconds: 300),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0),
-                child: widget.child,
-              ))),
+            },
+            child: AnimatedContainer(
+                decoration: shadowDecoration(
+                    hideShadow: hideShadow,
+                    borderRadius: BorderRadius.circular(5),
+                    color: widget.color),
+                duration: const Duration(milliseconds: 300),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0),
+                  child: widget.child,
+                ))),
+      ),
     );
   }
 }

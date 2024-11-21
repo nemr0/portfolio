@@ -12,7 +12,7 @@ Decoration shadowDecoration(
     color: color,
     shape: RoundedRectangleBorder(
       side: BorderSide(
-        width: width,
+        width: width-(width/3),
         strokeAlign: BorderSide.strokeAlignCenter,
       ),
       borderRadius: borderRadius,

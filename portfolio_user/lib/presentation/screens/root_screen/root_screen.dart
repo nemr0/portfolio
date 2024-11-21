@@ -2,12 +2,16 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:portfolio/core/const/animation_durations.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/avatar.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/header_sliver.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/hire_me_button.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/intro_text.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/avatar.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/appbar/header_sliver.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/hire_me_button.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/intro_text.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/pattern_background.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/projects_view.dart';
+import 'package:portfolio/presentation/shared_widgets/item_animation_builder.dart';
+import 'package:portfolio/presentation/shared_widgets/scaler.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -38,15 +42,19 @@ class _RootScreenState extends State<RootScreen>
       SizedBox(
         height: 40.spMin,
       ),
-      const Avatar(),
+      const ScaleEffect(child: Avatar()),
       SizedBox(
         height: 40.spMin,
       ),
-      const IntroText(),
+      const ScaleEffect(child:  IntroText()),
       SizedBox(
         height: 40.spMin,
       ),
      const HireMeButton(),
+      SizedBox(
+        height: 40.spMin,
+      ),
+      const ProjectsView(),
     ];
 
     final EdgeInsets padding =
@@ -86,19 +94,17 @@ class _RootScreenState extends State<RootScreen>
                       itemCount: body.length,
                       controller: controller,
                       reAnimateOnVisibility: true,
-                      showItemDuration: const Duration(milliseconds: 150),
-                      showItemInterval: const Duration(milliseconds: 200),
+                      showItemDuration: showItemDuration,
+                      showItemInterval: showItemInterval,
                       itemBuilder: (BuildContext context, int index, Animation<double> animation)
                       {
-                      return  body[index] is SizedBox ? body[index] : FadeTransition(
-                                opacity: Tween<double>(begin: 0, end: 1,).animate(animation),
-                                child: SlideTransition(
-                                  position: Tween<Offset>(begin: Offset(-0.1, 0), end: Offset.zero,).animate(animation),
-                                  child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: body[index]),
-                                ),
-                              );
+                        if(body[index] is SizedBox) return body[index];
+                          return ItemAnimationBuilder(
+                            animation: animation,
+                            child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: body[index]),
+                          );
                       },
                     ),
                   ),

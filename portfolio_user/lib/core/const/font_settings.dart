@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FontSettings{
-  static const String kFontWorkSans='WorkSans';
   static  TextTheme textTheme (BuildContext context)=>TextTheme(
     bodyLarge: TextStyle(
       fontSize: 40.sp,

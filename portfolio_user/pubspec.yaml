@@ -24,6 +24,9 @@ dependencies:
   freezed_annotation: ^2.4.4
   portfolio_shared:
     path: ../portfolio_shared
+  flutter_staggered_grid_view: ^0.7.0
+  cached_network_image: ^3.4.1
+  skeletonizer: ^1.4.2
 
 flutter_gen:
   output: lib/core/generated # Optional (default: lib/gen/)
@@ -49,6 +52,7 @@ flutter:
   # fgen -n AppAssets -o lib/core/const/resource.dart
 
   assets:
+    - assets/svg/
     - assets/webp/
     - assets/webp/icons/
 

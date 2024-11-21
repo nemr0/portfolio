@@ -8,10 +8,10 @@ part 'get_projects_state.dart';
 part 'get_projects_cubit.freezed.dart';
 
 class GetProjectsCubit extends Cubit<GetProjectsState> {
-  GetProjectsCubit() : super(const GetProjectsState.initial());
-  getData() async {
+  GetProjectsCubit() : super(const GetProjectsState.loading());
+  getData({bool reload = false}) async {
     try{
-    emit(GetProjectsState.loading());
+    if(reload) emit(GetProjectsState.loading());
     final projects = await getProjectsFromFirebase();
     emit(GetProjectsState.success(projects));
     } on ExceptionImpl catch(e){

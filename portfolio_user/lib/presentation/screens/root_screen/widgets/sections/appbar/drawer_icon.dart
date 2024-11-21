@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/core/const/font_settings.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
+import 'package:portfolio/core/generated/fonts.gen.dart';
 import 'package:pull_down_button/pull_down_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -20,9 +20,9 @@ class _DrawerIconState extends State<DrawerIcon> with SingleTickerProviderStateM
   CrossFadeState crossFadeState = CrossFadeState.showFirst;
 
   static const _itemTheme = PullDownMenuItemTheme(
-      textStyle: TextStyle(color: Colors.white, fontFamily: FontSettings.kFontWorkSans),
-      iconActionTextStyle: TextStyle(color: Colors.white, fontFamily: FontSettings.kFontWorkSans),
-      subtitleStyle: TextStyle(color: Colors.white54, fontFamily: FontSettings.kFontWorkSans),
+      textStyle: TextStyle(color: Colors.white, fontFamily: FontFamily.workSans),
+      iconActionTextStyle: TextStyle(color: Colors.white, fontFamily: FontFamily.workSans),
+      subtitleStyle: TextStyle(color: Colors.white54, fontFamily: FontFamily.workSans),
       onHoverBackgroundColor: AppColors.background,
       onPressedBackgroundColor: AppColors.primary,
       onHoverTextColor: AppColors.textColor,
@@ -38,7 +38,7 @@ class _DrawerIconState extends State<DrawerIcon> with SingleTickerProviderStateM
         message: 'Links',
         textStyle: TextStyle(
           color: AppColors.textColor,
-          fontFamily: FontSettings.kFontWorkSans,
+          fontFamily: FontFamily.workSans,
         ),
         decoration: BoxDecoration(color: AppColors.primary),
         child: CupertinoButton(
@@ -61,7 +61,7 @@ class _DrawerIconState extends State<DrawerIcon> with SingleTickerProviderStateM
                       PullDownMenuTitle(
                           titleStyle: TextStyle(
                               color: Colors.white,
-                              fontFamily: FontSettings.kFontWorkSans),
+                              fontFamily: FontFamily.workSans),
                           title: Center(
                               child: Text(
                             'Links',

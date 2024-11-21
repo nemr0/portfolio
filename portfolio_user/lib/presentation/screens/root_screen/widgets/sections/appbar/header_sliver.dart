@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/resource.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/drawer_icon.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/appbar/drawer_icon.dart';
 
 class HeaderSliver extends StatelessWidget {
   const HeaderSliver({
