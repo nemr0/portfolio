@@ -11,7 +11,7 @@ fi
 #ls
 
 # Change to the project directory
-cd portfolio_user
+cd portfolio_admin
 
 # Set Flutter executable path
 FLUTTER_BIN=../flutter/bin/flutter
