@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/core/const/animation_durations.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
@@ -87,16 +88,33 @@ class ProjectViewItem extends StatelessWidget {
             onTap: () {
               // TODO: implement onProjectPressed.
             },
-            child: CachedNetworkImage(
-              imageUrl: project!.cover,
-              errorWidget: (_,__,___)=>Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    decoration: shadowDecoration(borderRadius: BorderRadius.circular(10 )),
-                    child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
-              ),
-              placeholder: (_, __) => const ProjectLoadingItem(),
-              fit: BoxFit.fitWidth,
+            child: Builder(
+              builder: (context) {
+                print(project!.cover);
+                if(project!.cover.endsWith('.svg')) {
+                  return SvgPicture.network(project!.cover,
+                  placeholderBuilder: (_)=> const ProjectLoadingItem(),
+                  );
+                }
+                return CachedNetworkImage(
+                  imageUrl: project!.cover,
+                  errorWidget: (_,__,___)
+                  {
+                    print(__);
+                    print(___);
+                   return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                          decoration: shadowDecoration(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: CustomErrorWidget.fromText(
+                              message: 'Something went wrong.')),
+                    );
+                  },
+                  placeholder: (_, __) => const ProjectLoadingItem(),
+                  fit: BoxFit.fitWidth,
+                );
+              }
             ),
           ),
         ),

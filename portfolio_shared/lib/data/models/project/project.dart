@@ -3,7 +3,7 @@ import 'package:portfolio_shared/data/models/project/link.dart';
 class Project extends Equatable{
   final List<String> photos;
   final List<Link> links;
-  final String description;
+  final List<String> description;
   final String name;
   final String cover;
   const Project(
@@ -17,7 +17,7 @@ class Project extends Equatable{
             photos: List<String>.from(data['photos']),
             cover: data['cover']??'',
             links: (data['links'] as List).map((e) => Link.fromMap(e as Map<String, dynamic>)).toList(),
-            description: data['description']??'',
+            description: List<String>.from(data['description']),
             name: data['name']??'');
 
 

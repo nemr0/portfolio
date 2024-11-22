@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/font_settings.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
@@ -13,7 +14,7 @@ import 'package:portfolio_shared/init_user.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ScreenUtil.ensureScreenSize();
-  await initUser();
+  await initFirebaseForUser();
   runApp(const MyApp());
 }
 
