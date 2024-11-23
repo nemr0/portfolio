@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:portfolio_shared/data/models/exceptions/exception_abs.dart';
 import 'package:portfolio_shared/data/models/experience/experience.dart';
-import 'package:portfolio_shared/domain/remote_source/firebase/get_experiece_items.dart';
+import 'package:portfolio_shared/domain/remote_source/database/firebase/get_experiece_items.dart';
 
 part 'get_experience_state.dart';
 part 'get_experience_cubit.freezed.dart';

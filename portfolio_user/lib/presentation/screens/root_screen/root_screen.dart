@@ -3,15 +3,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/animation_durations.dart';
+import 'package:portfolio/core/const/colors.dart';
+import 'package:portfolio/core/const/resource.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
+import 'package:portfolio/presentation/helpers/globals/global_elements.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_bottom_sheet.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/avatar.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/appbar/header_sliver.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/hire_me_button.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/intro_text.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/pattern_background.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/projects_view.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/section_title.dart';
 import 'package:portfolio/presentation/shared_widgets/item_animation_builder.dart';
 import 'package:portfolio/presentation/shared_widgets/scaler.dart';
+import 'package:portfolio_shared/data/models/project/project.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -23,7 +30,7 @@ class RootScreen extends StatefulWidget {
 class _RootScreenState extends State<RootScreen>
     with SingleTickerProviderStateMixin {
   late ScrollController controller;
-
+Color overrideBackgroundColor=AppColors.background;
   @override
   void initState() {
     super.initState();
@@ -46,7 +53,7 @@ class _RootScreenState extends State<RootScreen>
       SizedBox(
         height: 40.spMin,
       ),
-      const ScaleEffect(child:  IntroText()),
+      IntroText(),
       SizedBox(
         height: 40.spMin,
       ),
@@ -54,19 +61,19 @@ class _RootScreenState extends State<RootScreen>
       SizedBox(
         height: 40.spMin,
       ),
-      const ProjectsView(),
     ];
 
     final EdgeInsets padding =
         EdgeInsets.only(right: 20.w, left: 20.w, bottom: 10);
 
     return PatternBackground(
+      overrideBackgroundColor: overrideBackgroundColor,
         child: SafeArea(
             child: Padding(
-      padding: EdgeInsets.only(top: 20.h, left: 20.w, right: 20.w),
+      padding: gPadding(context.mediaQuerySize),
       child: Container(
         decoration: shadowDecoration(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+          borderRadius: gBorderRadius,
         ),
         child: ClipRRect(
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
@@ -108,6 +115,18 @@ class _RootScreenState extends State<RootScreen>
                       },
                     ),
                   ),
+                  SliverPadding(padding: padding,sliver: const SectionTitle(text: 'HIGHLIGHTED PROJECTS', icon: AppAssets.ASSETS_SVG_ICONS_HIGHLIGHTED_PROJECTS_ICON_SVG,),),
+                  SliverPadding(
+                      padding: padding,
+                      sliver:  ProjectsView(controller: controller, onProjectPressed: (Project project) async {
+                        setState(() {
+                          overrideBackgroundColor = AppColors.secondary;
+                        });
+                       await showCupertinoModalPopup(context: context,barrierColor:Colors.transparent, builder: (_)=>ProjectItemSheetView(project: project));
+                        setState(() {
+                          overrideBackgroundColor = AppColors.background;
+                        });
+                      },)),
                 ],
               ),
             ),

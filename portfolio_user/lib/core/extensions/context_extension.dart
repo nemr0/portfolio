@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 extension ContextExtension on BuildContext{
+  Size get mediaQuerySize => MediaQuery.sizeOf(this);
   double get width => MediaQuery.sizeOf(this).width;
   double get height => MediaQuery.sizeOf(this).height;
   bool get mobile => MediaQuery.sizeOf(this).shortestSide < 600;

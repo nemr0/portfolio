@@ -54,7 +54,7 @@ flutter:
   assets:
     - assets/svg/
     - assets/webp/
-    - assets/webp/icons/
+    - assets/svg/icons/
 
 
   fonts:

@@ -8,26 +8,29 @@ import 'package:portfolio_shared/data/models/exceptions/server_error.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   const CustomErrorWidget(
-      {super.key, required this.exception, this.onRetryPressed,  this.small=false});
+      {super.key, required this.exception, this.onRetryPressed,  this.small=false, this.retryWidget});
 
   factory CustomErrorWidget.fromText(
       {required String message,
       VoidCallback? onRetryPressed,
         bool small = true,
+        Widget? retryWidget,
       String? endpoint}) {
     return CustomErrorWidget(
       exception: ServerException(
           endpoint: endpoint ?? 'unknown', stackTrace: null, message: message),
       onRetryPressed: onRetryPressed,
       small: small,
+      retryWidget: retryWidget,
     );
   }
-
+  final Widget? retryWidget;
   final ExceptionImpl exception;
   final VoidCallback? onRetryPressed;
   final bool small;
   @override
   Widget build(BuildContext context) {
+    if(retryWidget !=null) return retryWidget!;
     return IntrinsicHeight(
       child: SizedBox(
         height: small?100:null,

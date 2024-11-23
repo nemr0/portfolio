@@ -13,21 +13,24 @@ class HeaderSliver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PinnedHeaderSliver(
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          color: AppColors.scaffoldBackground.withOpacity(.5),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset(
-                  AppAssets.ASSETS_WEBP_LOGO_WEBP,
-                  height: context.mobile ? 41.spMin : 55.spMin,
-                ),
-                const DrawerIcon(),
-              ],
+      child: MouseRegion(
+        cursor: SystemMouseCursors.resizeUp,
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            color: AppColors.scaffoldBackground.withOpacity(.5),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    AppAssets.ASSETS_WEBP_LOGO_WEBP,
+                    height: context.mobile ? 41.spMin : 55.spMin,
+                  ),
+                  const DrawerIcon(),
+                ],
+              ),
             ),
           ),
         ),

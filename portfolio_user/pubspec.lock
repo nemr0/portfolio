@@ -206,6 +206,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.3.4"
+  cloudflare:
+    dependency: transitive
+    description:
+      name: cloudflare
+      sha256: "21e1d35d905b0bccae2327762b957348b7f471c1e9fe43619b51ce91b84f134a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.1+1"
   code_builder:
     dependency: transitive
     description:
@@ -238,6 +246,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
+  copy_with_extension:
+    dependency: transitive
+    description:
+      name: copy_with_extension
+      sha256: fbcf890b0c34aedf0894f91a11a579994b61b4e04080204656b582708b5b1125
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.4"
+  cross_file:
+    dependency: transitive
+    description:
+      name: cross_file
+      sha256: "7caf6a750a0c04effbb52a676dce9a4a592e10ad35c34d6d2d0e4811160d5670"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.4+2"
   crypto:
     dependency: transitive
     description:
@@ -270,6 +294,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      sha256: "5598aa796bbf4699afd5c67c0f5f6e2ed542afc956884b9cd58c306966efc260"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.7.0"
+  dio_web_adapter:
+    dependency: transitive
+    description:
+      name: dio_web_adapter
+      sha256: "33259a9276d6cea88774a0000cfae0d861003497755969c92faa223108620dc8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   equatable:
     dependency: transitive
     description:
@@ -485,6 +525,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  hive:
+    dependency: transitive
+    description:
+      name: hive
+      sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
   http:
     dependency: transitive
     description:
@@ -788,6 +836,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.10.2"
+  retrofit:
+    dependency: transitive
+    description:
+      name: retrofit
+      sha256: "3c9885ef3dbc5dc4b3fb0a40c972ab52e4dad04d52dac9bba24dfa76cf100451"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.4.1"
   rxdart:
     dependency: transitive
     description:
@@ -961,6 +1017,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  tusc:
+    dependency: transitive
+    description:
+      name: tusc
+      sha256: d3c6cfec1d3b75c34be5ee210fb37a527efc584956c8b2f77c4738d4f5699e55
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0+3"
   typed_data:
     dependency: transitive
     description:
