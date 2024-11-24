@@ -16,10 +16,10 @@ class ProjectsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LiveSliverGrid(
-      reAnimateOnVisibility: true,
-      showItemInterval: showItemInterval,
-      showItemDuration: showItemDuration,
+    return SliverGrid(
+      // reAnimateOnVisibility: true,
+      // showItemInterval: showItemInterval,
+      // showItemDuration: showItemDuration,
       gridDelegate: SliverQuiltedGridDelegate(
         crossAxisCount: 4,
         mainAxisSpacing: 4,
@@ -31,18 +31,20 @@ class ProjectsListWidget extends StatelessWidget {
           QuiltedGridTile(1, 1),
           QuiltedGridTile(1, 2),
         ],
-      ),
-      itemBuilder:
-          (BuildContext context, int index, Animation<double> animation) =>
-          ItemAnimationBuilder(
-            animation: animation,
-            fromGrid: true,
-            child: ProjectViewItem(
+      ), delegate: SliverChildBuilderDelegate((_,index)=> ProjectViewItem(
               project: projects?[index], onProjectPressed: onProjectPressed,
-            ),
-          ),
-      itemCount: projects?.length ?? 4,
-      controller: controller,
+            ),childCount: projects?.length??4),
+      // itemBuilder:
+      //     (BuildContext context, int index, Animation<double> animation) =>
+      //     ItemAnimationBuilder(
+      //       animation: animation,
+      //       fromGrid: true,
+      //       child: ProjectViewItem(
+      //         project: projects?[index], onProjectPressed: onProjectPressed,
+      //       ),
+      //     ),
+      // itemCount: projects?.length ?? 4,
+      // controller: controller,
     );
   }
 }
