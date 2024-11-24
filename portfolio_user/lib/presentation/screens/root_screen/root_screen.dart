@@ -1,5 +1,5 @@
 import 'package:auto_animated/auto_animated.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart' show CupertinoScrollbar,showCupertinoModalPopup;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/animation_durations.dart';
@@ -136,8 +136,7 @@ class _RootScreenState extends State<RootScreen>
                                   context: context,
                                   barrierColor: Colors.transparent,
 
-                                  builder: (_) =>
-                                      ProjectItemSheetView(project: project));
+                                  builder: (_) => ProjectItemSheetView(project: project));
                               setState(() {
                                 overrideBackgroundColor = AppColors.background;
                               });
