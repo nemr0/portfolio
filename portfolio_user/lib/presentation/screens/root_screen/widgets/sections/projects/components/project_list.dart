@@ -20,20 +20,21 @@ class ProjectsListWidget extends StatelessWidget {
       // reAnimateOnVisibility: true,
       // showItemInterval: showItemInterval,
       // showItemDuration: showItemDuration,
-      gridDelegate: SliverQuiltedGridDelegate(
-        crossAxisCount: 4,
-        mainAxisSpacing: 4,
-        crossAxisSpacing: 4,
-        repeatPattern: QuiltedGridRepeatPattern.inverted,
-        pattern: [
-          QuiltedGridTile(2, 2),
-          QuiltedGridTile(1, 1),
-          QuiltedGridTile(1, 1),
-          QuiltedGridTile(1, 2),
-        ],
-      ), delegate: SliverChildBuilderDelegate((_,index)=> ProjectViewItem(
-              project: projects?[index], onProjectPressed: onProjectPressed,
-            ),childCount: projects?.length??4),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2), delegate: SliverChildBuilderDelegate((_,index)=> ProjectViewItem(
+      project: projects?[index], onProjectPressed: onProjectPressed,
+    ),),
+      // gridDelegate: SliverQuiltedGridDelegate(
+      //   crossAxisCount: 4,
+      //   mainAxisSpacing: 4,
+      //   crossAxisSpacing: 4,
+      //   repeatPattern: QuiltedGridRepeatPattern.inverted,
+      //   pattern: [
+      //     QuiltedGridTile(2, 2),
+      //     QuiltedGridTile(1, 1),
+      //     QuiltedGridTile(1, 1),
+      //     QuiltedGridTile(1, 2),
+      //   ],
+      // ),
       // itemBuilder:
       //     (BuildContext context, int index, Animation<double> animation) =>
       //     ItemAnimationBuilder(
