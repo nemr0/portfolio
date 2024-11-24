@@ -20,18 +20,16 @@ class ProjectItemSheetView extends StatelessWidget {
         padding: gPadding(context.mediaQuerySize),
         child: Container(
 
-          decoration: shadowDecoration(borderRadius: gBorderRadius,),
+          decoration: shadowDecoration(borderRadius: gBorderRadius,color: Colors.transparent,hideShadow: true),
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
             child: Column(
               children: [
                 SizedBox(height: 20.spMax,),
-                ClipRRect(
+                PhotoWidget(photoPath: project.cover,
                   borderRadius: BorderRadius.circular(10),
-                  child: PhotoWidget(photoPath: project.cover,
                   height: 180,
-                    width: 180,
-                  ),
+                  width: 180,
                 ),
 
               ],

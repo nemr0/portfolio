@@ -30,7 +30,8 @@ class RootScreen extends StatefulWidget {
 class _RootScreenState extends State<RootScreen>
     with SingleTickerProviderStateMixin {
   late ScrollController controller;
-Color overrideBackgroundColor=AppColors.background;
+  Color overrideBackgroundColor = AppColors.background;
+
   @override
   void initState() {
     super.initState();
@@ -57,7 +58,7 @@ Color overrideBackgroundColor=AppColors.background;
       SizedBox(
         height: 40.spMin,
       ),
-     const HireMeButton(),
+      const HireMeButton(),
       SizedBox(
         height: 40.spMin,
       ),
@@ -67,72 +68,87 @@ Color overrideBackgroundColor=AppColors.background;
         EdgeInsets.only(right: 20.w, left: 20.w, bottom: 10);
 
     return PatternBackground(
-      overrideBackgroundColor: overrideBackgroundColor,
+        overrideBackgroundColor: overrideBackgroundColor,
         child: SafeArea(
             child: Padding(
-      padding: gPadding(context.mediaQuerySize),
-      child: Container(
-        decoration: shadowDecoration(
-          borderRadius: gBorderRadius,
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-          child: Scaffold(
-              body: CupertinoScrollbar(
-            controller: controller,
-            child: ScrollConfiguration(
-              behavior:
-                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
-              child: CustomScrollView(
-                controller: controller,
-                slivers: [
-                  SliverPadding(
-                      padding: padding.copyWith(top: 10.h),
-                      sliver: HeaderSliver(
-                        onTap: () {
-                          controller.animateTo(0,
-                              duration: Duration(milliseconds: 200),
-                              curve: Curves.easeInOut);
-                        },
-                      )),
-                  SliverPadding(
-                    padding: padding,
-                    sliver: LiveSliverList(
-                      itemCount: body.length,
-                      controller: controller,
-                      reAnimateOnVisibility: true,
-                      showItemDuration: showItemDuration,
-                      showItemInterval: showItemInterval,
-                      itemBuilder: (BuildContext context, int index, Animation<double> animation)
-                      {
-                        if(body[index] is SizedBox) return body[index];
-                          return ItemAnimationBuilder(
-                            animation: animation,
-                            child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: body[index]),
-                          );
-                      },
-                    ),
-                  ),
-                  SliverPadding(padding: padding,sliver: const SectionTitle(text: 'HIGHLIGHTED PROJECTS', icon: AppAssets.ASSETS_SVG_ICONS_HIGHLIGHTED_PROJECTS_ICON_SVG,),),
-                  SliverPadding(
-                      padding: padding,
-                      sliver:  ProjectsView(controller: controller, onProjectPressed: (Project project) async {
-                        setState(() {
-                          overrideBackgroundColor = AppColors.secondary;
-                        });
-                       await showCupertinoModalPopup(context: context,barrierColor:Colors.transparent, builder: (_)=>ProjectItemSheetView(project: project));
-                        setState(() {
-                          overrideBackgroundColor = AppColors.background;
-                        });
-                      },)),
-                ],
-              ),
+          padding: gPadding(context.mediaQuerySize),
+          child: Container(
+            decoration: shadowDecoration(
+              borderRadius: gBorderRadius,
             ),
-          )),
-        ),
-      ),
-    )));
+            child: ClipRRect(
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(20)),
+              child: Scaffold(
+                  body: CupertinoScrollbar(
+                controller: controller,
+                child: ScrollConfiguration(
+                  behavior: ScrollConfiguration.of(context)
+                      .copyWith(scrollbars: false),
+                  child: CustomScrollView(
+                    controller: controller,
+                    slivers: [
+                      SliverPadding(
+                          padding: padding.copyWith(top: 10.h),
+                          sliver: HeaderSliver(
+                            onTap: () {
+                              controller.animateTo(0,
+                                  duration: Duration(milliseconds: 200),
+                                  curve: Curves.easeInOut);
+                            },
+                          )),
+                      SliverPadding(
+                        padding: padding,
+                        sliver: LiveSliverList(
+                          itemCount: body.length,
+                          controller: controller,
+                          reAnimateOnVisibility: true,
+                          showItemDuration: showItemDuration,
+                          showItemInterval: showItemInterval,
+                          itemBuilder: (BuildContext context, int index,
+                              Animation<double> animation) {
+                            if (body[index] is SizedBox) return body[index];
+                            return ItemAnimationBuilder(
+                              animation: animation,
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: body[index]),
+                            );
+                          },
+                        ),
+                      ),
+                      SliverPadding(
+                        padding: padding,
+                        sliver: const SectionTitle(
+                          text: 'HIGHLIGHTED PROJECTS',
+                          icon: AppAssets.ASSETS_SVG_ICONS_HIGHLIGHTED_PROJECTS_ICON_SVG,
+                        ),
+                      ),
+                      SliverPadding(
+                          padding: padding,
+                          sliver: ProjectsView(
+                            controller: controller,
+                            onProjectPressed: (Project project) async {
+                              setState(() {
+                                overrideBackgroundColor = AppColors.secondary;
+                              });
+                              await showCupertinoModalPopup(
+                                  context: context,
+                                  barrierColor: Colors.transparent,
+
+                                  builder: (_) =>
+                                      ProjectItemSheetView(project: project));
+                              setState(() {
+                                overrideBackgroundColor = AppColors.background;
+                              });
+                            },
+                          )),
+                    ],
+                  ),
+                ),
+              )),
+            ),
+          ),
+        )));
   }
 }

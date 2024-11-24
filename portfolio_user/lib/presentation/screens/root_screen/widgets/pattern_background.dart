@@ -13,7 +13,7 @@ class PatternBackground extends StatelessWidget {
           color: overrideBackgroundColor??AppColors.background,
           image: DecorationImage(
               repeat: ImageRepeat.repeat,
-              scale: 4,
+              scale: 6,
               opacity: .75,
               image: AssetImage(AppAssets.ASSETS_WEBP_BACKGROUND_PATTERN_WEBP,))),
       duration: Duration(milliseconds: 300),

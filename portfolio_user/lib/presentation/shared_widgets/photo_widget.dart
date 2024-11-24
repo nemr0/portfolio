@@ -11,9 +11,9 @@ class PhotoWidget extends StatelessWidget {
     super.key,
     required this.photoPath,
     this.height,
-    this.width,
+    this.width,  this.borderRadius=BorderRadius.zero,
   });
-
+  final BorderRadius borderRadius;
   final String photoPath;
   final double? height;
   final double? width;
@@ -22,26 +22,32 @@ class PhotoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final photoLink = CloudflareCDN().getPhotoUrl(photoPath);
     if (photoPath.endsWith('.svg')) {
-      return SvgPicture.network(
-        photoLink,
-        placeholderBuilder: (_) => const LoadingPhoto(),
+      return ClipRRect(
+        borderRadius: borderRadius,
+        child: SvgPicture.network(
+          photoLink,
+          placeholderBuilder: (_) => const LoadingPhoto(),
+          fit: BoxFit.fitWidth,
+          height: height,
+          width: width,
+        ),
+      );
+    }
+    return ClipRRect(
+      borderRadius: borderRadius,
+      child: CachedNetworkImage(
+        imageUrl: photoLink,
+        errorWidget: (_, __, ___) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+              decoration: shadowDecoration(borderRadius: BorderRadius.circular(10)),
+              child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
+        ),
+        placeholder: (_, __) => const LoadingPhoto(),
         fit: BoxFit.fitWidth,
         height: height,
         width: width,
-      );
-    }
-    return CachedNetworkImage(
-      imageUrl: photoLink,
-      errorWidget: (_, __, ___) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-            decoration: shadowDecoration(borderRadius: BorderRadius.circular(10)),
-            child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
       ),
-      placeholder: (_, __) => const LoadingPhoto(),
-      fit: BoxFit.fitWidth,
-      height: height,
-      width: width,
     );
   }
 }
