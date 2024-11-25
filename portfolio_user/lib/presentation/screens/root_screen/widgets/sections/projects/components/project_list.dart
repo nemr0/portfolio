@@ -16,36 +16,36 @@ class ProjectsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      // reAnimateOnVisibility: true,
-      // showItemInterval: showItemInterval,
-      // showItemDuration: showItemDuration,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2), delegate: SliverChildBuilderDelegate((_,index)=> ProjectViewItem(
-      project: projects?[index], onProjectPressed: onProjectPressed,
-    ),),
-      // gridDelegate: SliverQuiltedGridDelegate(
-      //   crossAxisCount: 4,
-      //   mainAxisSpacing: 4,
-      //   crossAxisSpacing: 4,
-      //   repeatPattern: QuiltedGridRepeatPattern.inverted,
-      //   pattern: [
-      //     QuiltedGridTile(2, 2),
-      //     QuiltedGridTile(1, 1),
-      //     QuiltedGridTile(1, 1),
-      //     QuiltedGridTile(1, 2),
-      //   ],
-      // ),
-      // itemBuilder:
-      //     (BuildContext context, int index, Animation<double> animation) =>
-      //     ItemAnimationBuilder(
-      //       animation: animation,
-      //       fromGrid: true,
-      //       child: ProjectViewItem(
-      //         project: projects?[index], onProjectPressed: onProjectPressed,
-      //       ),
-      //     ),
-      // itemCount: projects?.length ?? 4,
-      // controller: controller,
+    return LiveSliverGrid(
+      reAnimateOnVisibility: true,
+      showItemInterval: showItemInterval,
+      showItemDuration: showItemDuration,
+      // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2), delegate: SliverChildBuilderDelegate((_,index)=> ProjectViewItem(
+      // project: projects?[index], onProjectPressed: onProjectPressed,
+    // ),),
+      gridDelegate: SliverQuiltedGridDelegate(
+        crossAxisCount: 4,
+        mainAxisSpacing: 4,
+        crossAxisSpacing: 4,
+        repeatPattern: QuiltedGridRepeatPattern.inverted,
+        pattern: [
+          QuiltedGridTile(2, 2),
+          QuiltedGridTile(1, 1),
+          QuiltedGridTile(1, 1),
+          QuiltedGridTile(1, 2),
+        ],
+      ),
+      itemBuilder:
+          (BuildContext context, int index, Animation<double> animation) =>
+          ItemAnimationBuilder(
+            animation: animation,
+            fromGrid: true,
+            child: ProjectViewItem(
+              project: projects?[index], onProjectPressed: onProjectPressed,
+            ),
+          ),
+      itemCount: projects?.length ?? 4,
+      controller: controller,
     );
   }
 }

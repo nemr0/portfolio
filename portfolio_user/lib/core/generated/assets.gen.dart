@@ -9,6 +9,22 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
+
+  /// File path: assets/svg/404.svg
+  String get a404 => 'assets/svg/404.svg';
+
+  /// File path: assets/svg/error.svg
+  String get error => 'assets/svg/error.svg';
+
+  /// Directory path: assets/svg/icons
+  $AssetsSvgIconsGen get icons => const $AssetsSvgIconsGen();
+
+  /// List of all assets
+  List<String> get values => [a404, error];
+}
+
 class $AssetsWebpGen {
   const $AssetsWebpGen();
 
@@ -18,9 +34,6 @@ class $AssetsWebpGen {
   /// File path: assets/webp/background_pattern.webp
   AssetGenImage get backgroundPattern => const AssetGenImage('assets/webp/background_pattern.webp');
 
-  /// Directory path: assets/webp/icons
-  $AssetsWebpIconsGen get icons => const $AssetsWebpIconsGen();
-
   /// File path: assets/webp/logo.webp
   AssetGenImage get logo => const AssetGenImage('assets/webp/logo.webp');
 
@@ -28,25 +41,26 @@ class $AssetsWebpGen {
   List<AssetGenImage> get values => [avatar, backgroundPattern, logo];
 }
 
-class $AssetsWebpIconsGen {
-  const $AssetsWebpIconsGen();
+class $AssetsSvgIconsGen {
+  const $AssetsSvgIconsGen();
 
-  /// File path: assets/webp/icons/contact_me_icon.webp
-  AssetGenImage get contactMeIcon => const AssetGenImage('assets/webp/icons/contact_me_icon.webp');
+  /// File path: assets/svg/icons/contact_me_icon.svg
+  String get contactMeIcon => 'assets/svg/icons/contact_me_icon.svg';
 
-  /// File path: assets/webp/icons/experience_icon.webp
-  AssetGenImage get experienceIcon => const AssetGenImage('assets/webp/icons/experience_icon.webp');
+  /// File path: assets/svg/icons/experience_icon.svg
+  String get experienceIcon => 'assets/svg/icons/experience_icon.svg';
 
-  /// File path: assets/webp/icons/projects_icon.webp
-  AssetGenImage get projectsIcon => const AssetGenImage('assets/webp/icons/projects_icon.webp');
+  /// File path: assets/svg/icons/highlighted_projects_icon.svg
+  String get highlightedProjectsIcon => 'assets/svg/icons/highlighted_projects_icon.svg';
 
   /// List of all assets
-  List<AssetGenImage> get values => [contactMeIcon, experienceIcon, projectsIcon];
+  List<String> get values => [contactMeIcon, experienceIcon, highlightedProjectsIcon];
 }
 
 class Assets {
   Assets._();
 
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
   static const $AssetsWebpGen webp = $AssetsWebpGen();
 }
 

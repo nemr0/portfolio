@@ -1,3 +1,4 @@
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,13 +7,16 @@ import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/shared_widgets/loading_photo.dart';
 import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
 
+
 class PhotoWidget extends StatelessWidget {
   const PhotoWidget({
     super.key,
     required this.photoPath,
     this.height,
-    this.width,  this.borderRadius=BorderRadius.zero,
+    this.width,
+    this.borderRadius = BorderRadius.zero,
   });
+
   final BorderRadius borderRadius;
   final String photoPath;
   final double? height;
@@ -35,19 +39,40 @@ class PhotoWidget extends StatelessWidget {
     }
     return ClipRRect(
       borderRadius: borderRadius,
-      child: Image.network(
-        photoLink,
-        // errorWidget: (_, __, ___) => Padding(
-        //   padding: const EdgeInsets.all(8.0),
-        //   child: Container(
-        //       decoration: shadowDecoration(borderRadius: BorderRadius.circular(10)),
-        //       child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
-        // ),
-        loadingBuilder: (_, __,___) => const LoadingPhoto(),
-        fit: BoxFit.fitWidth,
-        height: height,
-        width: width,
+      child: CachedNetworkImage(
+       imageUrl:  photoLink,
+        fit: BoxFit.fitHeight,
+        errorWidget: (_, __, ___) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+              decoration: shadowDecoration(borderRadius: BorderRadius.circular(10)),
+              child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
+        ),
+        placeholder: (_, __)  {
+          return  const LoadingPhoto();
+        },
       ),
+      // child: Image.network(
+      //   photoLink,
+      //   // errorWidget: (_, __, ___) => Padding(
+      //   //   padding: const EdgeInsets.all(8.0),
+      //   //   child: Container(
+      //   //       decoration: shadowDecoration(borderRadius: BorderRadius.circular(10)),
+      //   //       child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
+      //   // ),
+      //   // loadingBuilder: (_, child,chunk)  {
+      //   //   print('cumulativeBytesLoaded: ${chunk?.cumulativeBytesLoaded}');
+      //   //   print('expectedTotalBytes: ${chunk?.expectedTotalBytes}');
+      //   // return  chunk?.cumulativeBytesLoaded == chunk?.expectedTotalBytes
+      //   //       ? child
+      //   //       : const LoadingPhoto();
+      //   // },
+      //
+      //   fit: BoxFit.fitWidth,
+      //   height: height,
+      //   width: width,
+      // ),
     );
   }
 }
+
