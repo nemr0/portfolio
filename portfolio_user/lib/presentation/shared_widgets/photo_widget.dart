@@ -35,15 +35,15 @@ class PhotoWidget extends StatelessWidget {
     }
     return ClipRRect(
       borderRadius: borderRadius,
-      child: CachedNetworkImage(
-        imageUrl: photoLink,
-        errorWidget: (_, __, ___) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-              decoration: shadowDecoration(borderRadius: BorderRadius.circular(10)),
-              child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
-        ),
-        placeholder: (_, __) => const LoadingPhoto(),
+      child: Image.network(
+        photoLink,
+        // errorWidget: (_, __, ___) => Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: Container(
+        //       decoration: shadowDecoration(borderRadius: BorderRadius.circular(10)),
+        //       child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
+        // ),
+        loadingBuilder: (_, __,___) => const LoadingPhoto(),
         fit: BoxFit.fitWidth,
         height: height,
         width: width,
