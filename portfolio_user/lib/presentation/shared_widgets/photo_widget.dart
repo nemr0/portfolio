@@ -27,8 +27,7 @@ class PhotoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final photoLink = CloudflareCDN().getPhotoUrl(photoPath);
-    print(photoLink);
-    log(photoLink);
+
     if (photoPath.endsWith('.svg')) {
       return ClipRRect(
         borderRadius: borderRadius,
@@ -46,12 +45,17 @@ class PhotoWidget extends StatelessWidget {
       child: CachedNetworkImage(
        imageUrl:  photoLink,
         fit: BoxFit.fitHeight,
-        errorWidget: (_, __, ___) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-              decoration: shadowDecoration(borderRadius: BorderRadius.circular(10)),
-              child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
-        ),
+        errorWidget: (_, error, errorObj)
+        { log(error,error: errorObj);
+         return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+                decoration:
+                    shadowDecoration(borderRadius: BorderRadius.circular(10)),
+                child: CustomErrorWidget.fromText(
+                    message: 'Something went wrong.')),
+          );
+        },
         placeholder: (_, __)  {
           return  const LoadingPhoto();
         },
