@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,7 +28,7 @@ class PhotoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final photoLink = CloudflareCDN().getPhotoUrl(photoPath);
     print(photoLink);
-
+    log(photoLink);
     if (photoPath.endsWith('.svg')) {
       return ClipRRect(
         borderRadius: borderRadius,
