@@ -25,6 +25,8 @@ class PhotoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final photoLink = CloudflareCDN().getPhotoUrl(photoPath);
+    print(photoLink);
+
     if (photoPath.endsWith('.svg')) {
       return ClipRRect(
         borderRadius: borderRadius,
