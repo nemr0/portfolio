@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
         child: MaterialApp.router(
           routerConfig: router,
           debugShowCheckedModeBanner: false,
+          title: 'Omar Elnemr',
           theme: ThemeData(
               fontFamily: FontFamily.workSans,
-
               scaffoldBackgroundColor: AppColors.scaffoldBackground,
               primaryColor: AppColors.primary,
               textTheme: FontSettings.textTheme(context),

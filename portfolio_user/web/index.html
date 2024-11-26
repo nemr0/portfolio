@@ -1,40 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
-
+  <!-- Metadata and other tags remain unchanged -->
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="portfolio">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>portfolio</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="flutter-web-cross-origin-policy" content="anonymous" />
-
+  <title>Omar ElNemr</title>
+  <!-- Your other meta and favicon tags -->
 </head>
-<body>
-  <script src="flutter_bootstrap.js" async></script>
+<body style="
+background-color: #2f2f2f;
+overflow: hidden;
+">
+<style>
+  .background {
+    color: #222831;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .loader-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: opacity 0.2s ease-out;
+  }
+
+  .wrapper {
+    width: 152px;
+    height: 152px;
+    background-image: url('assets/webp/splash_logo.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    position: relative;
+  }
+
+  .loader {
+    border: 16px solid #76ABAE;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: fill linear 3s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes fill {
+    0% {
+      clip-path: polygon(50% 0%, 50% 50%, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+    }
+    12.5% {
+      clip-path: polygon(50% 0%, 50% 50%, 100% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+    }
+    37.5% {
+      clip-path: polygon(50% 0%, 50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 0%);
+    }
+    62.5% {
+      clip-path: polygon(50% 0%, 50% 50%, 0% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%);
+    }
+    87.5% {
+      clip-path: polygon(50% 0%, 50% 50%, 0% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+    100% {
+      clip-path: polygon(50% 0%, 50% 50%, 50% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    }
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
+</style>
+<script src="flutter_bootstrap.js" async></script>
+<script>
+  window.addEventListener('flutter-first-frame', function() {
+    // Add fade-out class to trigger the fade animation
+    document.querySelector('.loader-container').classList.add('fade-out');
+    document.querySelector('.background').classList.add('fade-out');
+
+    // Hide elements after fade-out animation completes
+    setTimeout(function() {
+      document.querySelector('.loader-container').style.display = 'none';
+      document.querySelector('.background').style.display = 'none';
+    }, 200); // Matches the transition duration of 1s
+  });
+</script>
+<div class="background"></div>
+<div class="loader-container">
+  <div class="wrapper">
+    <div class="loader"></div>
+  </div>
+</div>
 </body>
 </html>
