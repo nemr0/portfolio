@@ -10,7 +10,7 @@ import 'package:portfolio/presentation/shared_widgets/custom_tooltip.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
 import 'package:portfolio_shared/data/models/project/project.dart';
 
-final markdownStyleSheet = MarkdownStyleSheet(
+final MarkdownStyleSheet markdownStyleSheet = MarkdownStyleSheet(
   a: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal),
   p: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal),
   code: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal),
@@ -30,12 +30,12 @@ final markdownStyleSheet = MarkdownStyleSheet(
       fontWeight: FontWeight.normal,
       decoration: TextDecoration.lineThrough),
   blockquote:
-      TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal),
+  TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal),
   listBullet:
-      TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal),
+  TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal),
   tableHead: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold),
   tableBody:
-      TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal),
+  TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal),
 );
 
 class ProjectItemSheetView extends StatelessWidget {

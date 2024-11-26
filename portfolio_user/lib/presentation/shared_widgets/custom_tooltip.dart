@@ -1,10 +1,6 @@
-import 'package:el_tooltip/el_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/core/const/font_settings.dart';
-import 'package:portfolio/core/generated/fonts.gen.dart';
-import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 
 class CustomTooltip extends StatelessWidget {
   const CustomTooltip({super.key, this.message, required this.child,  this.color= AppColors. primary,});

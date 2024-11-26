@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 extension ContextExtension on BuildContext{
   Size get mediaQuerySize => MediaQuery.sizeOf(this);
