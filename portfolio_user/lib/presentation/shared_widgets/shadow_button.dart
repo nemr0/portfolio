@@ -34,6 +34,7 @@ class ShadowButton extends StatefulWidget {
         style: textStyle ??
             TextStyle(
               fontWeight: FontWeight.w900,
+              color: AppColors.textColor,
               fontSize: 20.spMin,
             ),
       ),

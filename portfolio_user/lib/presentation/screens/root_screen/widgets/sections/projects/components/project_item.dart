@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/presentation/shared_widgets/loading_photo.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
 import 'package:portfolio/presentation/shared_widgets/scaler.dart';
@@ -16,12 +17,15 @@ class ProjectViewItem extends StatelessWidget {
     if (project == null) return LoadingPhoto();
     return Hero(
       tag: project!.cover,
-      child: ScaleEffect(
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: GestureDetector(
-            onTap:project==null?null:()=> onProjectPressed?.call(project!),
-            child: PhotoWidget(photoPath: project!.cover),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: context.width/8,minWidth: context.width/5),
+        child: ScaleEffect(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: GestureDetector(
+              onTap:project==null?null:()=> onProjectPressed?.call(project!),
+              child: PhotoWidget(photoPath: project!.cover),
+            ),
           ),
         ),
       ),

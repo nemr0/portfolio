@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 
 class SectionTitle extends StatelessWidget {
@@ -20,11 +21,12 @@ class SectionTitle extends StatelessWidget {
           width: 32.spMin,
           child: Padding(
             padding: const EdgeInsets.all(2.0),
-            child: SvgPicture.asset(icon,fit: BoxFit.contain,),
+            child: SvgPicture.asset(icon,fit: BoxFit.contain,        colorFilter:ColorFilter.mode(AppColors.textColor, BlendMode.srcIn),
+            ),
           ),
         ),
         SizedBox(width: 10.w,),
-        Expanded(child: Text(text,style: TextStyle(fontWeight: FontWeight.w800,fontSize: 36.spMin),maxLines: 2,))
+        Expanded(child: Text(text,style: TextStyle(fontWeight: FontWeight.w800,fontSize: 36.spMin,color: AppColors.textColor),maxLines: 2,))
       ],),
     );
   }

@@ -13,6 +13,7 @@ Decoration shadowDecoration(
     shape: RoundedRectangleBorder(
       side: BorderSide(
         width: width-(width/3),
+        color: AppColors.textColor,
         strokeAlign: BorderSide.strokeAlignCenter,
       ),
       borderRadius: borderRadius,

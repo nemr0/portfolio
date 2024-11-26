@@ -1,6 +1,4 @@
 
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,7 +6,6 @@ import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/shared_widgets/loading_photo.dart';
 import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
-
 
 class PhotoWidget extends StatelessWidget {
   const PhotoWidget({
@@ -43,11 +40,10 @@ class PhotoWidget extends StatelessWidget {
     return ClipRRect(
       borderRadius: borderRadius,
       child: CachedNetworkImage(
-       imageUrl:  photoLink,
+        imageUrl: photoLink,
         fit: BoxFit.fitHeight,
-        errorWidget: (_, error, errorObj)
-        { log(error,error: errorObj);
-         return Padding(
+        errorWidget: (_, __, ___) {
+          return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
                 decoration:
@@ -56,31 +52,8 @@ class PhotoWidget extends StatelessWidget {
                     message: 'Something went wrong.')),
           );
         },
-        placeholder: (_, __)  {
-          return  const LoadingPhoto();
-        },
+        placeholder: (_, __) => const LoadingPhoto(),
       ),
-      // child: Image.network(
-      //   photoLink,
-      //   // errorWidget: (_, __, ___) => Padding(
-      //   //   padding: const EdgeInsets.all(8.0),
-      //   //   child: Container(
-      //   //       decoration: shadowDecoration(borderRadius: BorderRadius.circular(10)),
-      //   //       child: CustomErrorWidget.fromText(message: 'Something went wrong.')),
-      //   // ),
-      //   // loadingBuilder: (_, child,chunk)  {
-      //   //   print('cumulativeBytesLoaded: ${chunk?.cumulativeBytesLoaded}');
-      //   //   print('expectedTotalBytes: ${chunk?.expectedTotalBytes}');
-      //   // return  chunk?.cumulativeBytesLoaded == chunk?.expectedTotalBytes
-      //   //       ? child
-      //   //       : const LoadingPhoto();
-      //   // },
-      //
-      //   fit: BoxFit.fitWidth,
-      //   height: height,
-      //   width: width,
-      // ),
     );
   }
 }
-
