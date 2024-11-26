@@ -5,6 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/core/generated/fonts.gen.dart';
+import 'package:portfolio/presentation/shared_widgets/custom_tooltip.dart';
 import 'package:pull_down_button/pull_down_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -34,13 +35,8 @@ class _DrawerIconState extends State<DrawerIcon> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Hero(
       tag: 'drawer-icon',
-      child: Tooltip(
+      child: CustomTooltip(
         message: 'Links',
-        textStyle: TextStyle(
-          color: AppColors.textColor,
-          fontFamily: FontFamily.workSans,
-        ),
-        decoration: BoxDecoration(color: AppColors.primary),
         child: CupertinoButton(
           padding: EdgeInsets.zero,
           onPressed: crossFadeState == CrossFadeState.showSecond

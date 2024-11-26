@@ -29,6 +29,8 @@ dependencies:
   skeletonizer: ^1.4.2
   dio: ^5.7.0
   path_provider: ^2.1.5
+  el_tooltip: ^2.2.1
+  flutter_markdown: ^0.7.4+2
 
 flutter_gen:
   output: lib/core/generated # Optional (default: lib/gen/)

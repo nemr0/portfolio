@@ -4,6 +4,7 @@ import 'package:portfolio/core/const/colors.dart';
 
 Decoration shadowDecoration(
     {Color color = AppColors.primary,
+      Color shadowColor =AppColors.textColor,
     double width = 3,
     required BorderRadius borderRadius,
     bool hideShadow=false,
@@ -13,7 +14,7 @@ Decoration shadowDecoration(
     shape: RoundedRectangleBorder(
       side: BorderSide(
         width: width-(width/3),
-        color: AppColors.textColor,
+        color: shadowColor,
         strokeAlign: BorderSide.strokeAlignCenter,
       ),
       borderRadius: borderRadius,
@@ -21,7 +22,7 @@ Decoration shadowDecoration(
     shadows: [
       if(!hideShadow)
       BoxShadow(
-        color: AppColors.textColor,
+        color: shadowColor,
         blurRadius: 0,
         offset: Offset(width, width),
         spreadRadius: width,

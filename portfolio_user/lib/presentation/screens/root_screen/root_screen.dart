@@ -130,7 +130,7 @@ class _RootScreenState extends State<RootScreen>
                             controller: controller,
                             onProjectPressed: (Project project) async {
                               setState(() {
-                                overrideBackgroundColor = AppColors.secondary;
+                                overrideBackgroundColor = AppColors.primary;
                               });
                               await showCupertinoModalPopup(
                                   context: context,
