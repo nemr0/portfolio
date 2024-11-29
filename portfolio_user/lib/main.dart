@@ -3,10 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/font_settings.dart';
-import 'package:portfolio/core/extensions/context_extension.dart';
+import 'package:portfolio_shared/extensions/context_extension.dart';
 import 'package:portfolio/core/generated/fonts.gen.dart';
 import 'package:portfolio/presentation/helpers/router.dart';
-import 'package:portfolio/presentation/state_manager/get_experience_cubit/get_experience_cubit.dart';
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
 import 'package:portfolio_shared/init_user.dart';
 
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
       builder: (_, child) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => GetProjectsCubit()..getData(),lazy: false,),
-          BlocProvider(create: (_) => GetExperienceCubit()..getData(),lazy: false,),
+          // BlocProvider(create: (_) => GetExperienceCubit()..getData(),lazy: false,),
         ],
         child: MaterialApp.router(
           routerConfig: router,

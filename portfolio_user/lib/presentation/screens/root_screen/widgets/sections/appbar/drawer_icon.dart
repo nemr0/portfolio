@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/core/extensions/context_extension.dart';
+import 'package:portfolio_shared/extensions/context_extension.dart';
 import 'package:portfolio/core/generated/fonts.gen.dart';
 import 'package:portfolio/presentation/shared_widgets/custom_tooltip.dart';
 import 'package:pull_down_button/pull_down_button.dart';

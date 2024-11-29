@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/const/resource.dart';
-import 'package:portfolio/core/extensions/context_extension.dart';
+import 'package:portfolio_shared/extensions/context_extension.dart';
 
 class Avatar extends StatelessWidget {
   const Avatar({super.key});

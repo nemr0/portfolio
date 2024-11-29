@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/animation_durations.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/resource.dart';
-import 'package:portfolio/core/extensions/context_extension.dart';
+import 'package:portfolio_shared/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/globals/global_elements.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_bottom_sheet.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_admin/presentation/root_screen/tabs/projects/projects_tab.dart';
+import 'package:portfolio_admin/presentation/screens/root_screen/tabs/projects/projects_tab.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});

@@ -17,7 +17,7 @@ Future<List<ExperienceItem>> getExperienceItemsFromFirebase() async {
      if(kDebugMode) print(data);
       if (data.docs.isEmpty && data.metadata.isFromCache) {
         throw NetworkException(
-          endpoint: 'projects',
+          endpoint: 'experience',
         );
       }
       return List<ExperienceItem>.generate(
@@ -28,8 +28,11 @@ Future<List<ExperienceItem>> getExperienceItemsFromFirebase() async {
       print(s);
     }
     if (e is FirebaseException) {
+      if (kDebugMode) {
+        print(e.message);
+        print(e.code);
 
-
+      }
         throw ServerException(endpoint: 'projects', stackTrace: e.stackTrace, error: e.code, message: e.message);
       } else {
         throw ParseException(stackTrace: s);

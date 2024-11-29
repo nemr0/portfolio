@@ -61,4 +61,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'portfolio-nemr.firebasestorage.app',
     measurementId: 'G-WEJ3L2HKTX',
   );
+
 }

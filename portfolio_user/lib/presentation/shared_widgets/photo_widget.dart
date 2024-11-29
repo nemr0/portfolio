@@ -1,6 +1,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
@@ -49,6 +50,7 @@ class PhotoWidget extends StatelessWidget {
                 decoration:
                     shadowDecoration(borderRadius: BorderRadius.circular(10)),
                 child: CustomErrorWidget.fromText(
+                  width: 100.w,
                     message: 'Something went wrong.')),
           );
         },

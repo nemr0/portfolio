@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/components/project_list.dart';
 import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
@@ -24,13 +24,13 @@ class ProjectsView extends StatelessWidget {
           controller: controller,
           onProjectPressed: onProjectPressed,
         ),
-        error: (e) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-              decoration:
-                  shadowDecoration(borderRadius: BorderRadius.circular(10)),
-              child: CustomErrorWidget.fromText(
-                  message: e.message ?? 'Something went wrong!')),
+        error: (e) => SliverToBoxAdapter(
+          child: SizedBox(
+            height: 300,
+            width: 100,
+            child: CustomErrorWidget.fromText(
+                message: e.message ?? 'Something went wrong!',small:  false,width: 100.w,),
+          ),
         ),
       );
     });

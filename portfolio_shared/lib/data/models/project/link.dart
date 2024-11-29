@@ -8,7 +8,14 @@ class Link extends Equatable{
   factory Link.fromMap(dynamic data){
     return Link(icon: data['icon']??questionIconData, link: data['link']??'', tooltip: data['tooltip']??'');
   }
+  Map<String,dynamic> toMap(){
+    return{
+      'link':link,
+      'icon':icon,
+      'tooltip':tooltip,
 
+    };
+  }
   @override
   List<Object?> get props => [icon,link,tooltip];
 }
