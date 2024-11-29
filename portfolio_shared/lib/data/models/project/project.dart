@@ -7,7 +7,7 @@ class Project extends Equatable{
   final String shortDescription;
   final String name;
   final String cover;
-  final int order;
+  final String order;
   const Project(
       {required this.photos,required this.cover,required this.order,
         required this.links,required this.shortDescription,
@@ -17,19 +17,18 @@ class Project extends Equatable{
   factory Project.fromMap(Map<String,dynamic> data)
 
           {
+      return Project(
+          photos: data['photos'] == null ? [] : List<String>.from(data['photos']),
+          cover: data['cover'] ?? '',
+          shortDescription: data['short_description'] ?? '',
+          links: ((data['links'] ?? []) as List)
+              .map((e) => Link.fromMap(e as Map<String, dynamic>))
+              .toList(),
+          description: data['description'],
+          name: data['name'] ?? '',
+          order: ((data['order']) ?? '1000').toString());
 
-       return Project(
-            photos:
-                data['photos'] == null ? [] : List<String>.from(data['photos']),
-            cover: data['cover'] ?? '',
-            shortDescription: data['short_description'] ?? '',
-            links: ((data['links']??[]) as List)
-                .map((e) => Link.fromMap(e as Map<String, dynamic>))
-                .toList(),
-            description: data['description'],
-            name: data['name'] ?? '',
-            order: data['order'] ?? 1000);
-      }
+  }
 
   Map<String,dynamic> toMap(){
     return{
@@ -38,7 +37,7 @@ class Project extends Equatable{
       'description':description,
       'short_description':shortDescription,
       'cover':cover,
-      'links': List.from(links.map((e)=>e.toMap())),
+      'links': List.from(links.map<Map<String,dynamic>>((e)=>e.toMap())),
       'order' : order,
     };
   }

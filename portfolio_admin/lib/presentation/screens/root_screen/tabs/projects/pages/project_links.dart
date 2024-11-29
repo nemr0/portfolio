@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:portfolio_admin/presentation/widgets/my_text_field.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
 
@@ -57,7 +58,16 @@ initControllers(){
     controller.animateTo(controller.position.maxScrollExtent,
         duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
   }
-
+  IoniconsData? tryIcon(String icon){
+  int? iconCode = int.tryParse(icon);
+  if(iconCode == null) return null;
+  try{
+    final IoniconsData ioniconsData = IoniconsData(iconCode);
+    return ioniconsData;
+  }catch(e){
+    return null;
+  }
+  }
   @override
   void dispose() {
     for (var map in controllers) {
@@ -99,10 +109,7 @@ initControllers(){
               const SizedBox(
                 height: 12,
               ),
-
-              if (key == 'add')
-                const SizedBox.shrink()
-              else
+                if(tryIcon(item[key]!.text)!=null)if(key =='icon')  Icon(tryIcon(item[key]!.text)),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: MyTextFormField(controller: item[key]!, hintText: key),

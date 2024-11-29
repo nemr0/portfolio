@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_admin/presentation/widgets/my_text_field.dart';
+import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
 
 class ProjectsFirstPage extends StatefulWidget {
@@ -24,7 +25,7 @@ class _ProjectsFirstPageState extends State<ProjectsFirstPage> {
   late final TextEditingController descriptionController;
   late final TextEditingController shortDescriptionController;
   final formKey = GlobalKey<FormState>();
-
+  Uri? coverURL;
   @override
   void initState() {
     super.initState();
@@ -33,6 +34,11 @@ class _ProjectsFirstPageState extends State<ProjectsFirstPage> {
     coverController = TextEditingController(text: widget.initialCover);
     descriptionController = TextEditingController(text: widget.initialDescription);
     shortDescriptionController = TextEditingController(text: widget.initialShortDescription);
+    coverController.addListener((){
+     setState(() {
+       coverURL=Uri.tryParse(coverController.text);
+     });
+    });
   }
 
   @override
@@ -58,6 +64,11 @@ class _ProjectsFirstPageState extends State<ProjectsFirstPage> {
               MyTextFormField(
                   controller: nameController, hintText: 'Project Name'),
               const SizedBox(height: 50),
+              AnimatedSwitcher(duration: const Duration(milliseconds: 200),
+              child: coverURL==null?const SizedBox():SizedBox(
+                  height: 200,
+                  child: Image.network(CloudflareCDN().getPhotoUrl(coverController.text))),
+              ),
               MyTextFormField(
                   controller: coverController, hintText: 'Cover Link'),
               const SizedBox(height: 50),

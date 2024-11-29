@@ -5,7 +5,7 @@ import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/font_settings.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
 import 'package:portfolio/core/generated/fonts.gen.dart';
-import 'package:portfolio/presentation/helpers/router.dart';
+import 'package:portfolio/presentation/routes/router.dart';
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
 import 'package:portfolio_shared/init_user.dart';
 
