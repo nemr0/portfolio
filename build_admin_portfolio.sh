@@ -2,9 +2,9 @@
 
 # Clone or update Flutter SDK
 if [ -d "flutter" ]; then
-  cd flutter && git pull && cd ..
+  cd flutter && git checkout 3.24.5 && cd ..
 else
-  git clone https://github.com/flutter/flutter.git
+  git clone -b 3.24.5 https://github.com/flutter/flutter.git
 fi
 
 # List directory contents (optional)

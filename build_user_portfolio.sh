@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # Clone or update Flutter SDK
-#if [ -d "flutter" ]; then
-#  cd flutter && git pull && cd ..
-#else
+if [ -d "flutter" ]; then
+  cd flutter && git pull && cd ..
+else
   git clone -b 3.24.5 https://github.com/flutter/flutter.git
-#fi
+fi
 
 # List directory contents (optional)
 #ls
