@@ -33,6 +33,20 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <script src="flutter_bootstrap.js" async>
+    window.addEventListener('load', function (ev) {
+   // Download main.dart.js
+   _flutter.loader.load({
+     entrypointUrl: "main.dart.js?v=" + serviceWorkerVersion,
+     serviceWorker: {
+       serviceWorkerVersion: serviceWorkerVersion,
+     }
+   }).then(function (engineInitializer) {
+     return engineInitializer.initializeEngine();
+   }).then(function (appRunner) {
+     return appRunner.runApp();
+   });
+ });
+  </script>
 </body>
 </html>
