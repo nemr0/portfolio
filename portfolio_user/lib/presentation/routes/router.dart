@@ -6,6 +6,8 @@ import 'package:portfolio/presentation/routes/hero_page/hero_page.dart';
 import 'package:portfolio/presentation/screens/root_screen/root_screen.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/projects_pageview_bottom_sheet.dart';
 
+import '../screens/not_found_screen/not_found_screen.dart';
+
 // final GoRouter router = GoRouter(
 //   initialLocation: '/',
 //     routes: [
@@ -26,6 +28,7 @@ import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets
 //   ),
 // );
 final GoRouter router = GoRouter(
+  errorPageBuilder: (_,__)=>HeroPage(builder: (BuildContext context) =>const NotFoundScreen()),
   routes: [
     GoRoute(
         path: Routes.root,
