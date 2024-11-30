@@ -20,3 +20,5 @@ class Link extends Equatable{
   @override
   List<Object?> get props => [icon,link,tooltip];
 }
+
+const Link emptyLink = Link(icon: questionIconData, link: '', tooltip: '');

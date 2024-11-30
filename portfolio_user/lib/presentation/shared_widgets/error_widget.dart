@@ -7,18 +7,18 @@ import 'package:portfolio/presentation/shared_widgets/shadow_button.dart';
 import 'package:portfolio_shared/data/models/exceptions/exception_abs.dart';
 import 'package:portfolio_shared/data/models/exceptions/server_error.dart';
 
-class CustomErrorWidget extends StatelessWidget {
-  const CustomErrorWidget(
+class ItemErrorWidget extends StatelessWidget {
+  const ItemErrorWidget(
       {super.key, required this.exception, this.onRetryPressed,  this.small=false, this.retryWidget, required this.width});
 
-  factory CustomErrorWidget.fromText(
+  factory ItemErrorWidget.fromText(
       {required String message,
       VoidCallback? onRetryPressed,
         bool small = true,
         Widget? retryWidget,
         required double width,
       String? endpoint}) {
-    return CustomErrorWidget(
+    return ItemErrorWidget(
       exception: ServerException(
           endpoint: endpoint ?? 'unknown', stackTrace: null, message: message),
       onRetryPressed: onRetryPressed,

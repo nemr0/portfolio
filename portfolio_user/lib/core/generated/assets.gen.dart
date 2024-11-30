@@ -37,8 +37,11 @@ class $AssetsWebpGen {
   /// File path: assets/webp/logo.webp
   AssetGenImage get logo => const AssetGenImage('assets/webp/logo.webp');
 
+  /// File path: assets/webp/splash_logo.webp
+  AssetGenImage get splashLogo => const AssetGenImage('assets/webp/splash_logo.webp');
+
   /// List of all assets
-  List<AssetGenImage> get values => [avatar, backgroundPattern, logo];
+  List<AssetGenImage> get values => [avatar, backgroundPattern, logo, splashLogo];
 }
 
 class $AssetsSvgIconsGen {

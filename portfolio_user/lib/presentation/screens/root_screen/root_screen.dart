@@ -1,14 +1,16 @@
 import 'package:auto_animated/auto_animated.dart';
-import 'package:flutter/cupertino.dart' show CupertinoScrollbar,showCupertinoModalPopup;
+import 'package:flutter/cupertino.dart' show CupertinoScrollbar;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/const/animation_durations.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/resource.dart';
+import 'package:portfolio/core/const/routes.dart';
+import 'package:portfolio/presentation/routes/router.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/globals/global_elements.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_bottom_sheet.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/avatar.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/appbar/header_sliver.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/hire_me_button.dart';
@@ -21,20 +23,31 @@ import 'package:portfolio/presentation/shared_widgets/scaler.dart';
 import 'package:portfolio_shared/data/models/project/project.dart';
 
 class RootScreen extends StatefulWidget {
-  const RootScreen({super.key});
-
+  const RootScreen({super.key, required this.initBackgroundColor});
+  final Color initBackgroundColor;
   @override
   State<RootScreen> createState() => _RootScreenState();
 }
 
 class _RootScreenState extends State<RootScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin , RouteAware{
   late ScrollController controller;
-  Color overrideBackgroundColor = AppColors.background;
+  late Color overrideBackgroundColor ;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
+    final route = ModalRoute.of(context);
+
+    if (route is PageRoute) {
+      routeObserver.subscribe(this, route);
+    }
+  }
   @override
   void initState() {
+
     super.initState();
+    overrideBackgroundColor=widget.initBackgroundColor;
     controller = ScrollController();
   }
 
@@ -42,8 +55,16 @@ class _RootScreenState extends State<RootScreen>
   void dispose() {
     super.dispose();
     controller.dispose();
-  }
+    routeObserver.unsubscribe(this);
 
+  }
+  @override
+  void didPopNext() {
+    setState(() {
+      overrideBackgroundColor = AppColors.background;
+    });
+    super.didPopNext();
+  }
   @override
   Widget build(BuildContext context) {
     final List<Widget> body = [
@@ -132,14 +153,7 @@ class _RootScreenState extends State<RootScreen>
                               setState(() {
                                 overrideBackgroundColor = AppColors.primary;
                               });
-                              await showCupertinoModalPopup(
-                                  context: context,
-                                  barrierColor: Colors.transparent,
-
-                                  builder: (_) => ProjectItemSheetView(project: project));
-                              setState(() {
-                                overrideBackgroundColor = AppColors.background;
-                              });
+                              context.goNamed(Routes.highlightedProjects,pathParameters: {Routes.highlightedProjectsId:project.path});
                             },
                           )),
                     ],

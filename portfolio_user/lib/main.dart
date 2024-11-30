@@ -8,12 +8,14 @@ import 'package:portfolio/core/generated/fonts.gen.dart';
 import 'package:portfolio/presentation/routes/router.dart';
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
 import 'package:portfolio_shared/init_user.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ScreenUtil.ensureScreenSize();
   await initFirebaseForUser();
-  // await CloudFlareManager().getAllImages();
+  setPathUrlStrategy();
+
   runApp(const MyApp());
 }
 
@@ -31,7 +33,9 @@ class MyApp extends StatelessWidget {
           // BlocProvider(create: (_) => GetExperienceCubit()..getData(),lazy: false,),
         ],
         child: MaterialApp.router(
+
           routerConfig: router,
+
           debugShowCheckedModeBanner: false,
           title: 'Omar Elnemr',
           theme: ThemeData(

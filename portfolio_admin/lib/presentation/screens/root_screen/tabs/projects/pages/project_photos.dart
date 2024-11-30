@@ -1,4 +1,5 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_admin/presentation/widgets/my_text_field.dart';
 
@@ -52,8 +53,11 @@ class _ProjectPhotosState extends State<ProjectPhotos> {
                         loading = true;
                       });
                       await  widget.onComplete(result).catchError((e,s){
-                        print(e);
-                        print(s);
+                        if (kDebugMode) {
+                          print(e);
+                          print(s);
+                        }
+
                       });
                       setState(() {
                         loading = false;

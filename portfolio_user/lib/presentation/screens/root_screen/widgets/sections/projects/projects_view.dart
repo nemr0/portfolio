@@ -28,7 +28,7 @@ class ProjectsView extends StatelessWidget {
           child: SizedBox(
             height: 300,
             width: 100,
-            child: CustomErrorWidget.fromText(
+            child: ItemErrorWidget.fromText(
                 message: e.message ?? 'Something went wrong!',small:  false,width: 100.w,),
           ),
         ),

@@ -32,7 +32,7 @@ class ProjectsListWidget extends StatelessWidget {
           QuiltedGridTile(2, 2),
           QuiltedGridTile(1, 1),
           QuiltedGridTile(1, 1),
-          QuiltedGridTile(1, 2),
+
         ],
       ),
       itemBuilder:

@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/shared_widgets/loading_photo.dart';
@@ -14,16 +15,31 @@ class PhotoWidget extends StatelessWidget {
     required this.photoPath,
     this.height,
     this.width,
-    this.borderRadius = BorderRadius.zero,
+    this.borderRadius = BorderRadius.zero,  this.loading = false,
   });
 
   final BorderRadius borderRadius;
   final String photoPath;
   final double? height;
   final double? width;
-
+  final bool loading;
   @override
   Widget build(BuildContext context) {
+    if(loading) {
+      return SizedBox(
+        height: height,
+        width: width,
+        child: Column(
+          children: [
+            Container(
+              height: height,
+              width: width,
+              decoration:  BoxDecoration(borderRadius: borderRadius,),
+              child: const LoadingPhoto()),
+          ],
+        ),
+      );
+    }
     final photoLink = CloudflareCDN().getPhotoUrl(photoPath);
 
     if (photoPath.endsWith('.svg')) {
@@ -38,8 +54,10 @@ class PhotoWidget extends StatelessWidget {
         ),
       );
     }
-    return ClipRRect(
-      borderRadius: borderRadius,
+    return Container(
+     decoration: BoxDecoration(
+       border: Border.all(color: AppColors.secondary,width: 3),
+       borderRadius: borderRadius,),
       child: CachedNetworkImage(
         imageUrl: photoLink,
         fit: BoxFit.fitHeight,
@@ -49,7 +67,7 @@ class PhotoWidget extends StatelessWidget {
             child: Container(
                 decoration:
                     shadowDecoration(borderRadius: BorderRadius.circular(10)),
-                child: CustomErrorWidget.fromText(
+                child: ItemErrorWidget.fromText(
                   width: 100.w,
                     message: 'Something went wrong.')),
           );

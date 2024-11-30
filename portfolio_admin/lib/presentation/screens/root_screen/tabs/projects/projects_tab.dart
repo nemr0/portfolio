@@ -72,7 +72,6 @@ class _ProjectsTabState extends State<ProjectsTab> {
         }
 
         Project project = Project.fromMap(formData);
-        print(project.toMap());
         await addProject(project).catchError((e,s){
           if(e is ExceptionImpl) {
            if(context.mounted) {

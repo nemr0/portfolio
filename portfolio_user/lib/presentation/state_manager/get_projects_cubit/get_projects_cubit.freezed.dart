@@ -40,23 +40,23 @@ mixin _$GetProjectsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
+    required TResult Function(GetProjectsLoading value) loading,
+    required TResult Function(GetProjectsSuccess value) success,
+    required TResult Function(GetProjectsError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
+    TResult? Function(GetProjectsLoading value)? loading,
+    TResult? Function(GetProjectsSuccess value)? success,
+    TResult? Function(GetProjectsError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult Function(GetProjectsLoading value)? loading,
+    TResult Function(GetProjectsSuccess value)? success,
+    TResult Function(GetProjectsError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -84,18 +84,18 @@ class _$GetProjectsStateCopyWithImpl<$Res, $Val extends GetProjectsState>
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$GetProjectsLoadingImplCopyWith<$Res> {
+  factory _$$GetProjectsLoadingImplCopyWith(_$GetProjectsLoadingImpl value,
+          $Res Function(_$GetProjectsLoadingImpl) then) =
+      __$$GetProjectsLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$GetProjectsStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$GetProjectsLoadingImplCopyWithImpl<$Res>
+    extends _$GetProjectsStateCopyWithImpl<$Res, _$GetProjectsLoadingImpl>
+    implements _$$GetProjectsLoadingImplCopyWith<$Res> {
+  __$$GetProjectsLoadingImplCopyWithImpl(_$GetProjectsLoadingImpl _value,
+      $Res Function(_$GetProjectsLoadingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GetProjectsState
@@ -104,8 +104,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$GetProjectsLoadingImpl implements GetProjectsLoading {
+  const _$GetProjectsLoadingImpl();
 
   @override
   String toString() {
@@ -115,7 +115,7 @@ class _$LoadingImpl implements _Loading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _$GetProjectsLoadingImpl);
   }
 
   @override
@@ -158,9 +158,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
+    required TResult Function(GetProjectsLoading value) loading,
+    required TResult Function(GetProjectsSuccess value) success,
+    required TResult Function(GetProjectsError value) error,
   }) {
     return loading(this);
   }
@@ -168,9 +168,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
+    TResult? Function(GetProjectsLoading value)? loading,
+    TResult? Function(GetProjectsSuccess value)? success,
+    TResult? Function(GetProjectsError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -178,9 +178,9 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult Function(GetProjectsLoading value)? loading,
+    TResult Function(GetProjectsSuccess value)? success,
+    TResult Function(GetProjectsError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -190,25 +190,25 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements GetProjectsState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class GetProjectsLoading implements GetProjectsState {
+  const factory GetProjectsLoading() = _$GetProjectsLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+abstract class _$$GetProjectsSuccessImplCopyWith<$Res> {
+  factory _$$GetProjectsSuccessImplCopyWith(_$GetProjectsSuccessImpl value,
+          $Res Function(_$GetProjectsSuccessImpl) then) =
+      __$$GetProjectsSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Project> data});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$GetProjectsStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$GetProjectsSuccessImplCopyWithImpl<$Res>
+    extends _$GetProjectsStateCopyWithImpl<$Res, _$GetProjectsSuccessImpl>
+    implements _$$GetProjectsSuccessImplCopyWith<$Res> {
+  __$$GetProjectsSuccessImplCopyWithImpl(_$GetProjectsSuccessImpl _value,
+      $Res Function(_$GetProjectsSuccessImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GetProjectsState
@@ -218,7 +218,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$SuccessImpl(
+    return _then(_$GetProjectsSuccessImpl(
       null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -229,8 +229,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<Project> data) : _data = data;
+class _$GetProjectsSuccessImpl implements GetProjectsSuccess {
+  const _$GetProjectsSuccessImpl(final List<Project> data) : _data = data;
 
   final List<Project> _data;
   @override
@@ -249,7 +249,7 @@ class _$SuccessImpl implements _Success {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$GetProjectsSuccessImpl &&
             const DeepCollectionEquality().equals(other._data, _data));
   }
 
@@ -262,8 +262,9 @@ class _$SuccessImpl implements _Success {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$GetProjectsSuccessImplCopyWith<_$GetProjectsSuccessImpl> get copyWith =>
+      __$$GetProjectsSuccessImplCopyWithImpl<_$GetProjectsSuccessImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -302,9 +303,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
+    required TResult Function(GetProjectsLoading value) loading,
+    required TResult Function(GetProjectsSuccess value) success,
+    required TResult Function(GetProjectsError value) error,
   }) {
     return success(this);
   }
@@ -312,9 +313,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
+    TResult? Function(GetProjectsLoading value)? loading,
+    TResult? Function(GetProjectsSuccess value)? success,
+    TResult? Function(GetProjectsError value)? error,
   }) {
     return success?.call(this);
   }
@@ -322,9 +323,9 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult Function(GetProjectsLoading value)? loading,
+    TResult Function(GetProjectsSuccess value)? success,
+    TResult Function(GetProjectsError value)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -334,33 +335,34 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements GetProjectsState {
-  const factory _Success(final List<Project> data) = _$SuccessImpl;
+abstract class GetProjectsSuccess implements GetProjectsState {
+  const factory GetProjectsSuccess(final List<Project> data) =
+      _$GetProjectsSuccessImpl;
 
   List<Project> get data;
 
   /// Create a copy of GetProjectsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+  _$$GetProjectsSuccessImplCopyWith<_$GetProjectsSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+abstract class _$$GetProjectsErrorImplCopyWith<$Res> {
+  factory _$$GetProjectsErrorImplCopyWith(_$GetProjectsErrorImpl value,
+          $Res Function(_$GetProjectsErrorImpl) then) =
+      __$$GetProjectsErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ExceptionImpl exception});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$GetProjectsStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$GetProjectsErrorImplCopyWithImpl<$Res>
+    extends _$GetProjectsStateCopyWithImpl<$Res, _$GetProjectsErrorImpl>
+    implements _$$GetProjectsErrorImplCopyWith<$Res> {
+  __$$GetProjectsErrorImplCopyWithImpl(_$GetProjectsErrorImpl _value,
+      $Res Function(_$GetProjectsErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GetProjectsState
@@ -370,7 +372,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? exception = null,
   }) {
-    return _then(_$ErrorImpl(
+    return _then(_$GetProjectsErrorImpl(
       null == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -381,8 +383,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.exception);
+class _$GetProjectsErrorImpl implements GetProjectsError {
+  const _$GetProjectsErrorImpl(this.exception);
 
   @override
   final ExceptionImpl exception;
@@ -396,7 +398,7 @@ class _$ErrorImpl implements _Error {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
+            other is _$GetProjectsErrorImpl &&
             (identical(other.exception, exception) ||
                 other.exception == exception));
   }
@@ -409,8 +411,9 @@ class _$ErrorImpl implements _Error {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$GetProjectsErrorImplCopyWith<_$GetProjectsErrorImpl> get copyWith =>
+      __$$GetProjectsErrorImplCopyWithImpl<_$GetProjectsErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -449,9 +452,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
+    required TResult Function(GetProjectsLoading value) loading,
+    required TResult Function(GetProjectsSuccess value) success,
+    required TResult Function(GetProjectsError value) error,
   }) {
     return error(this);
   }
@@ -459,9 +462,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
+    TResult? Function(GetProjectsLoading value)? loading,
+    TResult? Function(GetProjectsSuccess value)? success,
+    TResult? Function(GetProjectsError value)? error,
   }) {
     return error?.call(this);
   }
@@ -469,9 +472,9 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult Function(GetProjectsLoading value)? loading,
+    TResult Function(GetProjectsSuccess value)? success,
+    TResult Function(GetProjectsError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -481,14 +484,15 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements GetProjectsState {
-  const factory _Error(final ExceptionImpl exception) = _$ErrorImpl;
+abstract class GetProjectsError implements GetProjectsState {
+  const factory GetProjectsError(final ExceptionImpl exception) =
+      _$GetProjectsErrorImpl;
 
   ExceptionImpl get exception;
 
   /// Create a copy of GetProjectsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+  _$$GetProjectsErrorImplCopyWith<_$GetProjectsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
