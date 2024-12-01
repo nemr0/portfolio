@@ -47,7 +47,7 @@ class _ProjectsPageViewBottomSheetState
     currentIndex =
         GetProjectsCubit.get(context).loadOrEmitSuccess(widget.projectId) ?? 0;
     controller =
-        PageController(initialPage: currentIndex, viewportFraction: .8);
+        PageController(initialPage: currentIndex, viewportFraction: .85);
     // scrollController =ScrollController();
     // scrollController.addListener(listener);
   }
@@ -72,7 +72,7 @@ class _ProjectsPageViewBottomSheetState
       if (useDefaultPadding == false) {
         setState(() {
           useDefaultPadding = true;
-          controller = PageController(initialPage: currentIndex, viewportFraction: .8);
+          controller = PageController(initialPage: currentIndex, viewportFraction: .85);
         });
       }
     }
