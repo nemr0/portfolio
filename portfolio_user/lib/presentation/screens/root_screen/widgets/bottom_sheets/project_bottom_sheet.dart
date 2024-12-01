@@ -46,82 +46,115 @@ class ProjectItemSheetView extends StatelessWidget {
       {super.key,
       required this.project,
       this.loading = false,
-      required this.current,   this.controller,  this.useDefaultPadding =true});
+      required this.current,
+      this.useDefaultPadding = true});
 
   final Project project;
   final bool loading;
   final bool current;
-  final ScrollController? controller;
   final bool useDefaultPadding;
+
   @override
   Widget build(BuildContext context) {
-    final defaultPadding = EdgeInsets.only(top: 20.spMax,left: 10.spMax,right: 20.spMax);
+    final defaultPadding =
+        EdgeInsets.only(top: 20.spMax, left: 10.spMax, right: 20.spMax);
+    final horizontalPadding = EdgeInsets.symmetric(horizontal: 20.w);
     return Skeletonizer(
       enabled: loading,
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
-
-        margin: useDefaultPadding?defaultPadding:EdgeInsets.zero,
-
+        margin: useDefaultPadding ? defaultPadding : EdgeInsets.zero,
         decoration: shadowDecoration(
-            borderRadius: useDefaultPadding?gBorderRadius:BorderRadius.zero,
+            borderRadius: useDefaultPadding ? gBorderRadius : BorderRadius.zero,
             hideShadow: true,
             color: AppColors.scaffoldBackground),
-
         child: SingleChildScrollView(
-          controller: controller,
-          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
+          primary: false,
+          padding: EdgeInsets.symmetric(vertical: 10.h,),
           child: Column(
             children: [
               if (current)
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Skeleton.ignore(
-                      child: CupertinoButton(
-                        onPressed: () => context.pop(),
-                        padding: EdgeInsets.zero,
-                        child: Icon(
-                          Ionicons.close_circle,
-                          size: 30.sp,
-                          color: AppColors.secondary,
+                Padding(
+                  padding: horizontalPadding,
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Skeleton.ignore(
+                        child: CupertinoButton(
+                          onPressed: () => context.pop(),
+                          padding: EdgeInsets.zero,
+                          child: Icon(
+                            Ionicons.close_circle,
+                            size: 30.sp,
+                            color: AppColors.secondary,
+                          ),
                         ),
-                      ),
-                    ))
+                      )),
+                )
               else
                 SizedBox(
                   height: 37.sp,
                 ),
-              ProjectBottomSheetItemTitle(
-                project: project,
-                loading: loading,
+              Padding(
+                padding: horizontalPadding,
+                child: ProjectBottomSheetItemTitle(
+                  project: project,
+                  loading: loading,
+                ),
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Description:',
-                  style: context.textTheme.bodySmall,
+              Padding(
+                padding: horizontalPadding,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Description:',
+                    style: context.textTheme.bodySmall,
+                  ),
                 ),
               ),
               SizedBox(
                 height: 11.spMax,
               ),
-              MarkdownBody(
-                data: project.description,
-                styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
-                styleSheet: markdownStyleSheet,
+              Padding(
+                padding: horizontalPadding,
+                child: MarkdownBody(
+                  data: project.description,
+                  styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
+                  styleSheet: markdownStyleSheet,
+                ),
               ),
               SizedBox(
                 height: 15.spMax,
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Photos:',
-                  style: context.textTheme.bodySmall,
+              Padding(
+                padding: horizontalPadding,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Photos:',
+                    style: context.textTheme.bodySmall,
+                  ),
                 ),
               ),
               SizedBox(
                 height: 11.spMax,
+              ),
+              NotificationListener(
+                onNotification: (notification)=>true,
+                child: SizedBox(
+                  height: 278.sp,
+                  child: ListView.separated(
+                    padding: horizontalPadding,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) => PhotoWidget(
+                      photoPath: project.photos[index],
+                      borderRadius: BorderRadius.circular(10),
+                      height: 278.sp,
+                      width: 147.sp,
+                    ),
+                    separatorBuilder: (BuildContext context, int index) => SizedBox(width: 19.spMax,),
+                    itemCount: project.photos.length,
+                  ),
+                ),
               ),
             ],
           ),

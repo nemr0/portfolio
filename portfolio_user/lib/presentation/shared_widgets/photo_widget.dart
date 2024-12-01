@@ -43,14 +43,19 @@ class PhotoWidget extends StatelessWidget {
     final photoLink = CloudflareCDN().getPhotoUrl(photoPath);
 
     if (photoPath.endsWith('.svg')) {
-      return ClipRRect(
-        borderRadius: borderRadius,
-        child: SvgPicture.network(
-          photoLink,
-          placeholderBuilder: (_) => const LoadingPhoto(),
-          fit: BoxFit.fitWidth,
-          height: height,
-          width: width,
+      return Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.secondary,width: 3),
+          borderRadius: borderRadius,),
+        child: ClipRRect(
+          borderRadius: borderRadius,
+          child: SvgPicture.network(
+            photoLink,
+            placeholderBuilder: (_) => const LoadingPhoto(),
+            fit: BoxFit.fitWidth,
+            height: height,
+            width: width,
+          ),
         ),
       );
     }
@@ -58,21 +63,27 @@ class PhotoWidget extends StatelessWidget {
      decoration: BoxDecoration(
        border: Border.all(color: AppColors.secondary,width: 3),
        borderRadius: borderRadius,),
-      child: CachedNetworkImage(
-        imageUrl: photoLink,
-        fit: BoxFit.fitHeight,
-        errorWidget: (_, __, ___) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                decoration:
-                    shadowDecoration(borderRadius: BorderRadius.circular(10)),
-                child: ItemErrorWidget.fromText(
-                  width: 100.w,
-                    message: 'Something went wrong.')),
-          );
-        },
-        placeholder: (_, __) => const LoadingPhoto(),
+      child: ClipRRect(
+        borderRadius: borderRadius,
+        child: CachedNetworkImage(
+          imageUrl: photoLink,
+          fit: BoxFit.fitHeight,
+          errorWidget: (_, __, ___) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  decoration:
+                      shadowDecoration(borderRadius: BorderRadius.circular(10)),
+                  child: ItemErrorWidget.fromText(
+                    width: 100.w,
+                      message: 'Something went wrong.')),
+            );
+          },
+          placeholder: (_, __) => SizedBox(
+              height: height,
+              width: width,
+              child: const LoadingPhoto()),
+        ),
       ),
     );
   }

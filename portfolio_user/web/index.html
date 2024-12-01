@@ -114,29 +114,32 @@ overflow: hidden;
 </style>
 <script src="flutter_bootstrap.js" async></script>
 <script>
-  window.addEventListener('load', function (ev) {
-     // Download main.dart.js
-     _flutter.loader.load({
-       entrypointUrl: "main.dart.js?v=" + serviceWorkerVersion,
-       serviceWorker: {
-         serviceWorkerVersion: serviceWorkerVersion,
-       }
-     }).then(function (engineInitializer) {
-       return engineInitializer.initializeEngine();
-     }).then(function (appRunner) {
-       return appRunner.runApp();
-     });
-   });
+  window.addEventListener('load', function(ev) {
+      {{flutter_js}}
+      {{flutter_build_config}}
+
+      _flutter.loader.load({
+        serviceWorker: {
+          serviceWorkerVersion: {{flutter_service_worker_version}},
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+           // Hide elements after fade-out animation completes
+               setTimeout(function() {
+                 document.querySelector('.loader-container').style.display = 'none';
+                 document.querySelector('.background').style.display = 'none';
+               }, 200); // Matches the transition duration of 1s
+            appRunner.runApp();
+          });
+        }
+      });
+    });
  window.addEventListener('flutter-first-frame', function() {
    // Add fade-out class to trigger the fade animation
    document.querySelector('.loader-container').classList.add('fade-out');
    document.querySelector('.background').classList.add('fade-out');
 
-   // Hide elements after fade-out animation completes
-   setTimeout(function() {
-     document.querySelector('.loader-container').style.display = 'none';
-     document.querySelector('.background').style.display = 'none';
-   }, 200); // Matches the transition duration of 1s
+
  });
 </script>
 <div class="background"></div>
