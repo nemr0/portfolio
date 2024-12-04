@@ -41,6 +41,8 @@ dependencies:
   file_picker: ^8.1.4
   ionicons: ^0.2.2
   any_link_preview: ^3.0.2
+  drop_down_search_field: ^1.0.6
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

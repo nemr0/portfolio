@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/const/routes.dart';
+import 'package:portfolio/main.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_bottom_sheet.dart';
 import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
 import 'package:portfolio_shared/data/models/project/project.dart';
+import 'package:portfolio_shared/extensions/context_extension.dart';
 
 class ProjectsPageViewBottomSheet extends StatefulWidget {
   const ProjectsPageViewBottomSheet({super.key, required this.projectId});

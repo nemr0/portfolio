@@ -10,7 +10,7 @@ Future<List<Project>> getProjectsFromFirebase() async {
   try {
     QuerySnapshot<Map<String, dynamic>> data = await FirebaseFirestore.instance
         .collection('projects')
-        .orderBy('order')
+        // .orderBy('order',descending: true)
         .get();
     if(kDebugMode)print(data);
     if (data.docs.isEmpty && data.metadata.isFromCache) {

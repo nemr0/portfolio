@@ -47,7 +47,7 @@ class _ProjectsTabState extends State<ProjectsTab> {
             "cover": cover,
             "description": description,
             "short_description": shortDescription,
-            "order" : int.tryParse(order)??1000
+            "order" : order
           });
           nextPage();
         }, initialName: formData['name'],
@@ -81,8 +81,7 @@ class _ProjectsTabState extends State<ProjectsTab> {
           }
         });
        if(context.mounted) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text("Success")));
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Success")));
             setState(() {
               formData.clear();
               currentIndex = 0;

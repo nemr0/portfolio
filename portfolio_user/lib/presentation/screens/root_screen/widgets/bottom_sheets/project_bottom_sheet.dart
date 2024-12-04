@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -91,8 +92,21 @@ class ProjectItemSheetView extends StatelessWidget {
                       )),
                 )
               else
-                SizedBox(
-                  height: 37.sp,
+                Padding(
+                  padding: horizontalPadding,
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Skeleton.ignore(
+                        child: CupertinoButton(
+                          onPressed: () => context.pop(),
+                          padding: EdgeInsets.zero,
+                          child: Icon(
+                            Ionicons.close_circle,
+                            size: 30.sp,
+                            color: Colors.transparent,
+                          ),
+                        ),
+                      )),
                 ),
               Padding(
                 padding: horizontalPadding,
@@ -195,6 +209,7 @@ class ProjectBottomSheetItemTitle extends StatelessWidget {
           maxLines: 3,
         );
     buildIcons() => Wrap(
+          spacing: context.mobile?6:10,
           children: project.links
               .map<Widget>((e) => CustomTooltip(
                   message: e.tooltip,

@@ -1,19 +1,20 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_admin/presentation/widgets/my_text_field.dart';
 import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
+import 'package:portfolio_shared/validators/validate_email.dart';
 
 class ProjectsFirstPage extends StatefulWidget {
   const ProjectsFirstPage({super.key, required this.onComplete, required this.initialName, required this.initialCover, required this.initialShortDescription, required this.initialDescription, required this.onBackPressed,required this.initialOrder});
   final String? initialName;
   final String? initialCover;
-  final int? initialOrder;
+  final String? initialOrder;
   final String? initialShortDescription;
   final String? initialDescription;
   final VoidCallback onBackPressed;
 
-  final void Function(String name, String cover, String description,
-      String shortDescription,String order) onComplete;
+  final void Function(String name, String cover, String description, String shortDescription,String order) onComplete;
 
   @override
   State<ProjectsFirstPage> createState() => _ProjectsFirstPageState();
@@ -25,20 +26,16 @@ class _ProjectsFirstPageState extends State<ProjectsFirstPage> {
   late final TextEditingController descriptionController;
   late final TextEditingController shortDescriptionController;
   final formKey = GlobalKey<FormState>();
-  Uri? coverURL;
+  String? coverURL;
   @override
   void initState() {
     super.initState();
     nameController = TextEditingController(text: widget.initialName);
-    orderController = TextEditingController(text: widget.initialOrder?.toString());
+    orderController = TextEditingController(text: widget.initialOrder);
     coverController = TextEditingController(text: widget.initialCover);
     descriptionController = TextEditingController(text: widget.initialDescription);
     shortDescriptionController = TextEditingController(text: widget.initialShortDescription);
-    coverController.addListener((){
-     setState(() {
-       coverURL=Uri.tryParse(coverController.text);
-     });
-    });
+
   }
 
   @override
@@ -62,15 +59,31 @@ class _ProjectsFirstPageState extends State<ProjectsFirstPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               MyTextFormField(
+
                   controller: nameController, hintText: 'Project Name'),
               const SizedBox(height: 50),
               AnimatedSwitcher(duration: const Duration(milliseconds: 200),
-              child: coverURL==null?const SizedBox():SizedBox(
-                  height: 200,
-                  child: Image.network(CloudflareCDN().getPhotoUrl(coverController.text))),
+              child: coverURL ==null?const SizedBox():SizedBox(
+                  height: 100,
+                  child: CachedNetworkImage(
+                    height: 100,
+                    imageUrl:CloudflareCDN().getPhotoUrl(coverURL!),key: ValueKey(coverURL),
+                  errorWidget: (_,__,___)=>Text("Image Not Found",style: TextStyle(color: Theme.of(context).colorScheme.error),),
+                  )),
               ),
               MyTextFormField(
-                  controller: coverController, hintText: 'Cover Link'),
+                  controller: coverController, hintText: 'Cover Link',onChanged: (v){
+
+                setState(() {
+                  if(Uri.tryParse(CloudflareCDN().getPhotoUrl(v))!=null) {
+                    coverURL=v;
+                  }
+                  else{
+                    coverURL=null;
+                  }
+                  print(CloudflareCDN().getPhotoUrl(v));
+                });
+              },),
               const SizedBox(height: 50),
               MyTextFormField(
                   controller: shortDescriptionController,
