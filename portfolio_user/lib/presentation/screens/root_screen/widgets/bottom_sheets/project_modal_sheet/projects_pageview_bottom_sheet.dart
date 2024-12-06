@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/const/routes.dart';
-import 'package:portfolio/main.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_bottom_sheet.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_modal_sheet/project_bottom_sheet.dart';
 import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
 import 'package:portfolio_shared/data/models/project/project.dart';
-import 'package:portfolio_shared/extensions/context_extension.dart';
 
 class ProjectsPageViewBottomSheet extends StatefulWidget {
   const ProjectsPageViewBottomSheet({super.key, required this.projectId});
@@ -46,10 +44,8 @@ class _ProjectsPageViewBottomSheetState
   @override
   void initState() {
     super.initState();
-    currentIndex =
-        GetProjectsCubit.get(context).loadOrEmitSuccess(widget.projectId) ?? 0;
-    controller =
-        PageController(initialPage: currentIndex, viewportFraction: .85);
+    currentIndex = GetProjectsCubit.get(context).loadOrEmitSuccess(widget.projectId) ?? 0;
+    controller = PageController(initialPage: currentIndex, viewportFraction: .85);
     // scrollController =ScrollController();
     // scrollController.addListener(listener);
   }
@@ -81,8 +77,10 @@ class _ProjectsPageViewBottomSheetState
     return true;
   }
   delayedJumpTo(int index)=> Future.delayed(Duration(milliseconds: 100), () {
-    controller.jumpToPage(index);
-  });
+    try{
+          if (context.mounted) controller.jumpToPage(index);
+        }catch(_){}
+      });
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GetProjectsCubit, GetProjectsState>(
@@ -102,11 +100,11 @@ class _ProjectsPageViewBottomSheetState
         return PageView.builder(
           onPageChanged: (p) {
             setState(() => currentIndex = p);
-            state.whenOrNull(success: (projects) {
+            state.whenOrNull(success: (projects) =>
               context.goNamed(Routes.highlightedProjects, pathParameters: {
                 Routes.highlightedProjectsId: projects[p].path
-              });
-            });
+              }),
+            );
           },
           controller: controller,
           physics: !useDefaultPadding

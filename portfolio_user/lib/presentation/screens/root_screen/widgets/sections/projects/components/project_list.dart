@@ -2,7 +2,6 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:portfolio/core/const/animation_durations.dart';
-import 'package:portfolio/main.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/components/project_item.dart';
 import 'package:portfolio/presentation/shared_widgets/item_animation_builder.dart';
 import 'package:portfolio_shared/data/models/project/project.dart';

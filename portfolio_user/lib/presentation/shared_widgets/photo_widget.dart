@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/shared_widgets/loading_photo.dart';
 import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
@@ -60,23 +59,24 @@ class PhotoWidget extends StatelessWidget {
       );
     }
     return Container(
+      height: height,
+     width: width,
      decoration: BoxDecoration(
+       color: AppColors.primary,
        border: Border.all(color: AppColors.secondary,width: 3),
        borderRadius: borderRadius,),
       child: ClipRRect(
         borderRadius: borderRadius,
         child: CachedNetworkImage(
+
           imageUrl: photoLink,
-          fit: BoxFit.fitHeight,
+          fit: BoxFit.fitWidth,
           errorWidget: (_, __, ___) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  decoration:
-                      shadowDecoration(borderRadius: BorderRadius.circular(10)),
-                  child: ItemErrorWidget.fromText(
-                    width: 100.w,
-                      message: 'Something went wrong.')),
+              child: ItemErrorWidget.fromText(
+                width: 100.w,
+                  message: 'Something went wrong.'),
             );
           },
           placeholder: (_, __) => SizedBox(

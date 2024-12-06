@@ -9,13 +9,13 @@
   <meta name="description" content="A new Flutter project.">
 
   <title>Omar ElNemr</title>
-  <meta name="title" content="Omar ElNemr">
+  <meta name="title" content="Omar's Portfolio">
   <meta name="description" content="Mobile App Developer / Flutter Developer / Design Enthusiastic / Software Engineer, Check Out My Portfolio Here.">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nemr.dev/">
-  <meta property="og:title" content="Omar ElNemr">
+  <meta property="og:title" content="Omar's Portfolio">
   <meta property="og:description" content="Mobile App Developer / Flutter Developer / Design Enthusiastic / Software Engineer, Check Out My Portfolio Here.">
   <meta property="og:image" content="https://public.nemr.dev/thumbnail/thumbnail.png">
   <meta property="og:image:width" content="600" />
@@ -26,7 +26,7 @@
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://nemr.dev/">
-  <meta property="twitter:title" content="Omar ElNemr">
+  <meta property="twitter:title" content="Omar's Portfolio">
   <meta property="twitter:description" content="Mobile App Developer / Flutter Developer / Design Enthusiastic / Software Engineer, Check Out My Portfolio Here.">
   <meta property="twitter:image" content="https://public.nemr.dev/thumbnail/x-thumbnail.png">
   <!-- iOS meta tags & icons -->
@@ -42,77 +42,77 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
+  <style>
+    .background {
+      color: #222831;
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .loader-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transition: opacity 0.2s ease-out;
+    }
+
+    .wrapper {
+      width: 152px;
+      height: 152px;
+      background-image: url('assets/assets/webp/splash_logo.webp');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 50%;
+      position: relative;
+    }
+
+    .loader {
+      border: 16px solid #76ABAE;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: fill linear 3s;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes fill {
+      0% {
+        clip-path: polygon(50% 0%, 50% 50%, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+      }
+      12.5% {
+        clip-path: polygon(50% 0%, 50% 50%, 100% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+      }
+      37.5% {
+        clip-path: polygon(50% 0%, 50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 0%);
+      }
+      62.5% {
+        clip-path: polygon(50% 0%, 50% 50%, 0% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%);
+      }
+      87.5% {
+        clip-path: polygon(50% 0%, 50% 50%, 0% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%);
+      }
+      100% {
+        clip-path: polygon(50% 0%, 50% 50%, 50% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%);
+      }
+    }
+
+    .fade-out {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+  </style>
 </head>
 <body style="
 background-color: #2f2f2f;
-overflow: hidden;
-">
-<style>
-  .background {
-    color: #222831;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-  }
+overflow: hidden;">
 
-  .loader-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    transition: opacity 0.2s ease-out;
-  }
-
-  .wrapper {
-    width: 152px;
-    height: 152px;
-    background-image: url('assets/assets/webp/splash_logo.webp');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 50%;
-    position: relative;
-  }
-
-  .loader {
-    border: 16px solid #76ABAE;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: fill linear 3s;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  @keyframes fill {
-    0% {
-      clip-path: polygon(50% 0%, 50% 50%, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
-    }
-    12.5% {
-      clip-path: polygon(50% 0%, 50% 50%, 100% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
-    }
-    37.5% {
-      clip-path: polygon(50% 0%, 50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 0%);
-    }
-    62.5% {
-      clip-path: polygon(50% 0%, 50% 50%, 0% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%);
-    }
-    87.5% {
-      clip-path: polygon(50% 0%, 50% 50%, 0% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%);
-    }
-    100% {
-      clip-path: polygon(50% 0%, 50% 50%, 50% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 0%);
-    }
-  }
-
-  .fade-out {
-    opacity: 0;
-    transition: opacity 1s ease-out;
-  }
-</style>
 <script src="flutter_bootstrap.js" async></script>
 <script>
   window.addEventListener('load', function(ev) {
@@ -139,8 +139,6 @@ overflow: hidden;
    // Add fade-out class to trigger the fade animation
    document.querySelector('.loader-container').classList.add('fade-out');
    document.querySelector('.background').classList.add('fade-out');
-
-
  });
 </script>
 <div class="background"></div>

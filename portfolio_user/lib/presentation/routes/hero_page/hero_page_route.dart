@@ -9,24 +9,25 @@ class HeroPageRoute<T> extends PageRoute<T> {
   final WidgetBuilder builder;
   // ignore: annotate_overrides , overridden_fields
   final ImageFilter? filter;
-
+  @override
+  final bool barrierDismissible;
+  @override
+  final bool semanticsDismissible;
+  @override
+  final Duration transitionDuration;
   HeroPageRoute({
     this.filter,
     required this.builder,
     this.barrierLabel = 'Dismiss',
-    bool barrierDismissible = true,
-    bool semanticsDismissible = false,
+    this. barrierDismissible = true,
+    this. semanticsDismissible = false,
     super.settings,
+    this.transitionDuration= const Duration(milliseconds: 400)
   });
 
   @override
   bool get opaque => false;
 
-  @override
-  bool get barrierDismissible => true;
-
-  @override
-  Duration get transitionDuration => const Duration(milliseconds: 400);
 
   @override
   bool get maintainState => true;

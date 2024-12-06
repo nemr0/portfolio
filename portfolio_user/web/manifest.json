@@ -1,11 +1,11 @@
 {
-    "name": "portfolio",
-    "short_name": "portfolio",
+    "name": "Omar's Portfolio",
+    "short_name": "Omar's",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#31363F",
+    "theme_color": "#76ABAE",
+    "description": "Mobile App Developer / Flutter Developer / Design Enthusiastic / Software Engineer, Check Out My Portfolio Here.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

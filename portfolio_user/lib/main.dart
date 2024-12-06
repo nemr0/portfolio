@@ -15,7 +15,6 @@ Future<void> main() async {
   ScreenUtil.ensureScreenSize();
   await initFirebaseForUser();
   setPathUrlStrategy();
-
   runApp(const MyApp());
 }
 
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
           routerConfig: router,
 
           debugShowCheckedModeBanner: false,
-          title: 'Omar Elnemr',
+          title: 'Omar\'s Portfolio',
           theme: ThemeData(
               fontFamily: FontFamily.workSans,
               scaffoldBackgroundColor: AppColors.scaffoldBackground,

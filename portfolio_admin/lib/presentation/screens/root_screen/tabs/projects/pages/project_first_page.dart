@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_admin/presentation/widgets/my_text_field.dart';
 import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
-import 'package:portfolio_shared/validators/validate_email.dart';
 
 class ProjectsFirstPage extends StatefulWidget {
   const ProjectsFirstPage({super.key, required this.onComplete, required this.initialName, required this.initialCover, required this.initialShortDescription, required this.initialDescription, required this.onBackPressed,required this.initialOrder});
@@ -81,7 +80,6 @@ class _ProjectsFirstPageState extends State<ProjectsFirstPage> {
                   else{
                     coverURL=null;
                   }
-                  print(CloudflareCDN().getPhotoUrl(v));
                 });
               },),
               const SizedBox(height: 50),
