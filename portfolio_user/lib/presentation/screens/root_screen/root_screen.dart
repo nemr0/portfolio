@@ -8,6 +8,7 @@ import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/resource.dart';
 import 'package:portfolio/core/const/routes.dart';
 import 'package:portfolio/presentation/routes/router.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/links.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/globals/global_elements.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
@@ -29,8 +30,7 @@ class RootScreen extends StatefulWidget {
   State<RootScreen> createState() => _RootScreenState();
 }
 
-class _RootScreenState extends State<RootScreen>
-    with SingleTickerProviderStateMixin , RouteAware{
+class _RootScreenState extends State<RootScreen> with RouteAware{
   late ScrollController controller;
   late Color overrideBackgroundColor ;
   @override
@@ -72,6 +72,11 @@ class _RootScreenState extends State<RootScreen>
         height: 40.spMin,
       ),
       const ScaleEffect(child: Avatar()),
+
+      SizedBox(
+        height: 20.spMin,
+      ),
+      Links(),
       SizedBox(
         height: 40.spMin,
       ),
@@ -83,6 +88,7 @@ class _RootScreenState extends State<RootScreen>
       SizedBox(
         height: 40.spMin,
       ),
+
     ];
 
     final EdgeInsets padding =

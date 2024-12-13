@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/resource.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/sections/appbar/drawer_icon.dart';
 
 class HeaderSliver extends StatelessWidget {
   const HeaderSliver({
@@ -22,13 +21,13 @@ class HeaderSliver extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
                     AppAssets.ASSETS_WEBP_LOGO_WEBP,
                     height: context.mobile ? 41.spMin : 55.spMin,
                   ),
-                  const DrawerIcon(),
+                  // const DrawerIcon(),
                 ],
               ),
             ),

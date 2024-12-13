@@ -16,20 +16,23 @@ class DrawerIcon extends StatefulWidget {
   State<DrawerIcon> createState() => _DrawerIconState();
 }
 
-class _DrawerIconState extends State<DrawerIcon> with SingleTickerProviderStateMixin {
-
+class _DrawerIconState extends State<DrawerIcon>
+    with SingleTickerProviderStateMixin {
   CrossFadeState crossFadeState = CrossFadeState.showFirst;
 
   static const _itemTheme = PullDownMenuItemTheme(
-      textStyle: TextStyle(color: Colors.white, fontFamily: FontFamily.workSans),
-      iconActionTextStyle: TextStyle(color: Colors.white, fontFamily: FontFamily.workSans),
-      subtitleStyle: TextStyle(color: Colors.white54, fontFamily: FontFamily.workSans),
-      onHoverBackgroundColor: AppColors.background,
-      onPressedBackgroundColor: AppColors.primary,
-      onHoverTextColor: AppColors.textColor,
+    textStyle: TextStyle(color: Colors.white, fontFamily: FontFamily.workSans),
+    iconActionTextStyle:
+        TextStyle(color: Colors.white, fontFamily: FontFamily.workSans),
+    subtitleStyle:
+        TextStyle(color: Colors.white54, fontFamily: FontFamily.workSans),
+    onHoverBackgroundColor: AppColors.background,
+    onPressedBackgroundColor: AppColors.primary,
+    onHoverTextColor: AppColors.textColor,
   );
 
-  static final _routeTheme = PullDownMenuRouteTheme(backgroundColor: Colors.grey[850]);
+  static final _routeTheme =
+      PullDownMenuRouteTheme(backgroundColor: Colors.grey[850]);
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +59,10 @@ class _DrawerIconState extends State<DrawerIcon> with SingleTickerProviderStateM
                         titleStyle: TextStyle(
                             color: Colors.white,
                             fontFamily: FontFamily.workSans),
-                        title: Center(
-                            child: Text(
+                        title: Text(
                           'Links',
-                          textAlign: TextAlign.center,
-                        ))),
+                          textAlign: TextAlign.start,
+                        )),
                     PullDownMenuActionsRow.medium(
                       items: [
                         PullDownMenuItem(
@@ -91,38 +93,13 @@ class _DrawerIconState extends State<DrawerIcon> with SingleTickerProviderStateM
                           itemTheme: _itemTheme,
                           onTap: () {
                             launchUrl(
-                                Uri.parse('https://dribbble.com/omarelnemr',), webOnlyWindowName: '_self');
+                                Uri.parse(
+                                  'https://dribbble.com/omarelnemr',
+                                ),
+                                webOnlyWindowName: '_self');
                           },
                           title: 'Dribbble',
                           icon: Ionicons.logo_dribbble,
-                        ),
-                      ],
-                    ),
-                    PullDownMenuActionsRow.medium(
-                      items: [
-                        PullDownMenuItem(
-                          itemTheme: _itemTheme,
-                          onTap: () {
-                            launchUrl(
-                                Uri.parse(
-                                  'https://www.tiktok.com/@nemrdev',
-                                ),
-                                webOnlyWindowName: '_self');
-                          },
-                          title: 'Tiktok',
-                          icon: Ionicons.logo_tiktok,
-                        ),
-                        PullDownMenuItem(
-                          itemTheme: _itemTheme,
-                          onTap: () {
-                            launchUrl(
-                                Uri.parse(
-                                  'https://www.instagram.com/nemrdev/',
-                                ),
-                                webOnlyWindowName: '_self');
-                          },
-                          title: 'Instagram',
-                          icon: Ionicons.logo_instagram,
                         ),
                       ],
                     ),
