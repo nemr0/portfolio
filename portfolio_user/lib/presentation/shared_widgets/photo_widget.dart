@@ -7,7 +7,7 @@ import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/shared_widgets/loading_photo.dart';
 import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
-
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 class PhotoWidget extends StatelessWidget {
   const PhotoWidget({
     super.key,
@@ -68,8 +68,8 @@ class PhotoWidget extends StatelessWidget {
       child: ClipRRect(
         borderRadius: borderRadius,
         child: CachedNetworkImage(
-
           imageUrl: photoLink,
+          imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
           fit: BoxFit.fitWidth,
           errorWidget: (_, __, ___) {
             return Padding(

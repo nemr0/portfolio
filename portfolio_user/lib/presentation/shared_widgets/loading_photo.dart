@@ -10,7 +10,7 @@ class LoadingPhoto extends StatelessWidget {
   Widget build(BuildContext context) {
     return Skeletonizer(
       effect: ShimmerEffect(
-        baseColor: AppColors.background.withOpacity(.7),
+        baseColor: AppColors.background.withValues(alpha: .7),
         highlightColor: AppColors.scaffoldBackground,
         duration: Duration(seconds: 1),
       ),

@@ -18,7 +18,7 @@ class HeaderSliver extends StatelessWidget {
         child: GestureDetector(
           onTap: onTap,
           child: Container(
-            color: AppColors.scaffoldBackground.withOpacity(.5),
+            color: AppColors.scaffoldBackground.withValues(alpha: .5),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Row(

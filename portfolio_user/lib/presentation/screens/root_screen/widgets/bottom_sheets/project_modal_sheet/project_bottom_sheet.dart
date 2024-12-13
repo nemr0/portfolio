@@ -112,7 +112,7 @@ class ProjectItemSheetView extends StatelessWidget {
               Divider(
                 endIndent: 20.w,
                 indent:20.w,
-                color: AppColors.secondary.withOpacity(.3),
+                color: AppColors.secondary.withValues(alpha: .3),
               ),
               SizedBox(
                 height: 11.spMax,

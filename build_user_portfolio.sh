@@ -4,13 +4,14 @@
 if [ -d "flutter" ]; then
   cd flutter && git pull && cd ..
 else
-  git clone -b 3.24.5 https://github.com/flutter/flutter.git
+  git clone -b 3.27.0 https://github.com/flutter/flutter.git
 fi
 
 # List directory contents (optional)
 #ls
 
 # Change to the project directory
+# shellcheck disable=SC2164
 cd portfolio_user
 
 # Set Flutter executable path

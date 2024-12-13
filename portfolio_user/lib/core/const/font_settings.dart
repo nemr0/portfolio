@@ -18,5 +18,21 @@ class FontSettings {
           fontSize: 16.sp,
           color: AppColors.textColor,
         ),
+
+      labelLarge: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 16.sp,
+        color: AppColors.scaffoldBackground,
+      ),
+      labelMedium: TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 14.sp,
+        color: AppColors.scaffoldBackground,
+      ),
+      labelSmall: TextStyle(
+        fontWeight: FontWeight.w100,
+        fontSize: 12.sp,
+        color: AppColors.scaffoldBackground,
+      ),
       );
 }

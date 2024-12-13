@@ -30,7 +30,7 @@ class PhotoViewBottomSheet extends StatelessWidget {
       children: [
         PhotoViewGallery.builder(
             pageController:PageController(initialPage: initialPhoto),
-            backgroundDecoration: BoxDecoration(color: AppColors.background.withOpacity(.9),image: DecorationImage(image: AssetImage(AppAssets.ASSETS_WEBP_BACKGROUND_PATTERN_WEBP,),  scale: 3,
+            backgroundDecoration: BoxDecoration(color: AppColors.background.withValues(alpha: .9),image: DecorationImage(image: AssetImage(AppAssets.ASSETS_WEBP_BACKGROUND_PATTERN_WEBP,),  scale: 3,
               opacity: .75,)),
             itemCount: project.photos.length,
             builder: (_,index)=>  PhotoViewGalleryPageOptions(
