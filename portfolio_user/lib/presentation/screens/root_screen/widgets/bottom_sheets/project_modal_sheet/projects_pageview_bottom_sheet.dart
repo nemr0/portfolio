@@ -45,7 +45,7 @@ class _ProjectsPageViewBottomSheetState
   void initState() {
     super.initState();
     currentIndex = GetProjectsCubit.get(context).loadOrEmitSuccess(widget.projectId) ?? 0;
-    controller = PageController(initialPage: currentIndex, viewportFraction: .85);
+    controller = PageController(initialPage: currentIndex, viewportFraction: .95);
     // scrollController =ScrollController();
     // scrollController.addListener(listener);
   }
@@ -70,7 +70,7 @@ class _ProjectsPageViewBottomSheetState
       if (useDefaultPadding == false) {
         setState(() {
           useDefaultPadding = true;
-          controller = PageController(initialPage: currentIndex, viewportFraction: .85);
+          controller = PageController(initialPage: currentIndex, viewportFraction: .95);
         });
       }
     }
@@ -78,8 +78,13 @@ class _ProjectsPageViewBottomSheetState
   }
   delayedJumpTo(int index)=> Future.delayed(Duration(milliseconds: 100), () {
     try{
-          if (context.mounted) controller.jumpToPage(index);
-        }catch(_){}
+          if (mounted) controller.jumpToPage(index);
+          setState(() {
+            currentIndex=index;
+          });
+        }catch(_){
+      delayedJumpTo(index);
+    }
       });
   @override
   Widget build(BuildContext context) {

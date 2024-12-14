@@ -17,7 +17,6 @@ dependencies:
   go_router: ^14.6.0
   flutter_svg: ^2.0.14
   auto_animated: ^3.2.0
-  flutter_animate: ^4.5.0
   pull_down_button: ^0.10.2
   ionicons: ^0.2.2
   url_launcher: ^6.3.1
@@ -27,11 +26,8 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   cached_network_image: ^3.4.1
   skeletonizer: ^1.4.2
-  dio: ^5.7.0
-  path_provider: ^2.1.5
   flutter_markdown: ^0.7.4+2
   url_strategy: ^0.3.0
-  js: ^0.7.1
   photo_view: ^0.15.0
   cached_network_image_platform_interface: ^4.1.1
 #  timelines_plus: ^1.0.4
@@ -51,7 +47,7 @@ dev_dependencies:
 
 flutter:
 
-  uses-material-design: false
+  uses-material-design: true
 
 
 

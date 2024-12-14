@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart' show CupertinoButton;
+import 'package:flutter/cupertino.dart' show CupertinoButton, CupertinoTextSelectionControls;
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,6 +44,9 @@ final MarkdownStyleSheet markdownStyleSheet = MarkdownStyleSheet(
   tableHead: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.sp),
   tableBody:
   TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
+  codeblockDecoration: BoxDecoration(color: AppColors.background,borderRadius: BorderRadius.circular(5.spMax)),
+  codeblockPadding: EdgeInsets.all(12.spMin),
+  blockquoteDecoration: BoxDecoration(color: AppColors.background),
 );
 
 
@@ -63,8 +66,80 @@ class ProjectItemSheetView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultPadding =
-        EdgeInsets.only(top: 20.spMax, left: 10.spMax, right: 20.spMax);
+        EdgeInsets.only(top: 20.spMax, left: 3.spMax, right: 3.spMax);
     final horizontalPadding = EdgeInsets.symmetric(horizontal: 20.w);
+    final List<Widget> children=[
+
+      SizedBox(
+        height: 20.spMax,
+      ),
+      Padding(
+        padding: horizontalPadding,
+        child: ProjectBottomSheetItemTitle(
+          project: project,
+          loading: loading,
+          current: current,
+        ),
+      ),
+      SizedBox(
+        height: 11.spMax,
+      ),
+      Divider(
+        endIndent: 20.w,
+        indent:20.w,
+        color: AppColors.secondary.withValues(alpha: .3),
+      ),
+      SizedBox(
+        height: 11.spMax,
+      ),
+      Padding(
+        padding: horizontalPadding,
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Description:',
+            style: context.textTheme.bodyMedium,
+          ),
+        ),
+      ),
+      SizedBox(
+        height: 11.spMax,
+      ),
+      SelectableRegion(
+        focusNode: FocusNode(),
+        selectionControls: CupertinoTextSelectionControls(),
+        child: Padding(
+          padding: horizontalPadding,
+          child: Align(
+            alignment: Alignment.centerLeft,
+        
+            child: MarkdownBody(
+              data: project.description,
+              styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
+              styleSheet: markdownStyleSheet,
+            ),
+          ),
+        ),
+      ),
+      SizedBox(
+        height: 15.spMax,
+      ),
+      if(project.photos.isNotEmpty) Padding(
+        padding: horizontalPadding,
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Photos:',
+            style: context.textTheme.bodyMedium,
+          ),
+        ),
+      ),
+      SizedBox(
+        height: 11.spMax,
+      ),
+
+
+    ];
     return Skeletonizer(
       enabled: loading,
       child: AnimatedContainer(
@@ -74,94 +149,37 @@ class ProjectItemSheetView extends StatelessWidget {
             borderRadius: useDefaultPadding ? gBorderRadius : BorderRadius.zero,
             hideShadow: true,
             color: AppColors.scaffoldBackground),
-        child: SingleChildScrollView(
-          primary: false,
-          padding: EdgeInsets.symmetric(vertical: 10.h,),
-          child: Column(
-            children: [
-                Padding(
-                  padding: horizontalPadding,
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Skeleton.ignore(
-                        child: CupertinoButton(
-                          onPressed: () => context.pop(),
-                          padding: EdgeInsets.zero,
+        child: CustomScrollView(
+          slivers: [
+            PinnedHeaderSliver(
+              child:  Padding(
+                padding: horizontalPadding.copyWith(top: 20.h),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Skeleton.ignore(
+                      child: CupertinoButton(
+                        onPressed: () => context.pop(),
+                        padding: EdgeInsets.zero,
+                        child: Container(
+                          height:30.sp,
+                          width:30.sp,
+                          decoration:BoxDecoration(shape: BoxShape.circle,color: AppColors.background),
                           child: Icon(
                             Ionicons.close_circle,
                             size: 30.sp,
-                            color: current?AppColors.secondary:Colors.transparent,
+                            color: AppColors.secondary,
                           ),
                         ),
-                      )),
-                ),
-              SizedBox(
-                height: 20.spMax,
+                      ),
+                    )),
               ),
-              Padding(
-                padding: horizontalPadding,
-                child: ProjectBottomSheetItemTitle(
-                  project: project,
-                  loading: loading,
-                  current: current,
-                ),
-              ),
-              SizedBox(
-                height: 11.spMax,
-              ),
-              Divider(
-                endIndent: 20.w,
-                indent:20.w,
-                color: AppColors.secondary.withValues(alpha: .3),
-              ),
-              SizedBox(
-                height: 11.spMax,
-              ),
-              Padding(
-                padding: horizontalPadding,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Description:',
-                    style: context.textTheme.bodyMedium,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 11.spMax,
-              ),
-              Padding(
-                padding: horizontalPadding,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-
-                  child: MarkdownBody(
-                    data: project.description,
-                    styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
-                    styleSheet: markdownStyleSheet,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 15.spMax,
-              ),
-              Padding(
-                padding: horizontalPadding,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Photos:',
-                    style: context.textTheme.bodyMedium,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 11.spMax,
-              ),
-              NotificationListener(
+            ),
+            SliverList(delegate: SliverChildBuilderDelegate((_,index)=>children[index],childCount: children.length),),
+            if(project.photos.isNotEmpty)  SliverToBoxAdapter(
+              child: NotificationListener(
                 onNotification: (notification)=>true,
                 child: SizedBox(
-                  height: 322.sp,
+                  height: 276.spMax,
                   child: ListView.separated(
                     padding: horizontalPadding,
                     scrollDirection: Axis.horizontal,
@@ -184,9 +202,9 @@ class ProjectItemSheetView extends StatelessWidget {
                   ),
                 ),
               ),
-
-            ],
-          ),
+            ),
+            SliverToBoxAdapter(child: SizedBox(height: 200,),),
+          ]
         ),
       ),
     );

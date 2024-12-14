@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_admin/presentation/widgets/my_text_field.dart';
 import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
@@ -66,6 +67,7 @@ class _ProjectsFirstPageState extends State<ProjectsFirstPage> {
                   height: 100,
                   child: CachedNetworkImage(
                     height: 100,
+                    imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
                     imageUrl:CloudflareCDN().getPhotoUrl(coverURL!),key: ValueKey(coverURL),
                   errorWidget: (_,__,___)=>Text("Image Not Found",style: TextStyle(color: Theme.of(context).colorScheme.error),),
                   )),

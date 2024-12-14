@@ -1,17 +1,23 @@
 #!/bin/sh
-
-# Clone or update Flutter SDK
-if [ -d "flutter" ]; then
-  cd flutter && git checkout 3.24.5 && cd ..
+# Exit if no changes detected in ./portfolio_admin or ./portfolio_shared
+if ! git diff --name-only HEAD~1 HEAD | grep -E "^(portfolio_admin|portfolio_shared)/" > /dev/null; then
+  echo "No changes detected in ./portfolio_admin or ./portfolio_shared. Skipping build."
+  exit 0
+fi
+# Clone Flutter SDK version 3.27.0 if it doesn't exist
+if [ ! -d "flutter" ]; then
+  echo "Flutter SDK not found. Cloning version 3.27.0..."
+  git clone -b 3.27.0 https://github.com/flutter/flutter.git
 else
-  git clone -b 3.24.5 https://github.com/flutter/flutter.git
+  echo "Flutter SDK already exists. Ensuring version 3.27.0..."
+  cd flutter && git fetch && git checkout 3.27.0 && cd ..
 fi
 
 # List directory contents (optional)
 #ls
 
 # Change to the project directory
-cd portfolio_admin
+cd portfolio_admin || exit
 
 # Set Flutter executable path
 FLUTTER_BIN=../flutter/bin/flutter
@@ -22,6 +28,6 @@ $FLUTTER_BIN clean
 $FLUTTER_BIN config --enable-web
 # Build the Flutter web app with dart-define for secrets
 $FLUTTER_BIN build web --web-renderer canvaskit --release \
-  --dart-define=CLOUDFLARE_ACCOUNT_ID=$CLOUDFLARE_ACCOUNT_ID \
-  --dart-define=CLOUDFLARE_TOKEN=$CLOUDFLARE_TOKEN \
+  --dart-define=CLOUDFLARE_ACCOUNT_ID="$CLOUDFLARE_ACCOUNT_ID" \
+  --dart-define=CLOUDFLARE_TOKEN="$CLOUDFLARE_TOKEN" \
     --no-tree-shake-icons
