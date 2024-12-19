@@ -45,7 +45,7 @@ portfolio/
 ├── portfolio_user/     # User-facing portfolio
 ├── portfolio_admin/    # Admin panel for portfolio management
 ├── project_shared/     # Shared resources and utilities
-└── scripts/            # CI/CD scripts for automated deployment
+└── ./**.sh            # CI/CD scripts for automated deployment
 ```
 
 ## Setup and Installation
@@ -62,7 +62,7 @@ portfolio/
    cd portfolio
    ```
 
-3. **Install Flutter**:
+3. **Install Flutter**: (3.27.1)
 
    Ensure Flutter is installed on your system. Follow the instructions at the [official Flutter website](https://flutter.dev/docs/get-started/install).
 
@@ -90,16 +90,10 @@ portfolio/
 
 ## Deployment
 
-The repository includes scripts for automating deployment to popular hosting platforms such as Cloudflare Pages and Vercel.
+The repository includes scripts for automating deployment to popular hosting platforms such as Cloudflare Pages and Vercel. 
 
-1. **Cloudflare Pages**:
-    - Use the provided `cloudflare_pages.sh` script to build and deploy your project.
-
-2. **Vercel**:
-    - The `vercel_deploy.sh` script automates deployment to Vercel.
-
-3. **Other Hosting Platforms**:
-    - Modify and use the generic `deploy.sh` script for other platforms.
+- Modify and use the generic `build_user_portfolio.sh` script for `portfolio_user`. 
+- Modify and use the generic `build_user_portfolio.sh` script for `portfolio_admin`. 
 
 ## License
 
