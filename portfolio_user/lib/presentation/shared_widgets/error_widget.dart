@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/core/const/resource.dart';
@@ -34,35 +34,40 @@ class ItemErrorWidget extends StatelessWidget {
   final double width;
   @override
   Widget build(BuildContext context) {
-    if(retryWidget !=null) return retryWidget!;
-    return SizedBox(
-      height: small?100:null,
-      width: width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 12,
-          ),
-          Expanded(
-              flex: 4,
-              child: SvgPicture.asset(
-                AppAssets.ASSETS_SVG_ERROR_SVG,
+   return Material(
+    color: Colors.transparent,
+     child: Builder(builder: (context){
+       if(retryWidget !=null) return retryWidget!;
+       return SizedBox(
+         height: small?100:null,
+         width: width,
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+             SizedBox(
+               height: 12,
+             ),
+             Expanded(
+                 flex: 4,
+                 child: SvgPicture.asset(
+                   AppAssets.ASSETS_SVG_ERROR_SVG,
 
-              )),
-          Padding(
-            padding: small? EdgeInsets.zero:EdgeInsets.symmetric(
-                vertical: 12, horizontal: context.width * .1),
-            child: Text(exception.message ?? 'Something Went Wrong',style: TextStyle(fontSize: 16.sp),),
-          ),
-          if (onRetryPressed != null)
-            ShadowButton.text(
-              text: 'RETRY',
-              onPressed: onRetryPressed,
-              padding: EdgeInsets.only(bottom: 12),
-            ),
-        ],
-      ),
-    );
+                 )),
+             Padding(
+               padding: small? EdgeInsets.zero:EdgeInsets.symmetric(
+                   vertical: 12, horizontal: context.width * .1),
+               child: Text(exception.message ?? 'Something Went Wrong',style: TextStyle(fontSize: 16.sp),),
+             ),
+             if (onRetryPressed != null)
+               ShadowButton.text(
+                 text: 'RETRY',
+                 onPressed: onRetryPressed,
+                 padding: EdgeInsets.only(bottom: 12),
+               ),
+           ],
+         ),
+       );
+     }),
+   );
   }
 }

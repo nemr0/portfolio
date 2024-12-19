@@ -141,7 +141,7 @@ class _ProjectLinksState extends State<ProjectLinks> {
                      final fromValues=ioniconsMapping.values.where((value)=>value.contains(data)).map((e)=>(ioniconsMapping.keys.firstWhere((key)=>ioniconsMapping[key]==e),e));
                    return  {...fromKeys,...fromValues}.toList();
                     },
-                    displayAllSuggestionWhenTap: false,
+                    displayAllSuggestionWhenTap: false, isMultiSelectDropdown: false,
                   )
                 else
                   Padding(

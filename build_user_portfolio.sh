@@ -17,13 +17,13 @@ else
   fi
 fi
 
-# Clone Flutter SDK version 3.27.0 if it doesn't exist
+# Clone Flutter SDK version 3.27.1 if it doesn't exist
 if [ ! -d "flutter" ]; then
-  echo "Flutter SDK not found. Cloning version 3.27.0..."
-  git clone -b 3.27.0 https://github.com/flutter/flutter.git
+  echo "Flutter SDK not found. Cloning version 3.27.1..."
+  git clone -b 3.27.1 https://github.com/flutter/flutter.git
 else
-  echo "Flutter SDK already exists. Ensuring version 3.27.0..."
-  cd flutter && git fetch && git checkout 3.27.0 && cd ..
+  echo "Flutter SDK already exists. Ensuring version 3.27.1..."
+  cd flutter && git fetch && git checkout 3.27.1 && cd ..
 fi
 
 # Change to the project directory
