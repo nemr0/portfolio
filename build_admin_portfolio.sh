@@ -6,21 +6,21 @@ if [ -f "$(git rev-parse --git-dir)/shallow" ]; then
   git fetch --unshallow
 fi
 
-## Check for changes in ./portfolio_admin or ./portfolio_shared
-#if git rev-parse HEAD >/dev/null 2>&1; then
-#  # Repository has at least one commit, check for changes
-#  if [ "$(git rev-list --count HEAD)" -lt 2 ]; then
-#    echo "Not enough commits to compare. Proceeding with build."
-#  else
-#    if ! git diff --name-only HEAD~1 HEAD | grep -E "^(portfolio_admin|portfolio_shared)/" > /dev/null; then
-#      echo "No changes detected in ./portfolio_admin or ./portfolio_shared. Skipping build."
-#      exit 0
-#    fi
-#  fi
-#else
-#  # No commits yet; assume changes exist to proceed
-#  echo "No previous commits found. Proceeding with build."
-#fi
+# Check for changes in ./portfolio_admin or ./portfolio_shared
+if git rev-parse HEAD >/dev/null 2>&1; then
+  # Repository has at least one commit, check for changes
+  if [ "$(git rev-list --count HEAD)" -lt 2 ]; then
+    echo "Not enough commits to compare. Proceeding with build."
+  else
+    if ! git diff --name-only HEAD~1 HEAD | grep -E "^(portfolio_admin|portfolio_shared)/" > /dev/null; then
+      echo "No changes detected in ./portfolio_admin or ./portfolio_shared. Skipping build."
+      exit 0
+    fi
+  fi
+else
+  # No commits yet; assume changes exist to proceed
+  echo "No previous commits found. Proceeding with build."
+fi
 
 # Clone Flutter SDK version 3.29.0 if it doesn't exist
 if [ ! -d "flutter" ]; then

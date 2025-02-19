@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:flutter/widgets.dart' show BuildContext;
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider, Cubit;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:portfolio_shared/data/models/exceptions/exception_abs.dart';
-import 'package:portfolio_shared/domain/remote_source/database/firebase/auth.dart';
+import 'package:portfolio_shared/data/models/exceptions/exception_abs.dart' show ExceptionImpl;
+import 'package:portfolio_shared/domain/remote_source/database/firebase/auth.dart' show Auth;
 
 part 'auth_state.dart';
 

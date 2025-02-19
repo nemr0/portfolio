@@ -1,4 +1,5 @@
-import 'dart:ui';
+
+import 'dart:ui' show Color;
 
 class AppColors{
   static const Color scaffoldBackground = Color(0xffC6E7FF);

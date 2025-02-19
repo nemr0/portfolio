@@ -1,11 +1,12 @@
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cached_network_image/cached_network_image.dart' show CachedNetworkImage;
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart' show ImageRenderMethodForWeb;
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
-import 'package:portfolio_admin/presentation/widgets/my_text_field.dart';
-import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
+import 'package:portfolio_admin/presentation/widgets/my_text_field.dart' show MyTextFormField;
+import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart' show CloudflareCDN;
 import 'package:portfolio_shared/extensions/context_extension.dart';
+
 
 class ProjectPhotos extends StatefulWidget {
   const ProjectPhotos({super.key, required this.onComplete, required this.onBackPressed, required this.photos});
