@@ -38,7 +38,7 @@ $FLUTTER_BIN clean
 $FLUTTER_BIN config --enable-web
 
 # Build the Flutter web app with dart-define for secrets
-$FLUTTER_BIN build web --web-renderer canvaskit --release \
+$FLUTTER_BIN build web --release \
   --dart-define=CLOUDFLARE_ACCOUNT_ID="$CLOUDFLARE_ACCOUNT_ID" \
   --dart-define=CLOUDFLARE_TOKEN="$CLOUDFLARE_TOKEN" \
   --no-tree-shake-icons
