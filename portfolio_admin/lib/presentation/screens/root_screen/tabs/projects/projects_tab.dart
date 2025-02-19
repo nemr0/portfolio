@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_admin/presentation/screens/root_screen/tabs/projects/pages/project_first_page.dart';
-import 'package:portfolio_admin/presentation/screens/root_screen/tabs/projects/pages/project_links.dart';
-import 'package:portfolio_admin/presentation/screens/root_screen/tabs/projects/pages/project_photos.dart';
-import 'package:portfolio_shared/data/models/exceptions/exception_abs.dart';
-import 'package:portfolio_shared/data/models/project/project.dart';
-import 'package:portfolio_shared/domain/remote_source/database/firebase/add_project.dart';
+import 'package:portfolio_admin/presentation/screens/root_screen/tabs/projects/pages/project_first_page.dart' show ProjectsFirstPage;
+import 'package:portfolio_admin/presentation/screens/root_screen/tabs/projects/pages/project_links.dart' show ProjectLinks;
+import 'package:portfolio_admin/presentation/screens/root_screen/tabs/projects/pages/project_photos.dart' show ProjectPhotos;
+import 'package:portfolio_shared/data/models/exceptions/exception_abs.dart' show ExceptionImpl;
+import 'package:portfolio_shared/data/models/project/project.dart' show Project;
+import 'package:portfolio_shared/domain/remote_source/database/firebase/add_project.dart' show addProject;
+
 
 class ProjectsTab extends StatefulWidget {
   const ProjectsTab({super.key});

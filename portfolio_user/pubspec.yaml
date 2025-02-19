@@ -10,7 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_web_plugins:
+    sdk: flutter
 #  cupertino_icons: ^1.0.6
   flutter_bloc: ^8.1.6
   flutter_screenutil: ^5.9.3
@@ -27,7 +28,6 @@ dependencies:
   cached_network_image: ^3.4.1
   skeletonizer: ^1.4.2
   flutter_markdown: ^0.7.4+2
-  url_strategy: ^0.3.0
   photo_view: ^0.15.0
   cached_network_image_platform_interface: ^4.1.1
 #  timelines_plus: ^1.0.4

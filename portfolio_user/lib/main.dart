@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/core/const/font_settings.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider, MultiBlocProvider;
+import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil, ScreenUtilInit;
+import 'package:flutter_web_plugins/flutter_web_plugins.dart' show usePathUrlStrategy;
+import 'package:portfolio/presentation/routes/router.dart' show router;
+import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart' show GetProjectsCubit;
 import 'package:portfolio_shared/extensions/context_extension.dart';
-import 'package:portfolio/core/generated/fonts.gen.dart';
-import 'package:portfolio/presentation/routes/router.dart';
-import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
-import 'package:portfolio_shared/init_user.dart';
-import 'package:url_strategy/url_strategy.dart';
+import 'package:portfolio_shared/init_user.dart' show initFirebaseForUser;
+
+import 'core/const/colors.dart' show AppColors;
+import 'core/const/font_settings.dart' show FontSettings;
+import 'core/generated/fonts.gen.dart' show FontFamily;
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ScreenUtil.ensureScreenSize();
   await initFirebaseForUser();
-  setPathUrlStrategy();
+  usePathUrlStrategy();
   runApp(const MyApp());
 }
 
