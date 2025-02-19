@@ -6,16 +6,16 @@ if [ -f "$(git rev-parse --git-dir)/shallow" ]; then
   git fetch --unshallow
 fi
 
-# Check if there are multiple commits in the repository
-if [ "$(git rev-list --count HEAD)" -lt 2 ]; then
-  echo "Not enough commits to compare. Proceeding with build."
-else
-  # Check for changes in ./portfolio_user or ./portfolio_shared
-  if ! git diff --name-only HEAD~1 HEAD | grep -E "^(portfolio_user|portfolio_shared)/" > /dev/null; then
-    echo "No changes detected in ./portfolio_user or ./portfolio_shared. Skipping build."
-    exit 0
-  fi
-fi
+## Check if there are multiple commits in the repository
+#if [ "$(git rev-list --count HEAD)" -lt 2 ]; then
+#  echo "Not enough commits to compare. Proceeding with build."
+#else
+#  # Check for changes in ./portfolio_user or ./portfolio_shared
+#  if ! git diff --name-only HEAD~1 HEAD | grep -E "^(portfolio_user|portfolio_shared)/" > /dev/null; then
+#    echo "No changes detected in ./portfolio_user or ./portfolio_shared. Skipping build."
+#    exit 0
+#  fi
+#fi
 
 # Clone Flutter SDK version 3.29.0 if it doesn't exist
 if [ ! -d "flutter" ]; then
