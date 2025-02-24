@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart' show CupertinoButton;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/presentation/shared_widgets/custom_tooltip.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
@@ -51,7 +50,8 @@ class ProjectBottomSheetItemTitle extends StatelessWidget {
             },
             padding: EdgeInsets.zero,
             child: Icon(
-              IoniconsData(int.parse(e.icon)),
+              Icons.link,
+              // IoniconsData(int.parse(e.icon)),
               color: AppColors.secondary,
               size: 24.spMax,
             ),

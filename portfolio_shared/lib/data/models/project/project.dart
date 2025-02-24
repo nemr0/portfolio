@@ -1,15 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:portfolio_shared/data/models/project/link.dart';
-import 'package:lorem_ipsum/lorem_ipsum.dart';
 
 final Project emptyProject = Project(
     photos: List.generate(3, (_)=>''),
     cover: '',
     order: '',
     links: List.generate(3, (_) => emptyLink),
-    shortDescription: loremIpsum(words: 10, paragraphs: 1),
-    description: loremIpsum(paragraphs: 4),
-    name: loremIpsum(words: 3));
+    shortDescription: 'this is a ten words short description, lovely, beautiful and cute one',
+    description: 'hi short description here',
+    name: 'three word name');
 
 class Project extends Equatable {
   final List<String> photos;

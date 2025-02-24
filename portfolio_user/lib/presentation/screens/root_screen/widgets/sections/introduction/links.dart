@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:ionicons/ionicons.dart' show Ionicons;
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/generated/fonts.gen.dart';
 import 'package:pull_down_button/pull_down_button.dart';
