@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart' show CupertinoButton;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:ionicons/ionicons.dart' show Ionicons;
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
 import 'package:portfolio/core/generated/fonts.gen.dart';

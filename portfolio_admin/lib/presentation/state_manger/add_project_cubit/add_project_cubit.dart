@@ -1,6 +1,5 @@
 
 
-import 'package:flutter/foundation.dart' show optionalTypeArgs;
 import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:portfolio_shared/data/models/exceptions/exception_abs.dart' show ExceptionImpl;
