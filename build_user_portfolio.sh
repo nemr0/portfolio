@@ -10,9 +10,9 @@ fi
 if [ "$(git rev-list --count HEAD)" -lt 2 ]; then
   echo "Not enough commits to compare. Proceeding with build."
 else
-  # Check for changes in ./portfolio_user or ./portfolio_shared
-  if ! git diff --name-only HEAD~1 HEAD | grep -E "^(portfolio_user|portfolio_shared)/" > /dev/null; then
-    echo "No changes detected in ./portfolio_user or ./portfolio_shared. Skipping build."
+  # Check for changes in ./portfolio_user, ./portfolio_shared, or build_user_portfolio.sh
+  if ! git diff --name-only HEAD~1 HEAD | grep -E "^(portfolio_user|portfolio_shared)/|^build_user_portfolio\.sh$" > /dev/null; then
+    echo "No changes detected in ./portfolio_user, ./portfolio_shared, or build_user_portfolio.sh. Skipping build."
     exit 0
   fi
 fi
@@ -41,4 +41,4 @@ $FLUTTER_BIN config --enable-web
 $FLUTTER_BIN build web --release \
   --dart-define=CLOUDFLARE_ACCOUNT_ID="$CLOUDFLARE_ACCOUNT_ID" \
   --dart-define=CLOUDFLARE_TOKEN="$CLOUDFLARE_TOKEN" \
-  --no-tree-shake-icons
+  --no-tree-shake-icons --no-web-service-worker
