@@ -41,4 +41,4 @@ $FLUTTER_BIN config --enable-web
 $FLUTTER_BIN build web --release \
   --dart-define=CLOUDFLARE_ACCOUNT_ID="$CLOUDFLARE_ACCOUNT_ID" \
   --dart-define=CLOUDFLARE_TOKEN="$CLOUDFLARE_TOKEN" \
-  --no-tree-shake-icons --no-web-service-worker
+  --no-tree-shake-icons
