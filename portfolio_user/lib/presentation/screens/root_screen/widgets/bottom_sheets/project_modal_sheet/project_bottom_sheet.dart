@@ -5,8 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/presentation/routes/hero_page/show_cupertino_model_sheet_with_hero.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_modal_sheet/photo_view_bottom_sheet.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_modal_sheet/project_bottom_sheet_item_title.dart';
 import 'package:portfolio_shared/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/globals/global_elements.dart';
@@ -184,9 +182,9 @@ class ProjectItemSheetView extends StatelessWidget {
                     padding: horizontalPadding,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) => GestureDetector(
-                      onTap: (){
-                        showCupertinoModalSheetWithHeroEnabled(context: context, builder: (context)=>  PhotoViewBottomSheet(project: project, horizontalPadding: horizontalPadding,initialPhoto: index),);
-                      },
+                      // onTap: (){
+                      //   showCupertinoModalSheetWithHeroEnabled(context: context, builder: (context)=>  PhotoViewBottomSheet(project: project, horizontalPadding: horizontalPadding,initialPhoto: index),);
+                      // },
                       child: Hero(
                         tag: '${project.name}-photo:${project.photos[index]}',
                         child: PhotoWidget(
