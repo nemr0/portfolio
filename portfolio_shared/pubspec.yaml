@@ -1,6 +1,6 @@
 name: portfolio_shared
 description: "A new Flutter package project."
-version: 0.0.1
+version: 1.0.0
 homepage:
 
 environment:
@@ -15,14 +15,14 @@ dependencies:
   equatable: ^2.0.5
   dio: ^5.8.0+1
   firebase_auth: ^5.5.0
-  freezed_annotation: ^2.4.4
+  freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
-  freezed: ^2.5.7
+  flutter_lints: ^5.0.0
+  freezed: ^3.0.0
   json_serializable: ^6.9.0
   build_runner: ^2.4.13
 
