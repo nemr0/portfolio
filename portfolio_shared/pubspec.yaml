@@ -1,7 +1,6 @@
 name: portfolio_shared
 description: "A new Flutter package project."
 version: 1.0.0
-homepage:
 
 environment:
   sdk: ^3.5.4
