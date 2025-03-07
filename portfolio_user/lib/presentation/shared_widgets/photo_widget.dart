@@ -8,6 +8,7 @@ import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/shared_widgets/loading_photo.dart';
 import 'package:portfolio_shared/domain/remote_source/cdn/cloud_flare/cloudflare_cdn.dart';
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
+import 'package:portfolio_shared/domain/remote_source/cdn/pocket_base_cdn/pb_cdn.dart';
 class PhotoWidget extends StatelessWidget {
   const PhotoWidget({
     super.key,
@@ -39,7 +40,7 @@ class PhotoWidget extends StatelessWidget {
         ),
       );
     }
-    final photoLink = CloudflareCDN().getPhotoUrl(photoPath);
+    final photoLink = PocketBaseCDN().getPhotoUrl(photoPath);
 
     if (photoPath.endsWith('.svg')) {
       return Container(

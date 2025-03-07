@@ -5,7 +5,6 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart' show usePathUrlStr
 import 'package:portfolio/presentation/routes/router.dart' show router;
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart' show GetProjectsCubit;
 import 'package:portfolio_shared/extensions/context_extension.dart';
-import 'package:portfolio_shared/init_user.dart' show initFirebaseForUser;
 
 import 'core/const/colors.dart' show AppColors;
 import 'core/const/font_settings.dart' show FontSettings;
@@ -15,7 +14,6 @@ import 'core/generated/fonts.gen.dart' show FontFamily;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ScreenUtil.ensureScreenSize();
-  await initFirebaseForUser();
   usePathUrlStrategy();
   runApp(const MyApp());
 }
