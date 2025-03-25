@@ -23,7 +23,6 @@ class ProjectViewItem extends StatelessWidget {
           child: GestureDetector(
             onTap:project==null?null:()=> onProjectPressed?.call(project!),
             child: PhotoWidget(photoPath: project!.cover,
-              borderRadius: BorderRadius.circular(10.sp),
             ),
           ),
         ),

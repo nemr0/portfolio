@@ -14,74 +14,59 @@ class PhotoWidget extends StatelessWidget {
     required this.photoPath,
     this.height,
     this.width,
-    this.borderRadius = BorderRadius.zero,  this.loading = false,
+    this.isIcon=false,  this.loading = false,
   });
 
-  final BorderRadius borderRadius;
   final String photoPath;
   final double? height;
   final double? width;
   final bool loading;
+  final bool isIcon;
   @override
   Widget build(BuildContext context) {
     if(loading) {
       return SizedBox(
         height: height,
         width: width,
-        child: Column(
-          children: [
-            Container(
-              height: height,
-              width: width,
-              decoration:  BoxDecoration(borderRadius: borderRadius,),
-              child: const LoadingPhoto()),
-          ],
-        ),
-      );
+        child: const LoadingPhoto());
     }
     if (photoPath.contains('.svg')) {
       return Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: AppColors.secondary,width: 3),
-          borderRadius: borderRadius,),
-        child: ClipRRect(
-          borderRadius: borderRadius,
-          child: SvgPicture.network(
-            photoPath,
-            placeholderBuilder: (_) => const LoadingPhoto(),
-            fit: BoxFit.fitWidth,
-            height: height,
-            width: width,
-          ),
+        decoration: isIcon == false ?  BoxDecoration(
+          border: Border.all(color: AppColors.primary,width: 3),
+        ) : null,
+        child: SvgPicture.network(
+          photoPath,
+          placeholderBuilder: (_) => const LoadingPhoto(),
+          fit: BoxFit.fitWidth,
+          height: height,
+          width: width,
         ),
       );
     }
     return Container(
       height: height,
      width: width,
-     decoration: BoxDecoration(
+     decoration: isIcon == false ? BoxDecoration(
        color: AppColors.primary,
-       border: Border.all(color: AppColors.secondary,width: 3),
-       borderRadius: borderRadius,),
-      child: ClipRRect(
-        borderRadius: borderRadius,
-        child:CachedNetworkImage(
-          imageUrl: photoPath,
-          imageRenderMethodForWeb: ImageRenderMethodForWeb.HtmlImage,
-          fit: BoxFit.fitWidth,
-          errorWidget: (_, e, s) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ItemErrorWidget.fromText(
-                width: 100.w,
-                  message: 'Something went wrong.'),
-            );
-          },
-          placeholder: (_, __) => SizedBox(
-              height: height,
-              width: width,
-              child: const LoadingPhoto()),
-        ),
+       border: Border.all(color: AppColors.primary,width: 3),
+     ) : null,
+      child: CachedNetworkImage(
+        imageUrl: photoPath,
+        imageRenderMethodForWeb: ImageRenderMethodForWeb.HtmlImage,
+        fit: BoxFit.contain,
+        errorWidget: (_, e, s) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ItemErrorWidget.fromText(
+              width: 100.w,
+                message: 'Something went wrong.'),
+          );
+        },
+        placeholder: (_, __) => SizedBox(
+            height: height,
+            width: width,
+            child: const LoadingPhoto()),
       ),
     );
   }

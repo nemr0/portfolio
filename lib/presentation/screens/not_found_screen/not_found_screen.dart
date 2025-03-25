@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/resource.dart';
-import 'package:portfolio/presentation/helpers/globals/global_elements.dart';
+import 'package:portfolio/core/globals/global_elements.dart' show gPadding;
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/pattern_background.dart';
 import 'package:portfolio/extensions/context_extension.dart';

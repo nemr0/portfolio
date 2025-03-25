@@ -25,4 +25,4 @@ class Link extends Equatable{
   List<Object?> get props => [icon,link,tooltip];
 }
 
-const Link emptyLink = Link(icon: '', link: '', tooltip: '');
+const Link emptyLink = Link(icon: 'https://pb.nemr.dev/api/files/pbc_1321337024/m9ycg722x4u6fpk/app_store_o1kmltbrz6.webp?token=', link: '', tooltip: '');

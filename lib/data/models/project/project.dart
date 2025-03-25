@@ -4,10 +4,9 @@ import 'package:pocketbase/pocketbase.dart';
 import 'package:portfolio/data/models/project/link.dart';
 
 final Project emptyProject = Project(
-    photos: List.generate(3, (_)=>''),
-    cover: '',
-    order: '',
-    links: List.generate(3, (_) => emptyLink),
+    photos: List.generate(3, (_)=>'https://pb.nemr.dev/api/files/pbc_1321337024/m9ycg722x4u6fpk/app_store_o1kmltbrz6.webp?token='),
+    cover: 'https://pb.nemr.dev/api/files/pbc_1321337024/m9ycg722x4u6fpk/app_store_o1kmltbrz6.webp?token=',
+    links: List.generate(2, (_) => emptyLink),
     shortDescription: 'this is a ten words short description, lovely, beautiful and cute one',
     description: 'hi short description here',
     name: 'three word name');
@@ -19,12 +18,10 @@ class Project extends Equatable {
   final String shortDescription;
   final String name;
   final String cover;
-  final String order;
 
   const Project(
       {required this.photos,
       required this.cover,
-      required this.order,
       required this.links,
       required this.shortDescription,
       required this.description,
@@ -38,8 +35,7 @@ class Project extends Equatable {
         shortDescription: record.getStringValue('short_description'),
         links: links,
         description: record.getStringValue('description'),
-        name: record.getStringValue('name'),
-        order: record.id);
+        name: record.getStringValue('name'),);
   }
 
   Map<String, dynamic> toMap() {
@@ -50,7 +46,6 @@ class Project extends Equatable {
       'short_description': shortDescription,
       'cover': cover,
       'links': List.from(links.map<Map<String, dynamic>>((e) => e.toMap())),
-      'order': order,
     };
   }
   String get path =>name.toLowerCase().replaceAll(' ', '-');

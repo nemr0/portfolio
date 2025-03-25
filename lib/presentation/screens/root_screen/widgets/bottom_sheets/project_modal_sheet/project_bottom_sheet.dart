@@ -7,11 +7,12 @@ import 'package:ionicons/ionicons.dart' show Ionicons;
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_modal_sheet/project_bottom_sheet_item_title.dart';
 import 'package:portfolio/extensions/context_extension.dart';
-import 'package:portfolio/presentation/helpers/globals/global_elements.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
 import 'package:portfolio/data/models/project/project.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+
+import '../../../../../../core/globals/global_elements.dart' show gBorderRadius;
 
 final MarkdownStyleSheet markdownStyleSheet = MarkdownStyleSheet(
   textAlign: WrapAlignment.start,
@@ -154,18 +155,18 @@ class ProjectItemSheetView extends StatelessWidget {
                 padding: horizontalPadding.copyWith(top: 20.h),
                 child: Align(
                     alignment: Alignment.topLeft,
-                    child: Skeleton.ignore(
+                    child: Skeleton.keep(
                       child: CupertinoButton(
                         onPressed: () => context.pop(),
                         padding: EdgeInsets.zero,
                         child: Container(
                           height:30.sp,
                           width:30.sp,
-                          decoration:BoxDecoration(shape: BoxShape.circle,color: AppColors.background),
+                          decoration:BoxDecoration(shape: BoxShape.circle,color: AppColors.textColor),
                           child: Icon(
                             Ionicons.close_circle,
                             size: 30.sp,
-                            color: AppColors.secondary,
+                            color: AppColors.primary,
                           ),
                         ),
                       ),
@@ -181,18 +182,13 @@ class ProjectItemSheetView extends StatelessWidget {
                   child: ListView.separated(
                     padding: horizontalPadding,
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext context, int index) => GestureDetector(
-                      // onTap: (){
-                      //   showCupertinoModalSheetWithHeroEnabled(context: context, builder: (context)=>  PhotoViewBottomSheet(project: project, horizontalPadding: horizontalPadding,initialPhoto: index),);
-                      // },
-                      child: Hero(
-                        tag: '${project.name}-photo:${project.photos[index]}',
-                        child: PhotoWidget(
-                          photoPath: project.photos[index],
-                          borderRadius: BorderRadius.circular(10),
-                          height: 322.sp,
-                          width: 154.4.sp,
-                        ),
+                    itemBuilder: (BuildContext context, int index) => Hero(
+                      tag: '${project.name}-photo:${project.photos[index]}',
+                      child: PhotoWidget(
+                        photoPath: project.photos[index],
+                        height: loading ? 322.sp : null,
+                        width: 154.4.sp  ,
+                        loading: loading,
                       ),
                     ),
                     separatorBuilder: (BuildContext context, int index) => SizedBox(width: 19.spMax,),
