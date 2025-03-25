@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/extensions/context_extension.dart';
 import 'package:portfolio/presentation/shared_widgets/loading_photo.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
-import 'package:portfolio/presentation/shared_widgets/scaler.dart';
 import 'package:portfolio/data/models/project/project.dart';
 
 class ProjectViewItem extends StatelessWidget {
@@ -19,14 +17,12 @@ class ProjectViewItem extends StatelessWidget {
       tag: project!.cover,
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: context.width/8,minWidth: context.width/5),
-        child: ScaleEffect(
           child: GestureDetector(
             onTap:project==null?null:()=> onProjectPressed?.call(project!),
             child: PhotoWidget(photoPath: project!.cover,
             ),
           ),
         ),
-      ),
     );
   }
 }

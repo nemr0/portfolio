@@ -20,7 +20,6 @@ import 'package:portfolio/presentation/screens/root_screen/widgets/pattern_backg
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/projects_view.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/section_title.dart';
 import 'package:portfolio/presentation/shared_widgets/item_animation_builder.dart';
-import 'package:portfolio/presentation/shared_widgets/scaler.dart';
 import 'package:portfolio/data/models/project/project.dart';
 
 class RootScreen extends StatefulWidget {
@@ -71,7 +70,7 @@ class _RootScreenState extends State<RootScreen> with RouteAware{
       SizedBox(
         height: 40.spMin,
       ),
-      const ScaleEffect(child: Avatar()),
+      const Avatar(),
 
       SizedBox(
         height: 20.spMin,
