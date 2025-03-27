@@ -37,7 +37,7 @@ dependencies:
 #  line_length: 120 # Optional (default: 80)
 
 dev_dependencies:
-  freezed: ^3.0.0
+  freezed: ^3.0.4
   build_runner:
   flutter_gen_runner:
   flutter_test:
