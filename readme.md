@@ -23,7 +23,7 @@ The portfolio is structured to serve general users. It also includes shared reso
 
 2. **PocketBase Instance**: (private)
 
-   - [x]Hosted on Railway, used for backend logic and storage operations. 
+   - [x] Hosted on Railway, used for backend logic and storage operations. 
    - [x] Manages data for the portfolio(e.g., projects). 
    - [ ] js hooks for email contact form.
    - [x] Linked to Cloudflare R2 for file storage. 
