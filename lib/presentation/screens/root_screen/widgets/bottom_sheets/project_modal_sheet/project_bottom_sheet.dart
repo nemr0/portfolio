@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart' show Ionicons;
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_modal_sheet/project_bottom_sheet_item_title.dart';
-import 'package:portfolio/extensions/context_extension.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
 import 'package:portfolio/data/models/project/project.dart';
@@ -111,7 +111,7 @@ class ProjectItemSheetView extends StatelessWidget {
           padding: horizontalPadding,
           child: Align(
             alignment: Alignment.centerLeft,
-        
+
             child: MarkdownBody(
               data: project.description,
               styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
@@ -182,16 +182,15 @@ class ProjectItemSheetView extends StatelessWidget {
                   child: ListView.separated(
                     padding: horizontalPadding,
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext context, int index) => Hero(
-                      tag: '${project.name}-photo:${project.photos[index]}',
-                      child: PhotoWidget(
-                        photoPath: project.photos[index],
-                        height: loading ? 322.sp : null,
-                        width: 154.4.sp  ,
-                        loading: loading,
-                      ),
+                    itemBuilder: (BuildContext context, int index) => PhotoWidget(
+                      url: project.photos[index],
+                      height: loading ? 322.sp : 322.sp,
+                      width: 154.4.sp  ,
+                      loading: loading,
+                      isIcon: true,
+                      borderRadius: BorderRadius.circular(10.spMax),
                     ),
-                    separatorBuilder: (BuildContext context, int index) => SizedBox(width: 19.spMax,),
+                    separatorBuilder: (BuildContext context, int index) => SizedBox(width: 5.spMax,),
                     itemCount: project.photos.length,
                   ),
                 ),

@@ -56,12 +56,12 @@ class Links extends StatelessWidget {
             onTap: () {
               launchUrl(
                   Uri.parse(
-                    'https://dribbble.com/omarelnemr',
+                    'https://drive.google.com/file/d/1LMoymXk89WW9e-Std0ls1V64HswXJGoB/view',
                   ),
-                  webOnlyWindowName: '_self');
+                  webOnlyWindowName: '_blank');
             },
-            title: 'Dribbble',
-            icon: Ionicons.logo_dribbble,
+            title: 'Resume',
+            icon: Ionicons.document_outline,
           ),
         ],
       ),

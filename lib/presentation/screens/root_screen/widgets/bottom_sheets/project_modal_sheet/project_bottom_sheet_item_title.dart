@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/presentation/shared_widgets/custom_tooltip.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
 import 'package:portfolio/data/models/project/project.dart';
-import 'package:portfolio/extensions/context_extension.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectBottomSheetItemTitle extends StatelessWidget {
@@ -23,8 +23,9 @@ class ProjectBottomSheetItemTitle extends StatelessWidget {
       child: Hero(
         tag: loading || !current ? UniqueKey().toString() : project.cover,
         child: PhotoWidget(
-          photoPath: project.cover,
+          url: project.cover,
           loading: loading,
+          borderRadius: BorderRadius.circular(10.spMax),
         ),
       ),
     );
@@ -48,8 +49,9 @@ class ProjectBottomSheetItemTitle extends StatelessWidget {
             },
             padding: EdgeInsets.zero,
             child: PhotoWidget(
+              loading: loading,
               isIcon: true,
-              height: 24.spMax,width: 24.spMax, photoPath: e.icon,
+              height: 24.spMax,width: 24.spMax, url: e.icon,
             ),
           )))
           .toList(),

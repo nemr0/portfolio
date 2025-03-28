@@ -34,7 +34,7 @@ class Project extends Equatable {
         cover: cover,
         shortDescription: record.getStringValue('short_description'),
         links: links,
-        description: record.getStringValue('description'),
+        description: record.get('description'),
         name: record.getStringValue('name'),);
   }
 

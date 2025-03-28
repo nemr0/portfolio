@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider, MultiBlocProvider;
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil, ScreenUtilInit;
 import 'package:flutter_web_plugins/flutter_web_plugins.dart' show usePathUrlStrategy;
-import 'package:portfolio/di_middleware.dart';
+import 'package:portfolio/core/di_middleware.dart';
 import 'package:portfolio/domain/remote_source/database/baas_database_abstract.dart';
 import 'package:portfolio/presentation/routes/router.dart' show router;
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart' show GetProjectsCubit;
-import 'package:portfolio/extensions/context_extension.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
 
 import 'core/const/colors.dart' show AppColors;
 import 'core/const/font_settings.dart' show FontSettings;
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       designSize: context.screenUtilSize,
       builder: (_, child) => MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => GetProjectsCubit(DIMiddleware.get<BAASService>())..getData(),lazy: false,),
+          BlocProvider(create: (_) => GetProjectsCubit(DIMiddleware.get<BAASService>(),)..getData(),lazy: false,),
           // BlocProvider(create: (_) => GetExperienceCubit()..getData(),lazy: false,),
         ],
         child: MaterialApp.router(

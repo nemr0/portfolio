@@ -8,7 +8,7 @@ import 'package:portfolio/core/const/resource.dart';
 import 'package:portfolio/core/globals/global_elements.dart' show gPadding;
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/pattern_background.dart';
-import 'package:portfolio/extensions/context_extension.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
 
 class NotFoundScreen extends StatelessWidget {
   const NotFoundScreen({super.key,  this.buttonText = 'Home', this.onTap});

@@ -21,7 +21,7 @@ class SectionTitle extends StatelessWidget {
           width: 32.spMin,
           child: Padding(
             padding: const EdgeInsets.all(2.0),
-            child: SvgPicture.asset(icon,fit: BoxFit.contain,        colorFilter:ColorFilter.mode(AppColors.textColor, BlendMode.srcIn),
+            child: SvgPicture.asset(icon,fit: BoxFit.contain,  colorFilter:ColorFilter.mode(AppColors.textColor, BlendMode.srcIn),
             ),
           ),
         ),

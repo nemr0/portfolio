@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/components/project_list.dart';
-import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
 import 'package:portfolio/data/models/project/project.dart';
 
@@ -28,8 +26,7 @@ class ProjectsView extends StatelessWidget {
           child: SizedBox(
             height: 300,
             width: 100,
-            child: ItemErrorWidget.fromText(
-                message: e.message ?? 'Something went wrong!',small:  false,width: 100.w,),
+            child: Icon(Icons.warning_rounded,size: 50,)
           ),
         ),
       );

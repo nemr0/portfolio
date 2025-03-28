@@ -5,7 +5,7 @@ import 'package:portfolio/core/const/animation_durations.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/components/project_item.dart';
 import 'package:portfolio/presentation/shared_widgets/item_animation_builder.dart';
 import 'package:portfolio/data/models/project/project.dart';
-import 'package:portfolio/extensions/context_extension.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
 
 class ProjectsListWidget extends StatelessWidget {
   const ProjectsListWidget(

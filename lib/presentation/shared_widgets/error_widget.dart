@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/core/const/resource.dart';
-import 'package:portfolio/extensions/context_extension.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/presentation/shared_widgets/shadow_button.dart';
 import 'package:portfolio/data/models/exceptions/exception_abs.dart';
 import 'package:portfolio/data/models/exceptions/server_error.dart';

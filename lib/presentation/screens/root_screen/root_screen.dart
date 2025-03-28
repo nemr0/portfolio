@@ -10,7 +10,7 @@ import 'package:portfolio/core/const/routes.dart';
 import 'package:portfolio/core/globals/global_elements.dart' show gBorderRadius, gPadding;
 import 'package:portfolio/presentation/routes/router.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/links.dart';
-import 'package:portfolio/extensions/context_extension.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/avatar.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/appbar/header_sliver.dart';
@@ -126,12 +126,9 @@ class _RootScreenState extends State<RootScreen> with RouteAware{
                           )),
                       SliverPadding(
                         padding: padding,
-                        sliver: LiveSliverList(
+                        sliver: LiveSliverList.options(
                           itemCount: body.length,
                           controller: controller,
-                          reAnimateOnVisibility: true,
-                          showItemDuration: showItemDuration,
-                          showItemInterval: showItemInterval,
                           itemBuilder: (BuildContext context, int index,
                               Animation<double> animation) {
                             if (body[index] is SizedBox) return body[index];
@@ -141,7 +138,11 @@ class _RootScreenState extends State<RootScreen> with RouteAware{
                                   alignment: Alignment.centerLeft,
                                   child: body[index]),
                             );
-                          },
+                          }, options: LiveOptions(
+                            showItemInterval:showItemDuration,
+                            showItemDuration: showItemInterval,
+                            reAnimateOnVisibility: true,
+                          ),
                         ),
                       ),
                       SliverPadding(
