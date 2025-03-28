@@ -7,8 +7,8 @@ import 'package:portfolio/data/models/project/project.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProjectBottomSheetItemTitle extends StatelessWidget {
-  const ProjectBottomSheetItemTitle(
+class ProjectTitleWidget extends StatelessWidget {
+  const ProjectTitleWidget(
       {super.key, required this.project, required this.loading, required this.current});
 
   final Project project;

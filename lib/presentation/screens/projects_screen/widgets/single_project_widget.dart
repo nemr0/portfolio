@@ -5,52 +5,53 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart' show Ionicons;
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_modal_sheet/project_bottom_sheet_item_title.dart';
+import 'package:portfolio/presentation/screens/projects_screen/widgets/project_title_widget.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
 import 'package:portfolio/data/models/project/project.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../../../core/globals/global_elements.dart' show gBorderRadius;
-
-final MarkdownStyleSheet markdownStyleSheet = MarkdownStyleSheet(
-  textAlign: WrapAlignment.start,
-  a: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
-  p: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
-  code: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 14.sp),
-  h1: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w100, fontSize: 32.sp),
-  h2: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 28.sp),
-  h3: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w600, fontSize: 24.sp),
-  h4: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w600, fontSize: 20.sp),
-  h5: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w500, fontSize: 18.sp),
-  h6: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w500, fontSize: 16.sp),
-  em: TextStyle(
-      color: AppColors.textColor,
-      fontWeight: FontWeight.normal,
-      fontStyle: FontStyle.italic,
-      fontSize: 16.sp),
-  strong: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.sp),
-  del: TextStyle(
-      color: AppColors.textColor,
-      fontWeight: FontWeight.normal,
-      decoration: TextDecoration.lineThrough,
-      fontSize: 16.sp),
-  blockquote:
-  TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 18.sp),
-  listBullet:
-  TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
-  tableHead: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.sp),
-  tableBody:
-  TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
-  codeblockDecoration: BoxDecoration(color: AppColors.background,borderRadius: BorderRadius.circular(5.spMax)),
-  codeblockPadding: EdgeInsets.all(12.spMin),
-  blockquoteDecoration: BoxDecoration(color: AppColors.background),
-);
+import '../../../../core/globals/global_elements.dart' show gBorderRadius;
 
 
-class ProjectItemSheetView extends StatelessWidget {
-  const ProjectItemSheetView(
+
+
+class SingleProjectWidget extends StatelessWidget {
+   MarkdownStyleSheet markdownStyleSheet ()=> MarkdownStyleSheet(
+    textAlign: WrapAlignment.start,
+    a: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
+    p: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
+    code: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 14.sp),
+    h1: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w100, fontSize: 32.sp),
+    h2: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 28.sp),
+    h3: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w600, fontSize: 24.sp),
+    h4: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w600, fontSize: 20.sp),
+    h5: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w500, fontSize: 18.sp),
+    h6: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w500, fontSize: 16.sp),
+    em: TextStyle(
+        color: AppColors.textColor,
+        fontWeight: FontWeight.normal,
+        fontStyle: FontStyle.italic,
+        fontSize: 16.sp),
+    strong: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.sp),
+    del: TextStyle(
+        color: AppColors.textColor,
+        fontWeight: FontWeight.normal,
+        decoration: TextDecoration.lineThrough,
+        fontSize: 16.sp),
+    blockquote:
+    TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 18.sp),
+    listBullet:
+    TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
+    tableHead: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.sp),
+    tableBody:
+    TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
+    codeblockDecoration: BoxDecoration(color: AppColors.background,borderRadius: BorderRadius.circular(5.spMax)),
+    codeblockPadding: EdgeInsets.all(12.spMin),
+    blockquoteDecoration: BoxDecoration(color: AppColors.background),
+  );
+  const SingleProjectWidget(
       {super.key,
       required this.project,
       this.loading = false,
@@ -74,7 +75,7 @@ class ProjectItemSheetView extends StatelessWidget {
       ),
       Padding(
         padding: horizontalPadding,
-        child: ProjectBottomSheetItemTitle(
+        child: ProjectTitleWidget(
           project: project,
           loading: loading,
           current: current,
@@ -115,7 +116,7 @@ class ProjectItemSheetView extends StatelessWidget {
             child: MarkdownBody(
               data: project.description,
               styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
-              styleSheet: markdownStyleSheet,
+              styleSheet: markdownStyleSheet(),
             ),
           ),
         ),
@@ -178,14 +179,14 @@ class ProjectItemSheetView extends StatelessWidget {
               child: NotificationListener(
                 onNotification: (notification)=>true,
                 child: SizedBox(
-                  height: 276.spMax,
+                  height: 403,
                   child: ListView.separated(
                     padding: horizontalPadding,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) => PhotoWidget(
                       url: project.photos[index],
-                      height: loading ? 322.sp : 322.sp,
-                      width: 154.4.sp  ,
+                      height: 403,
+                      width: 193  ,
                       loading: loading,
                       isIcon: true,
                       borderRadius: BorderRadius.circular(10.spMax),

@@ -2,13 +2,13 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:portfolio/core/const/animation_durations.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/components/project_item.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/components/single_project_card.dart';
 import 'package:portfolio/presentation/shared_widgets/item_animation_builder.dart';
 import 'package:portfolio/data/models/project/project.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
 
-class ProjectsListWidget extends StatelessWidget {
-  const ProjectsListWidget(
+class ProjectCards extends StatelessWidget {
+  const ProjectCards(
       {super.key, this.projects, required this.controller, this.onProjectPressed});
 
   final List<Project>? projects;
@@ -42,7 +42,7 @@ class ProjectsListWidget extends StatelessWidget {
             ItemAnimationBuilder(
               animation: animation,
               fromGrid: true,
-              child: ProjectViewItem(
+              child: SingleProjectCard(
                 project: projects?[index], onProjectPressed: onProjectPressed,
               ),
             ),

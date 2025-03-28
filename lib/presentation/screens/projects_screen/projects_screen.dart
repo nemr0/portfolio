@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/const/routes.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_modal_sheet/project_bottom_sheet.dart';
+import 'package:portfolio/presentation/screens/projects_screen/widgets/single_project_widget.dart';
 import 'package:portfolio/presentation/shared_widgets/error_widget.dart';
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart';
 import 'package:portfolio/data/models/project/project.dart';
 
-class ProjectsPageViewBottomSheet extends StatefulWidget {
-  const ProjectsPageViewBottomSheet({super.key, required this.projectId});
+class ProjectsScreen extends StatefulWidget {
+  const ProjectsScreen({super.key, required this.projectId});
 
   final String projectId;
 
   @override
-  State<ProjectsPageViewBottomSheet> createState() =>
-      _ProjectsPageViewBottomSheetState();
+  State<ProjectsScreen> createState() =>
+      _ProjectsScreenState();
 }
 
-class _ProjectsPageViewBottomSheetState
-    extends State<ProjectsPageViewBottomSheet> {
+class _ProjectsScreenState
+    extends State<ProjectsScreen> {
   late PageController controller;
   late int currentIndex;
   bool useDefaultPadding = true;
@@ -119,13 +119,13 @@ class _ProjectsPageViewBottomSheetState
             return NotificationListener<ScrollNotification>(
               onNotification: scrollNotificationHandler,
               child: state.when<Widget>(
-                loading: () => ProjectItemSheetView(
+                loading: () => SingleProjectWidget(
                   project: emptyProject,
                   loading: true,
                   current: index == currentIndex,
                 ),
                 success: (projects) => NotificationListener<ScrollNotification>(
-                  child: ProjectItemSheetView(
+                  child: SingleProjectWidget(
                     project: projects[index],
                     current: index == currentIndex,
                     // controller: scrollController,

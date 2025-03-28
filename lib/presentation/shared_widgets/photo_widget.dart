@@ -25,48 +25,49 @@ class PhotoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: borderRadius,
-      child: Builder(
-        builder: (_) {
-          final loadingImage = SizedBox(
-            height: height,
-            width: width,
-            child: ClipRRect(
-              borderRadius: borderRadius,
-              child: const LoadingPhoto(),
-            ),
-          );
-          if (loading) {
-            return loadingImage;
-          }
-          // if (url.contains('.svg')) {
-          //   return Container(
-          //     decoration: isIcon == false ?  BoxDecoration(
-          //       border: Border.all(color: AppColors.primary,width: 3),
-          //     ) : null,
-          //     child: ClipRRect(
-          //       borderRadius: borderRadius,
-          //       child: SvgPicture.network(
-          //         url,
-          //         placeholderBuilder: (_) => const LoadingPhoto(),
-          //         fit: BoxFit.fitWidth,
-          //         height: height,
-          //         width: width,
-          //       ),
-          //     ),
-          //   );
-          // }
-          return Container(
-            height: height,
-            width: width,
-            decoration:
-                isIcon == false
-                    ? BoxDecoration(
-                      color: AppColors.primary,
-                      border: Border.all(color: AppColors.primary, width: 3),
-                    )
-                    : null,
+    return Builder(
+      builder: (_) {
+        final loadingImage = SizedBox(
+          height: height,
+          width: width,
+          child: ClipRRect(
+            borderRadius: borderRadius,
+            child: const LoadingPhoto(),
+          ),
+        );
+        if (loading) {
+          return loadingImage;
+        }
+        // if (url.contains('.svg')) {
+        //   return Container(
+        //     decoration: isIcon == false ?  BoxDecoration(
+        //       border: Border.all(color: AppColors.primary,width: 3),
+        //     ) : null,
+        //     child: ClipRRect(
+        //       borderRadius: borderRadius,
+        //       child: SvgPicture.network(
+        //         url,
+        //         placeholderBuilder: (_) => const LoadingPhoto(),
+        //         fit: BoxFit.fitWidth,
+        //         height: height,
+        //         width: width,
+        //       ),
+        //     ),
+        //   );
+        // }
+        return Container(
+          height: height,
+          width: width,
+          decoration:
+              isIcon == false
+                  ? BoxDecoration(
+                    color: AppColors.primary,
+                    border: Border.all(color: AppColors.primary, width: 3),
+                   borderRadius: borderRadius
+                  )
+                  : null,
+          child: ClipRRect(
+            borderRadius: borderRadius,
             child: CachedNetworkImage(
               imageUrl: url,
               // imageRenderMethodForWeb: ImageRenderMethodForWeb.HtmlImage,
@@ -90,9 +91,9 @@ class PhotoWidget extends StatelessWidget {
               // },
               placeholder: (_, __) => loadingImage,
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

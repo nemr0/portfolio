@@ -4,8 +4,8 @@ import 'package:portfolio/presentation/shared_widgets/loading_photo.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
 import 'package:portfolio/data/models/project/project.dart';
 
-class ProjectViewItem extends StatelessWidget {
-  const ProjectViewItem({super.key, required this.project, required this.onProjectPressed});
+class SingleProjectCard extends StatelessWidget {
+  const SingleProjectCard({super.key, required this.project, required this.onProjectPressed});
 
   final Project? project;
   final Function(Project project)? onProjectPressed;

@@ -5,7 +5,7 @@ import 'package:portfolio/core/const/routes.dart';
 import 'package:portfolio/presentation/routes/hero_page/hero_page.dart';
 import 'package:portfolio/presentation/screens/not_found_screen/not_found_screen.dart';
 import 'package:portfolio/presentation/screens/root_screen/root_screen.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/bottom_sheets/project_modal_sheet/projects_pageview_bottom_sheet.dart';
+import 'package:portfolio/presentation/screens/projects_screen/projects_screen.dart';
 
 
 // final GoRouter router = GoRouter(
@@ -41,7 +41,7 @@ final GoRouter router = GoRouter(
             path: Routes.highlightedProjectsWithId,
             name: Routes.highlightedProjects,
             pageBuilder: (_, state) => HeroPage(
-              builder: (_) => ProjectsPageViewBottomSheet(
+              builder: (_) => ProjectsScreen(
                 projectId: state.pathParameters[Routes.highlightedProjectsId] ?? '',
               ),
             ),
