@@ -1,9 +1,9 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart' show Icons;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/resource.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
-import 'package:portfolio/presentation/shared_widgets/custom_tooltip.dart';
 
 class HeaderSliver extends StatelessWidget {
   const HeaderSliver({
@@ -23,9 +23,20 @@ class HeaderSliver extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Image.asset(
-                  AppAssets.ASSETS_WEBP_LOGO_WEBP,
-                  height: context.mobile ? 41.spMin : 55.spMin,
+                child: Row(
+                  children: [
+                    Image.asset(
+                      AppAssets.ASSETS_WEBP_LOGO_WEBP,
+                      height: context.mobile ? 41.spMin : 55.spMin,
+                    ),
+                    const Spacer(),
+                    CupertinoButton.filled(
+                        padding: EdgeInsets.all(2),
+                        sizeStyle: CupertinoButtonSize.small,
+
+                        onPressed: () {  },
+                    child: Icon(Icons.flash_on_outlined,color: AppColors.primary,)),
+                  ],
                 ),
               ),
             ),

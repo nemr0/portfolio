@@ -7,26 +7,6 @@ import 'package:portfolio/presentation/screens/not_found_screen/not_found_screen
 import 'package:portfolio/presentation/screens/root_screen/root_screen.dart';
 import 'package:portfolio/presentation/screens/projects_screen/projects_screen.dart';
 
-
-// final GoRouter router = GoRouter(
-//   initialLocation: '/',
-//     routes: [
-//       GoRoute(path: Routes.root,
-//         builder: (_,__)=>const RootScreen(),
-//         routes: [GoRoute(path: Routes.highlightedProjects,routes: [
-//
-//         ])]
-//       ),
-//     ],);
-
-// final ValueNotifier<RoutingConfig> myRoutingConfig =
-//     ValueNotifier<RoutingConfig>(
-//   RoutingConfig(
-//     routes: <RouteBase>[
-//
-//     ],
-//   ),
-// );
 final GoRouter router = GoRouter(
   errorPageBuilder: (_,__)=>HeroPage(builder: (BuildContext context) =>const NotFoundScreen()),
   routes: [
@@ -53,25 +33,3 @@ final GoRouter router = GoRouter(
   observers: [routeObserver],
 );
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
-
-// addRouterConfigFromProjects(List<Project> projects) {
-//   var existingRoutes =
-//       myRoutingConfig.value.routes.first.routes.first.routes.where((e) {
-//     return e.toString().contains(Routes.highlightedProjects) == false;
-//   });
-//   print(existingRoutes);
-//   myRoutingConfig.value = RoutingConfig(routes: [
-//     GoRoute(path: Routes.root, builder: (_, __) => const RootScreen(), routes: [
-//
-//     ]),
-//   ]);
-
-// = RoutingConfig(
-//   routes: <RouteBase>[
-//     GoRoute(
-//         path: Routes.root,
-//         builder: (_, __) => const RootScreen(),
-//         routes: [GoRoute(path: Routes.highlightedProjects, routes: [])]),
-//   ],
-// );
-// }

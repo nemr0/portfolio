@@ -10,6 +10,7 @@ import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/shared_widgets/photo_widget.dart';
 import 'package:portfolio/data/models/project/project.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/globals/global_elements.dart' show gBorderRadius;
@@ -47,9 +48,9 @@ class SingleProjectWidget extends StatelessWidget {
     tableHead: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.sp),
     tableBody:
     TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
-    codeblockDecoration: BoxDecoration(color: AppColors.background,borderRadius: BorderRadius.circular(5.spMax)),
+    codeblockDecoration: BoxDecoration(color: AppColors.codeBlockBG,borderRadius: BorderRadius.circular(5.spMax)),
     codeblockPadding: EdgeInsets.all(12.spMin),
-    blockquoteDecoration: BoxDecoration(color: AppColors.background),
+    blockquoteDecoration: BoxDecoration(color: AppColors.codeBlockBG),
   );
   const SingleProjectWidget(
       {super.key,
@@ -105,18 +106,21 @@ class SingleProjectWidget extends StatelessWidget {
       SizedBox(
         height: 11.spMax,
       ),
-      SelectableRegion(
-        focusNode: FocusNode(),
-        selectionControls: CupertinoTextSelectionControls(),
-        child: Padding(
-          padding: horizontalPadding,
-          child: Align(
-            alignment: Alignment.centerLeft,
+      NotificationListener(
+        onNotification: (_)=>true,
+        child: SelectableRegion(
+          focusNode: FocusNode(),
+          selectionControls: CupertinoTextSelectionControls(),
+          child: Padding(
+            padding: horizontalPadding,
+            child: Align(
+              alignment: Alignment.centerLeft,
 
-            child: MarkdownBody(
-              data: project.description,
-              styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
-              styleSheet: markdownStyleSheet(),
+              child: MarkdownBody(
+                data: project.description,
+                styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
+                styleSheet: markdownStyleSheet(),
+              ),
             ),
           ),
         ),
@@ -142,6 +146,7 @@ class SingleProjectWidget extends StatelessWidget {
     ];
     return Skeletonizer(
       enabled: loading,
+      ignorePointers: false,
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
         margin: useDefaultPadding ? defaultPadding : EdgeInsets.zero,
@@ -154,10 +159,11 @@ class SingleProjectWidget extends StatelessWidget {
             PinnedHeaderSliver(
               child:  Padding(
                 padding: horizontalPadding.copyWith(top: 20.h),
-                child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Skeleton.keep(
-                      child: CupertinoButton(
+                child: Skeleton.keep(
+                  keep: true,
+                  child: Row(
+                    children: [
+                      CupertinoButton(
                         onPressed: () => context.pop(),
                         padding: EdgeInsets.zero,
                         child: Container(
@@ -171,7 +177,23 @@ class SingleProjectWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                    )),
+                      const Spacer(),
+                  
+                      CupertinoButton(
+                        onPressed: () {
+                          Share.share(Uri.base.toString(),subject: 'Check out this project: ${project.name}');
+                        },
+                        padding: EdgeInsets.zero,
+                        child: Icon(
+                          Ionicons.share_social_outline,
+                          size: 18.sp,
+                          color: AppColors.primary,
+                        ),
+                      ),
+                  
+                    ],
+                  ),
+                ),
               ),
             ),
             SliverList(delegate: SliverChildBuilderDelegate((_,index)=>children[index],childCount: children.length),),
