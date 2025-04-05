@@ -71,7 +71,7 @@ class HeaderSliver extends StatelessWidget {
                             ],
                           ),barrierDismissible: true);
                         },
-                    child: Icon(Icons.info_rounded,color: AppColors.primary,)),
+                    child: Icon(Icons.info_rounded,color: AppColors.primary,size: 20.sp,)),
                   ],
                 ),
               ),
