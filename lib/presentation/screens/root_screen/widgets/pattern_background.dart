@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/core/const/resource.dart';
+import 'package:portfolio/generated/assets.dart';
 
 class PatternBackground extends StatelessWidget {
   const PatternBackground({super.key, required this.child, this.overrideBackgroundColor});
@@ -15,7 +15,7 @@ class PatternBackground extends StatelessWidget {
               repeat: ImageRepeat.repeat,
               scale: 3,
               opacity: .75,
-              image: AssetImage(AppAssets.ASSETS_WEBP_BACKGROUND_PATTERN_WEBP,))),
+              image: AssetImage(Assets.webpBackgroundPattern,))),
       duration: Duration(milliseconds: 300),
       child: child,
 

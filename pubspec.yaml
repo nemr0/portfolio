@@ -32,6 +32,8 @@ dependencies:
   get_it: ^8.0.3
   el_tooltip: ^2.2.1
   share_plus: ^10.1.4
+  get_storage: ^2.1.1
+  google_fonts: ^6.2.1
 #  timelines_plus: ^1.0.4
 
 #flutter_gen:
@@ -63,13 +65,3 @@ flutter:
     - assets/svg/icons/
 
 
-  fonts:
-    - family: WorkSans
-      fonts:
-      - asset: assets/fonts/WorkSans-Black.ttf
-      - asset: assets/fonts/WorkSans-Bold.ttf
-      - asset: assets/fonts/WorkSans-ExtraBold.ttf
-      - asset: assets/fonts/WorkSans-Light.ttf
-      - asset: assets/fonts/WorkSans-Medium.ttf
-      - asset: assets/fonts/WorkSans-Regular.ttf
-      - asset: assets/fonts/WorkSans-SemiBold.ttf

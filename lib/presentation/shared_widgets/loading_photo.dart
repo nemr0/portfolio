@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/core/const/resource.dart';
+import 'package:portfolio/generated/assets.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class LoadingPhoto extends StatelessWidget {
@@ -17,7 +17,7 @@ class LoadingPhoto extends StatelessWidget {
       enabled: true,
       // containersColor: Colors.white54,
       child: Image.asset(
-        AppAssets.ASSETS_WEBP_AVATAR_WEBP,
+        Assets.webpAvatar,
         fit: BoxFit.cover,
       ),
     );

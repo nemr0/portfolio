@@ -8,7 +8,9 @@ class Link extends Equatable{
   // factory Link.fromMap(dynamic data){
   //   return Link(icon: data['icon']??questionIconData, link: data['link']??'', tooltip: data['tooltip']??'');
   // }
-
+  factory Link.fromMap(Map<String,dynamic> data){
+    return Link(icon: data['icon']??'', link: data['link']??'', tooltip: data['tooltip']??'');
+  }
   factory Link.fromRecord(RecordModel record,String icon){
     return Link(icon: icon, link: record.get('link'), tooltip: record.get('tooltip')??'');
   }

@@ -48,6 +48,16 @@ class Project extends Equatable {
       'links': List.from(links.map<Map<String, dynamic>>((e) => e.toMap())),
     };
   }
+  factory Project.fromMap(Map<String, dynamic> data) {
+    return Project(
+      photos: List<String>.from(data['photos']),
+      cover: data['cover'],
+      links: List<Link>.from(data['links'].map((e) => Link.fromMap(e))),
+      shortDescription: data['short_description'],
+      description: data['description'],
+      name: data['name'],
+    );
+  }
   String get path =>name.toLowerCase().replaceAll(' ', '-');
   @override
   List<Object?> get props => [photos, links, description, name, cover];

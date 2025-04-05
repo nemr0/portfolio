@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/const/animation_durations.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/core/const/resource.dart';
 import 'package:portfolio/core/const/routes.dart';
 import 'package:portfolio/core/globals/global_elements.dart' show gBorderRadius, gPadding;
+import 'package:portfolio/generated/assets.dart';
 import 'package:portfolio/presentation/routes/router.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/links.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
@@ -149,7 +149,7 @@ class _RootScreenState extends State<RootScreen> with RouteAware{
                         padding: padding,
                         sliver: const SectionTitle(
                           text: 'HIGHLIGHTED PROJECTS',
-                          icon: AppAssets.ASSETS_SVG_ICONS_HIGHLIGHTED_PROJECTS_ICON_SVG,
+                          icon: Assets.iconsHighlightedProjectsIcon,
                         ),
                       ),
                       SliverPadding(

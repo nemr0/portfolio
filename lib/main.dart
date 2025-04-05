@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider, MultiBlocProv
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil, ScreenUtilInit;
 import 'package:flutter_web_plugins/flutter_web_plugins.dart' show usePathUrlStrategy;
 import 'package:portfolio/core/di_middleware.dart';
-import 'package:portfolio/domain/remote_source/database/baas_database_abstract.dart';
+import 'package:portfolio/domain/local_source/local_database_abstract.dart';
 import 'package:portfolio/presentation/routes/router.dart' show router;
 import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_projects_cubit.dart' show GetProjectsCubit;
 import 'package:portfolio/core/extensions/context_extension.dart';
 
 import 'core/const/colors.dart' show AppColors;
 import 'core/const/font_settings.dart' show FontSettings;
-import 'core/generated/fonts.gen.dart' show FontFamily;
+import 'domain/remote_source/database/baas_database_abstract.dart';
 
 
 Future<void> main() async {
@@ -31,21 +31,18 @@ class MyApp extends StatelessWidget {
       designSize: context.screenUtilSize,
       builder: (_, child) => MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => GetProjectsCubit(DIMiddleware.get<BAASService>(),)..getData(),lazy: false,),
-          // BlocProvider(create: (_) => GetExperienceCubit()..getData(),lazy: false,),
+          BlocProvider(create: (_) => GetProjectsCubit(baasService: DIMiddleware.get<BAASService>(),localDatabase: DIMiddleware.get<LocalDatabase>())..getData(reload: true),lazy: false,),
         ],
         child: MaterialApp.router(
-
           routerConfig: router,
-
           debugShowCheckedModeBanner: false,
           title: 'Omar\'s Portfolio',
           theme: ThemeData(
-              fontFamily: FontFamily.workSans,
+              fontFamily: FontSettings.fontFamily,
               scaffoldBackgroundColor: AppColors.scaffoldBackground,
               primaryColor: AppColors.primary,
               textTheme: FontSettings.textTheme(context),
-              colorScheme: const ColorScheme.light(
+              colorScheme: const ColorScheme.dark(
                   primary: AppColors.primary, secondary: AppColors.secondary),
           ),
         ),

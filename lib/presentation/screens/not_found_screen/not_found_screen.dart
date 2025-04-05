@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/const/colors.dart';
-import 'package:portfolio/core/const/resource.dart';
 import 'package:portfolio/core/globals/global_elements.dart' show gPadding;
+import 'package:portfolio/generated/assets.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/pattern_background.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
@@ -30,7 +30,7 @@ class NotFoundScreen extends StatelessWidget {
 
             children: [
               Center(
-                  child: SvgPicture.asset(AppAssets.ASSETS_SVG_404_SVG)),
+                  child: SvgPicture.asset(Assets.svg404)),
               Align(
                 alignment: context.mobile?Alignment.centerLeft:Alignment.center,
 

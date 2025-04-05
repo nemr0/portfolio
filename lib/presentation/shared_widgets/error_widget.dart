@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:portfolio/core/const/resource.dart';
 import 'package:portfolio/core/extensions/context_extension.dart';
+import 'package:portfolio/generated/assets.dart';
 import 'package:portfolio/presentation/shared_widgets/shadow_button.dart';
 import 'package:portfolio/data/models/exceptions/exception_abs.dart';
 import 'package:portfolio/data/models/exceptions/server_error.dart';
@@ -50,7 +50,7 @@ class ItemErrorWidget extends StatelessWidget {
              Expanded(
                  flex: 4,
                  child: SvgPicture.asset(
-                   AppAssets.ASSETS_SVG_ERROR_SVG,
+                   Assets.svgError,
 
                  )),
              Padding(
