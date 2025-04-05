@@ -7,33 +7,33 @@ class FontSettings {
   static String fontFamily = GoogleFonts.workSans().fontFamily??'';
   static TextTheme textTheme(BuildContext context) => GoogleFonts.workSansTextTheme(
        TextTheme( bodyLarge: TextStyle(
-         fontSize: 40.sp,
+         fontSize: 40.spMin,
          fontWeight: FontWeight.w900,
          color: AppColors.textColor,
        ),
          bodyMedium: TextStyle(
-             fontSize: 24.sp,
+             fontSize: 24.spMin,
              fontWeight: FontWeight.w600,
              color: AppColors.textColor),
          bodySmall: TextStyle(
            fontWeight: FontWeight.w400,
-           fontSize: 16.sp,
+           fontSize: 16.spMin,
            color: AppColors.textColor,
          ),
 
          labelLarge: TextStyle(
            fontWeight: FontWeight.bold,
-           fontSize: 16.sp,
+           fontSize: 16.spMin,
            color: AppColors.scaffoldBackground,
          ),
          labelMedium: TextStyle(
            fontWeight: FontWeight.w400,
-           fontSize: 14.sp,
+           fontSize: 14.spMin,
            color: AppColors.scaffoldBackground,
          ),
          labelSmall: TextStyle(
            fontWeight: FontWeight.w100,
-           fontSize: 12.sp,
+           fontSize: 12.spMin,
            color: AppColors.scaffoldBackground,
          ),)
       );

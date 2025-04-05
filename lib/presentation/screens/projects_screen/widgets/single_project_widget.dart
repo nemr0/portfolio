@@ -21,33 +21,33 @@ import '../../../../core/globals/global_elements.dart' show gBorderRadius;
 class SingleProjectWidget extends StatelessWidget {
    MarkdownStyleSheet markdownStyleSheet ()=> MarkdownStyleSheet(
     textAlign: WrapAlignment.start,
-    a: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
-    p: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
-    code: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 14.sp),
-    h1: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w100, fontSize: 32.sp),
-    h2: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 28.sp),
-    h3: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w600, fontSize: 24.sp),
-    h4: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w600, fontSize: 20.sp),
-    h5: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w500, fontSize: 18.sp),
-    h6: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w500, fontSize: 16.sp),
+    a: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.spMin),
+    p: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.spMin),
+    code: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 14.spMin),
+    h1: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w100, fontSize: 32.spMin),
+    h2: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 28.spMin),
+    h3: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w600, fontSize: 24.spMin),
+    h4: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w600, fontSize: 20.spMin),
+    h5: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w500, fontSize: 18.spMin),
+    h6: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.w500, fontSize: 16.spMin),
     em: TextStyle(
         color: AppColors.textColor,
         fontWeight: FontWeight.normal,
         fontStyle: FontStyle.italic,
-        fontSize: 16.sp),
-    strong: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.sp),
+        fontSize: 16.spMin),
+    strong: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.spMin),
     del: TextStyle(
         color: AppColors.textColor,
         fontWeight: FontWeight.normal,
         decoration: TextDecoration.lineThrough,
-        fontSize: 16.sp),
+        fontSize: 16.spMin),
     blockquote:
-    TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 18.sp),
+    TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 18.spMin),
     listBullet:
-    TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
-    tableHead: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.sp),
+    TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.spMin),
+    tableHead: TextStyle(color: AppColors.textColor, fontWeight: FontWeight.bold, fontSize: 16.spMin),
     tableBody:
-    TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.sp),
+    TextStyle(color: AppColors.textColor, fontWeight: FontWeight.normal, fontSize: 16.spMin),
     codeblockDecoration: BoxDecoration(color: AppColors.codeBlockBG,borderRadius: BorderRadius.circular(5.spMax)),
     codeblockPadding: EdgeInsets.all(12.spMin),
     blockquoteDecoration: BoxDecoration(color: AppColors.codeBlockBG),
@@ -201,14 +201,14 @@ class SingleProjectWidget extends StatelessWidget {
               child: NotificationListener(
                 onNotification: (notification)=>true,
                 child: SizedBox(
-                  height: 403,
+                  height: 403.sp,
                   child: ListView.separated(
                     padding: horizontalPadding,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) => PhotoWidget(
                       url: project.photos[index],
-                      height: 403,
-                      width: 193  ,
+                      height: 403.sp,
+                      width: 193.sp,
                       loading: loading,
                       isIcon: true,
                       borderRadius: BorderRadius.circular(10.spMax),
