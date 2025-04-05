@@ -20,11 +20,10 @@ else
   cd flutter && git fetch && git checkout 3.29.2 && cd ..
 fi
 
-# Change to the project directory
-cd portfolio_user || exit
+
 
 # Set Flutter executable path
-FLUTTER_BIN=../flutter/bin/flutter
+FLUTTER_BIN=./flutter/bin/flutter
 
 # Run Flutter commands
 $FLUTTER_BIN doctor
