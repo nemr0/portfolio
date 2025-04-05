@@ -11,13 +11,13 @@ if [ "$(git rev-list --count HEAD)" -lt 2 ]; then
   echo "Not enough commits to compare. Proceeding with build."
 fi
 
-# Clone Flutter SDK version 3.29.0 if it doesn't exist
+# Clone Flutter SDK version 3.29.2 if it doesn't exist
 if [ ! -d "flutter" ]; then
-  echo "Flutter SDK not found. Cloning version 3.29.0..."
-  git clone -b 3.29.0 https://github.com/flutter/flutter.git
+  echo "Flutter SDK not found. Cloning version 3.29.2..."
+  git clone -b 3.29.2 https://github.com/flutter/flutter.git
 else
-  echo "Flutter SDK already exists. Ensuring version 3.29.0..."
-  cd flutter && git fetch && git checkout 3.29.0 && cd ..
+  echo "Flutter SDK already exists. Ensuring version 3.29.2..."
+  cd flutter && git fetch && git checkout 3.29.2 && cd ..
 fi
 
 # Change to the project directory
@@ -32,7 +32,4 @@ $FLUTTER_BIN clean
 $FLUTTER_BIN config --enable-web
 
 # Build the Flutter web app with dart-define for secrets
-$FLUTTER_BIN build web --release \
-  --dart-define=CLOUDFLARE_ACCOUNT_ID="$CLOUDFLARE_ACCOUNT_ID" \
-  --dart-define=CLOUDFLARE_TOKEN="$CLOUDFLARE_TOKEN" \
-  --no-tree-shake-icons
+$FLUTTER_BIN build web --release
