@@ -11,19 +11,25 @@ if [ "$(git rev-list --count HEAD)" -lt 2 ]; then
   echo "Not enough commits to compare. Proceeding with build."
 fi
 
-curl -fsSL https://fvm.app/install.sh | bash
-export PATH="$PATH:$HOME/.pub-cache/bin"
+# Clone Flutter SDK version 3.29.2 if it doesn't exist
+if [ ! -d "flutter" ]; then
+  echo "Flutter SDK not found. Cloning version 3.29.2..."
+  git clone -b 3.29.2 https://github.com/flutter/flutter.git
+else
+  echo "Flutter SDK already exists. Ensuring version 3.29.2..."
+  cd flutter && git fetch && git checkout 3.29.2 && cd ..
+fi
 
-# Install Flutter 3.29.2 from the stable channel (if not already installed)
-fvm install 3.29.2 --channel=stable
 
-# Set the project to use Flutter 3.29.2
-fvm use 3.29.2
 
-# Run Flutter commands via FVM
-fvm flutter doctor
-fvm flutter clean
-fvm flutter config --enable-web
+# Set Flutter executable path
+FLUTTER_BIN=./flutter/bin/flutter
 
-# Build the Flutter web app (include any dart-define flags if needed)
-fvm flutter build web --release
+# Run Flutter commands
+$FLUTTER_BIN channel stable
+$FLUTTER_BIN doctor
+$FLUTTER_BIN clean
+$FLUTTER_BIN config --enable-web
+
+# Build the Flutter web app with dart-define for secrets
+$FLUTTER_BIN build web --release
