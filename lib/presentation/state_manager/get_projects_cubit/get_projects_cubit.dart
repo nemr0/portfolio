@@ -21,9 +21,7 @@ class GetProjectsCubit extends Cubit<GetProjectsState> {
 
   int? loadOrEmitSuccess(String projectId) {
     if (state is GetProjectsSuccess) {
-      int index = state
-          .maybeWhen<List<Project>>(orElse: () => [], success: (p) => p)
-          .indexWhere((e) => e.path == projectId);
+      int index = (state as GetProjectsSuccess).data.indexWhere((e) => e.path == projectId);
       if (index == -1) return null;
       return index;
     }

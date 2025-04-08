@@ -6,9 +6,8 @@ class Contact extends Equatable{
   final String desc;
   final String? phoneNumber;
   final String? company;
-  final String created;
 
-  const Contact( {required this.name,required  this.email,required  this.desc, this.phoneNumber, this.company,required this.created, });
+  const Contact( {required this.name,required  this.email,required  this.desc, this.phoneNumber, this.company});
   Map<String,dynamic> toMap()=>{
     "name":name,
     "email": email,
@@ -17,5 +16,5 @@ class Contact extends Equatable{
     "desc": desc
   };
   @override
-  List<Object?> get props => [name,email,desc,phoneNumber,company,created];
+  List<Object?> get props => [name,email,desc,phoneNumber,company];
 }

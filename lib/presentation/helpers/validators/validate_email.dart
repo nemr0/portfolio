@@ -15,11 +15,12 @@ String? validateEmail(String? email) {
 
 /// Phone Number Validator
 String? validateMobile(String? phone) {
+  if(phone == null || phone.trim().isEmpty) {
+    return null;
+  }
   String pattern = r'(^(?:[+0]9)?[0-9]{10,14}$)';
   RegExp regExp = RegExp(pattern);
-  if (phone == null || phone.isEmpty) {
-    return 'Please Enter A Phone Number, exp: 201111111111';
-  } else if (!regExp.hasMatch(phone)) {
+  if (!regExp.hasMatch(phone)) {
     return 'Please Enter Valid Phone Number, exp: 201111111111';
   }
   else if(phone.length<11){
@@ -49,7 +50,7 @@ String? validateName(String? name) {
 
   return null;
 }
-String? notEmptyValidator(String? value) {
-  if (value == null || value.isEmpty) return 'Field can\'t be empty.';
+String? validateDescription(String? value) {
+  if (value == null || value.trim().isEmpty) return 'Description can\'t be empty.';
   return null;
 }

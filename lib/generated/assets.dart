@@ -3,7 +3,6 @@ class Assets {
   Assets._();
 
   static const String iconsContactMeIcon = 'assets/svg/icons/contact_me_icon.svg';
-  static const String iconsExperienceIcon = 'assets/svg/icons/experience_icon.svg';
   static const String iconsHighlightedProjectsIcon = 'assets/svg/icons/highlighted_projects_icon.svg';
   static const String svg404 = 'assets/svg/404.svg';
   static const String svgError = 'assets/svg/error.svg';

@@ -5,36 +5,39 @@ import 'package:portfolio/presentation/state_manager/get_projects_cubit/get_proj
 import 'package:portfolio/data/models/project/project.dart';
 
 class ProjectsView extends StatelessWidget {
-  const ProjectsView({super.key, required this.controller, required this.onProjectPressed});
+  const ProjectsView({
+    super.key,
+    required this.controller,
+    required this.onProjectPressed,
+  });
 
   final ScrollController controller;
   final Function(Project project) onProjectPressed;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetProjectsCubit, GetProjectsState>(
-        builder: (context, state) {
-      return state.when<Widget>(
-        loading: () => ProjectCards(
-          controller: controller,
-        ),
-        success: (projects) => ProjectCards(
-          projects: projects,
-          controller: controller,
-          onProjectPressed: onProjectPressed,
-        ),
-        error: (e) => SliverToBoxAdapter(
-          child: SizedBox(
-            height: 300,
-            width: 100,
-            child: Icon(Icons.warning_rounded,size: 50,)
-          ),
-        ),
-      );
-    });
+      builder: (context, state) {
+        if(state is GetProjectsSuccess) {
+          return ProjectCards(
+            projects: state.data,
+            controller: controller,
+            onProjectPressed: onProjectPressed,
+          );
+        }
+        else if(state is GetProjectsError) {
+          return SliverToBoxAdapter(
+            child: SizedBox(
+              height: 300,
+              width: 100,
+              child: Icon(Icons.warning_rounded, size: 50),
+            ),
+          );
+        } else {
+          return ProjectCards(controller: controller);
+        }
+
+      },
+    );
   }
 }
-
-
-
-
-

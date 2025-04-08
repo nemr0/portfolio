@@ -8,27 +8,28 @@ import 'package:portfolio/presentation/screens/root_screen/root_screen.dart';
 import 'package:portfolio/presentation/screens/projects_screen/projects_screen.dart';
 
 final GoRouter router = GoRouter(
-  errorPageBuilder: (_,__)=>HeroPage(builder: (BuildContext context) =>const NotFoundScreen()),
+  errorPageBuilder: (_, __) => HeroPage(builder: (BuildContext context) => const NotFoundScreen()),
   routes: [
     GoRoute(
-        path: Routes.root,
-        builder: (_, state)
-        {
-        return  RootScreen(initBackgroundColor: state.pathParameters.isEmpty  ? AppColors.background : AppColors
-              .primary,);
-        },     routes: [
-          GoRoute(
-            path: Routes.highlightedProjectsWithId,
-            name: Routes.highlightedProjects,
-            pageBuilder: (_, state) => HeroPage(
-              builder: (_) => ProjectsScreen(
-                projectId: state.pathParameters[Routes.highlightedProjectsId] ?? '',
+      path: Routes.root,
+      builder: (_, state) {
+        return RootScreen(
+          initBackgroundColor:
+              state.pathParameters.isEmpty ? AppColors.background : AppColors.primary,
+        );
+      },
+      routes: [
+        GoRoute(
+          path: Routes.highlightedProjectsWithId,
+          name: Routes.highlightedProjects,
+          pageBuilder: (_, state) => HeroPage(
+                builder: (_) => ProjectsScreen(
+                      projectId: state.pathParameters[Routes.highlightedProjectsId] ?? '',
+                    ),
               ),
-            ),
-
-
-          )
-        ]),
+        ),
+      ],
+    ),
   ],
   observers: [routeObserver],
 );
