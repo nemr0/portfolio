@@ -24,6 +24,9 @@ class CustomPhoneNumberTextField extends StatelessWidget{
       padding: EdgeInsets.only(right: context.mobile ? 0 : context.width * .3,bottom: 10),
       child:PhoneFormField(
         controller: controller,
+        keyboardType: TextInputType.phone,
+        autocorrect: false,
+        textInputAction: TextInputAction.next,
         style:context.textTheme.labelMedium,
         validator: PhoneValidator.compose([ PhoneValidator.validMobile(context)]),
         countrySelectorNavigator:  getCountrySelector(context),

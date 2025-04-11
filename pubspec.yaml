@@ -2,7 +2,7 @@ name: portfolio
 description: "Omar's Portfolio"
 publish_to: 'none'
 
-version: 3.3.0
+version: 3.3.2+96
 
 environment:
   sdk: '>=3.7.0 <4.0.0'
