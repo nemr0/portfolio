@@ -51,4 +51,29 @@ class GetStorageService extends LocalDatabase {
       }
     }
   }
+
+  @override
+  bool getDidContact() {
+    try {
+      return _storage?.read<bool>('didContact') ?? false;
+    } catch (e, s) {
+      if (kDebugMode) {
+        print(e);
+        print(s);
+      }
+      return false;
+    }
+  }
+
+  @override
+  Future<void> setDidContact(bool didContact) async {
+    try{
+      return _storage?.write('didContact', didContact);
+    }catch(e, s){
+      if (kDebugMode) {
+        print(e);
+        print(s);
+      }
+    }
+  }
 }

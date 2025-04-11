@@ -9,11 +9,11 @@ import 'package:portfolio/data/models/exceptions/server_error.dart';
 
 class ItemErrorWidget extends StatelessWidget {
   const ItemErrorWidget(
-      {super.key, required this.exception, this.onRetryPressed,  this.small=false, this.retryWidget, required this.width});
+      {super.key, required this.exception, required this.onRetryPressed,  this.small=false, this.retryWidget, required this.width});
 
   factory ItemErrorWidget.fromText(
       {required String message,
-      VoidCallback? onRetryPressed,
+        required Future<void> Function() onRetryPressed,
         bool small = true,
         Widget? retryWidget,
         required double width,
@@ -29,7 +29,7 @@ class ItemErrorWidget extends StatelessWidget {
   }
   final Widget? retryWidget;
   final ExceptionImpl exception;
-  final VoidCallback? onRetryPressed;
+  final Future<void> Function() onRetryPressed;
   final bool small;
   final double width;
   @override
@@ -58,7 +58,6 @@ class ItemErrorWidget extends StatelessWidget {
                    vertical: 12, horizontal: context.width * .1),
                child: Text(exception.message ?? 'Something Went Wrong',style: TextStyle(fontSize: 16.sp),),
              ),
-             if (onRetryPressed != null)
                ShadowButton.text(
                  text: 'RETRY',
                  onPressed: onRetryPressed,

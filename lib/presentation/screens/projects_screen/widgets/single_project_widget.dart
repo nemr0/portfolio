@@ -154,73 +154,74 @@ class SingleProjectWidget extends StatelessWidget {
             borderRadius: useDefaultPadding ? gBorderRadius : BorderRadius.zero,
             hideShadow: true,
             color: AppColors.scaffoldBackground),
-        child: CustomScrollView(
-          slivers: [
-            PinnedHeaderSliver(
-              child:  Padding(
-                padding: horizontalPadding.copyWith(top: 20.h),
-                child: Skeleton.keep(
-                  keep: true,
-                  child: Row(
-                    children: [
-                      CupertinoButton(
-                        onPressed: () => context.pop(),
-                        padding: EdgeInsets.zero,
-                        child: Container(
-                          height:30.sp,
-                          width:30.sp,
-                          decoration:BoxDecoration(shape: BoxShape.circle,color: AppColors.textColor),
+        child:CustomScrollView(
+            physics: const ClampingScrollPhysics(),
+            slivers: [
+              PinnedHeaderSliver(
+                child:  Padding(
+                  padding: horizontalPadding.copyWith(top: 20.h),
+                  child: Skeleton.keep(
+                    keep: true,
+                    child: Row(
+                      children: [
+                        CupertinoButton(
+                          onPressed: () => context.pop(),
+                          padding: EdgeInsets.zero,
+                          child: Container(
+                            height:30.sp,
+                            width:30.sp,
+                            decoration:BoxDecoration(shape: BoxShape.circle,color: AppColors.textColor),
+                            child: Icon(
+                              Ionicons.close_circle,
+                              size: 30.sp,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+
+                        CupertinoButton(
+                          onPressed: () {
+                            Share.share(Uri.base.toString(),subject: 'Check out this project: ${project.name}');
+                          },
+                          padding: EdgeInsets.zero,
                           child: Icon(
-                            Ionicons.close_circle,
-                            size: 30.sp,
+                            Ionicons.share_social_outline,
+                            size: 18.sp,
                             color: AppColors.primary,
                           ),
                         ),
-                      ),
-                      const Spacer(),
-                  
-                      CupertinoButton(
-                        onPressed: () {
-                          Share.share(Uri.base.toString(),subject: 'Check out this project: ${project.name}');
-                        },
-                        padding: EdgeInsets.zero,
-                        child: Icon(
-                          Ionicons.share_social_outline,
-                          size: 18.sp,
-                          color: AppColors.primary,
-                        ),
-                      ),
-                  
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SliverList(delegate: SliverChildBuilderDelegate((_,index)=>children[index],childCount: children.length),),
-            if(project.photos.isNotEmpty)  SliverToBoxAdapter(
-              child: NotificationListener(
-                onNotification: (notification)=>true,
-                child: SizedBox(
-                  height: 403.sp,
-                  child: ListView.separated(
-                    padding: horizontalPadding,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext context, int index) => PhotoWidget(
-                      url: project.photos[index],
-                      height: 403.sp,
-                      width: 193.sp,
-                      loading: loading,
-                      isIcon: true,
-                      borderRadius: BorderRadius.circular(10.spMax),
+
+                      ],
                     ),
-                    separatorBuilder: (BuildContext context, int index) => SizedBox(width: 5.spMax,),
-                    itemCount: project.photos.length,
                   ),
                 ),
               ),
-            ),
-            SliverToBoxAdapter(child: SizedBox(height: 200,),),
-          ]
+              SliverList(delegate: SliverChildBuilderDelegate((_,index)=>children[index],childCount: children.length),),
+              if(project.photos.isNotEmpty)  SliverToBoxAdapter(
+                child: NotificationListener(
+                  onNotification: (notification)=>true,
+                  child: SizedBox(
+                    height: 403.sp,
+                    child: ListView.separated(
+                      padding: horizontalPadding,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) => PhotoWidget(
+                        url: project.photos[index],
+                        height: 403.sp,
+                        width: 193.sp,
+                        loading: loading,
+                        isIcon: true,
+                        borderRadius: BorderRadius.circular(10.spMax),
+                      ),
+                      separatorBuilder: (BuildContext context, int index) => SizedBox(width: 5.spMax,),
+                      itemCount: project.photos.length,
+                    ),
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(child: SizedBox(height: 200,),),
+            ]
         ),
       ),
     );

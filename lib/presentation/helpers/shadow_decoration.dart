@@ -7,23 +7,24 @@ Decoration shadowDecoration(
     double width = 3,
     required BorderRadius borderRadius,
     bool hideShadow=false,
+      bool hover = false,
     }) {
   return ShapeDecoration(
     color: color,
     shape: RoundedRectangleBorder(
       side: BorderSide(
-        width: width-(width/3),
+        width: width - (width / 3),
         color: shadowColor,
         strokeAlign: BorderSide.strokeAlignCenter,
       ),
       borderRadius: borderRadius,
     ),
     shadows: [
-      if(!hideShadow)
+      if(!hideShadow )
       BoxShadow(
         color: shadowColor,
         blurRadius: 0,
-        offset: Offset(width, width),
+        offset:hover?Offset(-width, -width): Offset(width, width),
         spreadRadius: width,
       )
     ],
