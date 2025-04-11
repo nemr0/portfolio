@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +21,7 @@ import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/avatar.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/appbar/header_sliver.dart';
-import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/hire_me_button.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/contact_me_button.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/introduction/intro_text.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/pattern_background.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/projects/projects_view.dart';
@@ -44,7 +46,8 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
   late ScrollController controller;
   late Color overrideBackgroundColor;
   late final FocusNode contactMeFocusNode;
-
+  late int animate;
+  late Timer animateTime;
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -55,10 +58,20 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
       routeObserver.subscribe(this, route);
     }
   }
-
+  timerCallback (_){
+   if(animate<100) {
+     setState(() {
+      animate++;
+    });
+     return;
+   }
+   animate = 0;
+  }
   @override
   void initState() {
     super.initState();
+    animate = 0;
+    animateTime = Timer.periodic(Duration(seconds: 1), timerCallback);
     contactMeFocusNode = FocusNode();
 
     overrideBackgroundColor = widget.initBackgroundColor;
@@ -99,11 +112,18 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
       const IntroText(),
       SizedBox(height: 40.spMin),
       ContactMe(onPressed: () async {
+        animateTime.cancel();
+        setState(() {
+          animate++;
+        });
         await Future.delayed(Duration(milliseconds: 200));
         await scrollToEnd();
         TextInput.finishAutofillContext();
-        contactMeFocusNode.requestFocus();
-      }),
+        Future.delayed(Duration(milliseconds: 500),(){
+          contactMeFocusNode.requestFocus();
+        });
+        animateTime = Timer.periodic(Duration(seconds: 1), timerCallback);
+      }, animate: animate,),
       SizedBox(height: 40.spMin),
     ];
     final EdgeInsets padding = EdgeInsets.only(

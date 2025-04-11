@@ -9,13 +9,14 @@ class ShadowButton extends StatefulWidget {
       {super.key,
       required this.child,
       this.onPressed,
-      this.color = AppColors.primary, this.padding,  this.width=2.5});
+      this.color = AppColors.primary, this.padding,  this.width=2.5,  this.animate=0});
 
   final Widget child;
   final Future<void> Function()? onPressed;
   final Color color;
   final EdgeInsets? padding;
   final double width;
+  final int animate;
   static Text  textWidget(String text,{TextStyle? textStyle}) => Text(
     text,
     style: textStyle ??
@@ -31,6 +32,7 @@ class ShadowButton extends StatefulWidget {
     required String text,
     Future<void> Function()? onPressed,
     Color color = AppColors.primary,
+    int animate =0,
     TextStyle? textStyle,
     EdgeInsets? padding,
     double width=2.5,
@@ -41,6 +43,7 @@ class ShadowButton extends StatefulWidget {
       color: color,
       padding: padding,
       child: textWidget(text,textStyle: textStyle),
+      animate: animate,
     );
   }
 
@@ -95,7 +98,7 @@ class _ShadowButtonState extends State<ShadowButton> {
                 decoration: shadowDecoration(
                     width: widget.width,
                     hideShadow:widget.onPressed==null?true: loading,
-                    hover: hover,
+                    hover: hover?true:widget.animate.isEven,
                     borderRadius: BorderRadius.circular(5),
                     color: widget.color),
                 duration: pressButtonInterval,

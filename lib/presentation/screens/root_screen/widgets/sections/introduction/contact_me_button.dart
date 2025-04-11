@@ -3,13 +3,15 @@ import 'package:portfolio/presentation/shared_widgets/shadow_button.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
 class ContactMe extends StatelessWidget {
-  const ContactMe({super.key, required this.onPressed});
+  const ContactMe({super.key, required this.onPressed, required this.animate});
   final Future<void> Function() onPressed;
+  final int animate;
   @override
   Widget build(BuildContext context) {
 
         return ShadowButton.text(
           text: 'CONTACT ME',
+          animate:animate ,
           onPressed: onPressed,
           // onPressed: () async {
           //   launchUrl(Uri.parse("https://api.whatsapp.com/send?phone=201147898061&text=Hey%20Omar%20%F0%9F%91%8B%2C%0AI%20need%20to%20contact%20you%20ASAP%20about%3A"));

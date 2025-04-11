@@ -30,6 +30,26 @@ else
   cd flutter && git fetch && git checkout 3.29.2 && cd ..
 fi
 
+
+# keeping the base version (e.g., 1.0.0) intact.
+
+# Get the current commit count from Git
+COMMIT_COUNT=$(git rev-list --count HEAD)
+echo "Current commit count: $COMMIT_COUNT"
+
+# Update pubspec.yaml:
+# This sed command finds the version line which is expected to be in one of these formats:
+#   version: 1.0.0
+#   version: 1.0.0+<some_number>
+# It then replaces the build number with the commit count.
+sed -i.bak -E "s/^(version:[[:space:]]*[0-9]+\.[0-9]+\.[0-9]+)(\+[0-9]+)?/\1+$COMMIT_COUNT/" pubspec.yaml
+
+# Remove the backup file created by sed (optional)
+rm pubspec.yaml.bak
+
+# Echo the updated version from pubspec.yaml
+NEW_VERSION=$(grep '^version:' pubspec.yaml)
+echo "Updated full version: $NEW_VERSION"
 # Set Flutter executable path.
 FLUTTER_BIN=./flutter/bin/flutter
 
