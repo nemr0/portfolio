@@ -16,7 +16,7 @@ class SectionTitle extends StatelessWidget {
         children: [
         Container(
           margin: EdgeInsets.only(top: 6),
-          decoration: shadowDecoration(borderRadius: BorderRadius.circular(5.spMin),width: 1.2),
+          decoration: shadowDecoration(borderRadius: BorderRadius.circular(5.spMin),borderWidth: 1.2),
           height: 30.spMin,
           width: 30.spMin,
           child: Padding(

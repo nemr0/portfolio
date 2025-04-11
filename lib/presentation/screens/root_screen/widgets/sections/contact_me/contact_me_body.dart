@@ -1,5 +1,4 @@
 import 'package:auto_animated/auto_animated.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,10 +12,11 @@ import 'package:portfolio/core/extensions/context_extension.dart';
 import 'package:portfolio/data/models/contact/contact.dart';
 import 'package:portfolio/domain/services/country_service.dart';
 import 'package:portfolio/presentation/helpers/validators/validate_email.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/contact_me/contact_success_widget.dart' show ContactSuccessWidget;
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/contact_me/custom_text_field.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/contact_me/phone_number_text_field.dart';
+import 'package:portfolio/presentation/screens/root_screen/widgets/sections/contact_me/submit_button.dart';
 import 'package:portfolio/presentation/shared_widgets/item_animation_builder.dart';
-import 'package:portfolio/presentation/shared_widgets/shadow_button.dart';
 import 'package:portfolio/presentation/state_manager/add_contact/add_contact_cubit.dart';
 
 class ContactMeBody extends StatefulWidget {
@@ -213,7 +213,7 @@ class _ContactMeBodyState extends State<ContactMeBody> {
               controller: widget.controller,
               showItemInterval: showItemDuration,
               showItemDuration: showItemInterval,
-              reAnimateOnVisibility: true,
+              reAnimateOnVisibility: false,
             ),
           ),
         );
@@ -222,61 +222,4 @@ class _ContactMeBodyState extends State<ContactMeBody> {
   }
 }
 
-class SubmitButton extends StatelessWidget {
-  const SubmitButton({super.key, required this.onPressed});
 
-  final Future<void> Function() onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AddContactCubit, AddContactState>(
-      builder: (context, state) {
-        return ShadowButton(
-          padding: EdgeInsets.only(bottom: 10.h),
-          color:
-              state is AddContactFailed
-                  ? AppColors.codeBlockBG
-                  : AppColors.primary,
-          onPressed:
-              state is AddContactLoading || state is AddContactSuccess
-                  ? null
-                  : onPressed,
-          child: state is AddContactLoading
-                  ? CupertinoActivityIndicator()
-                  : ShadowButton.textWidget('SUBMIT'),
-        );
-      },
-    );
-  }
-}
-class ContactSuccessWidget extends StatelessWidget {
-  const ContactSuccessWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-     return Column(
-       mainAxisAlignment: MainAxisAlignment.center,
-       spacing: 10.sp,
-       children: [
-         Icon(
-           Ionicons.checkmark_done_circle,
-           size: 40.sp,
-           color: AppColors.textColor,
-         ),
-         Text(
-           "Your message has been sent",
-           style: TextStyle(
-             color: AppColors.textColor,
-             fontSize: 14.sp,
-           ),
-         ),
-         ShadowButton.text(
-           text: "Send Again?",
-           onPressed: () async {
-             AddContactCubit.get(context).sendAgain();
-           },
-         ),
-       ],
-     );
-  }
-}

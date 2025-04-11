@@ -4,28 +4,30 @@ import 'package:portfolio/core/const/colors.dart';
 Decoration shadowDecoration(
     {Color color = AppColors.primary,
       Color shadowColor =AppColors.textColor,
-    double width = 3,
+    double borderWidth = 3,
     required BorderRadius borderRadius,
     bool hideShadow=false,
-      bool hover = false,
+      bool bigWidth=false,
+      /// left = false , right = true
+      bool rightBottomOrLeftTopShadow=false,
     }) {
   return ShapeDecoration(
     color: color,
     shape: RoundedRectangleBorder(
       side: BorderSide(
-        width: width - (width / 3),
+        width:  bigWidth?borderWidth*1.5: borderWidth - (borderWidth / 3),
         color: shadowColor,
         strokeAlign: BorderSide.strokeAlignCenter,
       ),
       borderRadius: borderRadius,
     ),
     shadows: [
-      if(!hideShadow )
+      if(!hideShadow)
       BoxShadow(
         color: shadowColor,
         blurRadius: 0,
-        offset:hover?Offset(-width, -width): Offset(width, width),
-        spreadRadius: width,
+        offset:rightBottomOrLeftTopShadow?Offset(-borderWidth, -borderWidth): Offset(borderWidth, borderWidth),
+        spreadRadius: borderWidth,
       )
     ],
   );

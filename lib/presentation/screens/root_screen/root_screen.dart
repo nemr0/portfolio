@@ -10,8 +10,7 @@ import 'package:portfolio/core/const/animation_durations.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/routes.dart';
 import 'package:portfolio/core/di_middleware.dart' show DIMiddleware;
-import 'package:portfolio/core/globals/global_elements.dart'
-    show gBorderRadius, gPadding;
+import 'package:portfolio/core/globals/global_elements.dart' show gBorderRadius, gPadding;
 import 'package:portfolio/domain/remote_source/database/baas_database_abstract.dart';
 import 'package:portfolio/generated/assets.dart';
 import 'package:portfolio/presentation/routes/router.dart';
@@ -46,8 +45,7 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
   late ScrollController controller;
   late Color overrideBackgroundColor;
   late final FocusNode contactMeFocusNode;
-  late int animate;
-  late Timer animateTime;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -58,20 +56,11 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
       routeObserver.subscribe(this, route);
     }
   }
-  timerCallback (_){
-   if(animate<100) {
-     setState(() {
-      animate++;
-    });
-     return;
-   }
-   animate = 0;
-  }
+
   @override
   void initState() {
     super.initState();
-    animate = 0;
-    animateTime = Timer.periodic(Duration(seconds: 1), timerCallback);
+
     contactMeFocusNode = FocusNode();
 
     overrideBackgroundColor = widget.initBackgroundColor;
@@ -112,18 +101,15 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
       const IntroText(),
       SizedBox(height: 40.spMin),
       ContactMe(onPressed: () async {
-        animateTime.cancel();
-        setState(() {
-          animate++;
-        });
+
         await Future.delayed(Duration(milliseconds: 200));
         await scrollToEnd();
         TextInput.finishAutofillContext();
         Future.delayed(Duration(milliseconds: 500),(){
           contactMeFocusNode.requestFocus();
         });
-        animateTime = Timer.periodic(Duration(seconds: 1), timerCallback);
-      }, animate: animate,),
+
+      },),
       SizedBox(height: 40.spMin),
     ];
     final EdgeInsets padding = EdgeInsets.only(
