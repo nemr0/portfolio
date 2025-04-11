@@ -7,4 +7,6 @@ abstract class LocalDatabase{
   List<Project>? getProjects();
   /// Retrieves a list of projects from the local database.
   Future<void> saveProjects(List<Project> projects);
+  bool getDidContact();
+  Future<void> setDidContact(bool didContact);
 }

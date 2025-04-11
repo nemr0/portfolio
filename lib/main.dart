@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider, MultiBlocProvider;
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil, ScreenUtilInit;
@@ -17,7 +18,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ScreenUtil.ensureScreenSize();
   usePathUrlStrategy();
-  DIMiddleware.init();
+  DIMiddleware.registerAndInit();
   runApp(const MyApp());
 }
 

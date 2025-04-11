@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/extensions/context_extension.dart';
 
 class IntroText extends StatelessWidget {
   const IntroText({super.key,});
@@ -10,13 +11,13 @@ class IntroText extends StatelessWidget {
       overflow: TextOverflow.visible,
       text: TextSpan(
           text: 'Hi, my name is',
-          style: Theme.of(context).textTheme.bodySmall,
+          style: context.textTheme.bodySmall,
           children: [
             TextSpan(
               text: ' Omar Elnemr,\n',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),
+              style: context.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),
             ),
-            TextSpan(text: 'I DEVELOP\nMOBILE\nAPPLICATIONS,',style: Theme.of(context).textTheme.bodyLarge,),
+            TextSpan(text: 'I DEVELOP\nMOBILE\nAPPLICATIONS,',style: context.textTheme.bodyLarge,),
           ]),
     );
   }

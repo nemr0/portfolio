@@ -1,13 +1,16 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/const/animation_durations.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/core/const/routes.dart';
+import 'package:portfolio/core/di_middleware.dart' show DIMiddleware;
 import 'package:portfolio/core/globals/global_elements.dart'
     show gBorderRadius, gPadding;
+import 'package:portfolio/domain/remote_source/database/baas_database_abstract.dart';
 import 'package:portfolio/generated/assets.dart';
 import 'package:portfolio/presentation/routes/router.dart';
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/contact_me/contact_me_body.dart';
@@ -23,6 +26,10 @@ import 'package:portfolio/presentation/screens/root_screen/widgets/sections/proj
 import 'package:portfolio/presentation/screens/root_screen/widgets/sections/section_title.dart';
 import 'package:portfolio/presentation/shared_widgets/item_animation_builder.dart';
 import 'package:portfolio/data/models/project/project.dart';
+import 'package:portfolio/presentation/state_manager/add_contact/add_contact_cubit.dart'
+    show AddContactCubit, AddContactState;
+
+import '../../../domain/local_source/local_database_abstract.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key, required this.initBackgroundColor});
@@ -37,6 +44,7 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
   late ScrollController controller;
   late Color overrideBackgroundColor;
   late final FocusNode contactMeFocusNode;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -90,11 +98,11 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
       SizedBox(height: 40.spMin),
       const IntroText(),
       SizedBox(height: 40.spMin),
-      ContactMe(onPressed: ()async{
+      ContactMe(onPressed: () async {
         await Future.delayed(Duration(milliseconds: 200));
-       await scrollToEnd();
-       TextInput.finishAutofillContext();
-       contactMeFocusNode.requestFocus();
+        await scrollToEnd();
+        TextInput.finishAutofillContext();
+        contactMeFocusNode.requestFocus();
       }),
       SizedBox(height: 40.spMin),
     ];
@@ -140,11 +148,9 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
                         sliver: LiveSliverList.options(
                           itemCount: body.length,
                           controller: controller,
-                          itemBuilder: (
-                            BuildContext context,
-                            int index,
-                            Animation<double> animation,
-                          ) {
+                          itemBuilder: (BuildContext context,
+                              int index,
+                              Animation<double> animation,) {
                             if (body[index] is SizedBox) return body[index];
                             return ItemAnimationBuilder(
                               animation: animation,
@@ -193,10 +199,22 @@ class _RootScreenState extends State<RootScreen> with RouteAware {
                         ),
                       ),
                       SliverPadding(
-                        padding: padding,
-                        sliver: ContactMeBody(
-                          controller: controller,
-                          scrollToEnd: scrollToEnd, focusNode: contactMeFocusNode,
+                        padding: padding.copyWith(bottom: 100),
+                        sliver: BlocProvider(
+                          create: (context) =>
+                              AddContactCubit(
+                                baasService: DIMiddleware.get<BAASService>(),
+                                localDatabase: DIMiddleware.get<
+                                    LocalDatabase>(),
+                              ),
+                          child: BlocBuilder<AddContactCubit, AddContactState>(
+                            builder: (context, state) {
+                              return ContactMeBody(
+                                controller: controller,
+                                focusNode: contactMeFocusNode,
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ],

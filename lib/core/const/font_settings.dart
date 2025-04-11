@@ -27,14 +27,25 @@ class FontSettings {
            color: AppColors.scaffoldBackground,
          ),
          labelMedium: TextStyle(
-           fontWeight: FontWeight.w400,
+           fontWeight: FontWeight.w500,
            fontSize: 14.spMin,
            color: AppColors.scaffoldBackground,
          ),
          labelSmall: TextStyle(
-           fontWeight: FontWeight.w100,
+           fontWeight: FontWeight.w300,
            fontSize: 12.spMin,
            color: AppColors.scaffoldBackground,
-         ),)
+         ),
+         displayMedium: TextStyle(
+           fontWeight: FontWeight.w400,
+           fontSize: 14.spMin,
+           color: AppColors.textColor,
+         ),
+         displaySmall: TextStyle(
+           fontWeight: FontWeight.w300,
+           fontSize: 10.spMin,
+           color: AppColors.textColor,
+         ),
+       )
       );
 }

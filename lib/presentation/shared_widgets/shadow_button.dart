@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:portfolio/core/const/animation_durations.dart';
 import 'package:portfolio/core/const/colors.dart';
 import 'package:portfolio/presentation/helpers/shadow_decoration.dart';
 
@@ -8,12 +9,13 @@ class ShadowButton extends StatefulWidget {
       {super.key,
       required this.child,
       this.onPressed,
-      this.color = AppColors.primary, this.padding});
+      this.color = AppColors.primary, this.padding,  this.width=2.5});
 
   final Widget child;
-  final VoidCallback? onPressed;
+  final Future<void> Function()? onPressed;
   final Color color;
   final EdgeInsets? padding;
+  final double width;
   static Text  textWidget(String text,{TextStyle? textStyle}) => Text(
     text,
     style: textStyle ??
@@ -27,10 +29,11 @@ class ShadowButton extends StatefulWidget {
   factory ShadowButton.text({
     Key? key,
     required String text,
-    VoidCallback? onPressed,
+    Future<void> Function()? onPressed,
     Color color = AppColors.primary,
     TextStyle? textStyle,
     EdgeInsets? padding,
+    double width=2.5,
   }) {
     return ShadowButton(
       key: key,
@@ -46,15 +49,18 @@ class ShadowButton extends StatefulWidget {
 }
 
 class _ShadowButtonState extends State<ShadowButton> {
-  bool hideShadow = false;
+  bool loading = false;
   bool hover = false;
-  hideAndShowShadow() async {
+  hideShadow() async {
     setState(() {
-      hideShadow = true;
+      loading = true;
     });
-    await Future.delayed(const Duration(milliseconds: 300));
+    await Future.delayed(pressButtonInterval);
+
+  }
+  showShadow() async {
     setState(() {
-      hideShadow = false;
+      loading = false;
     });
   }
 
@@ -76,22 +82,23 @@ class _ShadowButtonState extends State<ShadowButton> {
         child: CupertinoButton(
             pressedOpacity: .9,
             padding: EdgeInsets.zero,
-            onPressed:widget.onPressed==null?null: () async {
-              if (widget.onPressed != null) {
+            onPressed:loading?null:widget.onPressed==null?null: () async {
+              if (!loading) {
+                await hideShadow();
 
+               await widget.onPressed!();
+                showShadow();
 
-                hideAndShowShadow();
-                widget.onPressed!();
               }
             },
             child: AnimatedContainer(
                 decoration: shadowDecoration(
-
-                    hideShadow:widget.onPressed==null?true: hideShadow,
+                    width: widget.width,
+                    hideShadow:widget.onPressed==null?true: loading,
                     hover: hover,
                     borderRadius: BorderRadius.circular(5),
                     color: widget.color),
-                duration: const Duration(milliseconds: 100),
+                duration: pressButtonInterval,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0),
                   child: widget.child,

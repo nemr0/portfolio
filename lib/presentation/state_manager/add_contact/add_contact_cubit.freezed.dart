@@ -45,8 +45,74 @@ $AddContactStateCopyWith(AddContactState _, $Res Function(AddContactState) __);
 /// @nodoc
 
 
-class _Initial implements AddContactState {
-  const _Initial();
+class AddContactInitial implements AddContactState {
+  const AddContactInitial({this.focus = false});
+  
+
+@JsonKey() final  bool focus;
+
+/// Create a copy of AddContactState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AddContactInitialCopyWith<AddContactInitial> get copyWith => _$AddContactInitialCopyWithImpl<AddContactInitial>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddContactInitial&&(identical(other.focus, focus) || other.focus == focus));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,focus);
+
+@override
+String toString() {
+  return 'AddContactState.initial(focus: $focus)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $AddContactInitialCopyWith<$Res> implements $AddContactStateCopyWith<$Res> {
+  factory $AddContactInitialCopyWith(AddContactInitial value, $Res Function(AddContactInitial) _then) = _$AddContactInitialCopyWithImpl;
+@useResult
+$Res call({
+ bool focus
+});
+
+
+
+
+}
+/// @nodoc
+class _$AddContactInitialCopyWithImpl<$Res>
+    implements $AddContactInitialCopyWith<$Res> {
+  _$AddContactInitialCopyWithImpl(this._self, this._then);
+
+  final AddContactInitial _self;
+  final $Res Function(AddContactInitial) _then;
+
+/// Create a copy of AddContactState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? focus = null,}) {
+  return _then(AddContactInitial(
+focus: null == focus ? _self.focus : focus // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class AddContactSaved implements AddContactState {
+  const AddContactSaved();
   
 
 
@@ -56,7 +122,7 @@ class _Initial implements AddContactState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddContactSaved);
 }
 
 
@@ -65,7 +131,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AddContactState.initial()';
+  return 'AddContactState.saved()';
 }
 
 

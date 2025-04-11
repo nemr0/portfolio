@@ -47,7 +47,7 @@ class ProjectCards extends StatelessWidget {
                 (BuildContext context, int index, Animation<double> animation) =>
                 ItemAnimationBuilder(
                   animation: animation,
-                  fromGrid: true,
+                  animationType: AnimationType.upToDown,
                   child: SingleProjectCard(
                     project: projects?[index], onProjectPressed: onProjectPressed,
                   ),

@@ -33,6 +33,11 @@ dependencies:
   share_plus: ^10.1.4
   get_storage: ^2.1.1
   google_fonts: ^6.2.1
+  country_ip: ^3.0.0
+  phonecodes: ^0.0.4
+  phone_form_field: ^10.0.6
+  json_annotation: ^4.9.0
+
 #  timelines_plus: ^1.0.4
 
 #flutter_gen:
@@ -46,6 +51,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^5.0.0
+  json_serializable: ^6.9.4
 
 flutter:
 
