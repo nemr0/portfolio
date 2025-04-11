@@ -21,7 +21,7 @@ class CustomPhoneNumberTextField extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: context.mobile ? 0 : context.width * .3),
+      padding: EdgeInsets.only(right: context.mobile ? 0 : context.width * .3,bottom: 10),
       child:PhoneFormField(
         controller: controller,
         style:context.textTheme.labelMedium,
@@ -30,6 +30,7 @@ class CustomPhoneNumberTextField extends StatelessWidget{
         enabled: true,
         isCountrySelectionEnabled: true,
         isCountryButtonPersistent: true,
+
         enableSuggestions: false,
         countryButtonStyle:  CountryButtonStyle(
             showDialCode: true,

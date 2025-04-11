@@ -17,14 +17,16 @@ getInputDecoration(BuildContext context,{BorderRadius? borderRadius,required Str
     ),
     constraints: BoxConstraints(
         maxWidth: 284.sp,
-        maxHeight: 50.sp
+        // maxHeight: 50.sp,
+        minHeight: 50.spMin,
     ),
     isDense: true,
-    // constraints: BoxConstraints(minHeight: 20.spMin),
-    // contentPadding: EdgeInsets.symmetric(horizontal: 8.sp, vertical: 15.spMin),
+    contentPadding: EdgeInsets.symmetric(horizontal: 8.sp, vertical: 15.spMin),
     hintText: hintText,
     fillColor: AppColors.textColor,
     filled: true,
+    errorMaxLines: 1,
+    errorStyle: context.textTheme.labelSmall?.copyWith(color: context.colorScheme.error),
     hintStyle: context.textTheme.labelMedium?.copyWith(color: AppColors.scaffoldBackground.withAlpha(120)),
     border: OutlineInputBorder(
       borderRadius: borderRadius,

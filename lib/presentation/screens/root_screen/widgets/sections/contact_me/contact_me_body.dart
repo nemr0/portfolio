@@ -66,7 +66,7 @@ class _ContactMeBodyState extends State<ContactMeBody> {
             ),
           ],
         ),
-        backgroundColor: Theme.of(context).colorScheme.errorContainer,
+        backgroundColor: context.colorScheme.errorContainer,
         padding: EdgeInsets.all(8.sp),
         margin: EdgeInsets.all(12.sp).copyWith(right: context.mobile ? 12.sp : context.width * .3),
         behavior: SnackBarBehavior.floating,
@@ -139,6 +139,7 @@ class _ContactMeBodyState extends State<ContactMeBody> {
         maxLines: 8,
         textInputAction: TextInputAction.newline,
         keyboardType: TextInputType.multiline,
+        overrideBottomPadding: 18,
       ),
       Builder(
         builder: (ctx) {
@@ -166,7 +167,9 @@ class _ContactMeBodyState extends State<ContactMeBody> {
         if(state is AddContactInitial){
           if(state.focus == true){
             TextInput.finishAutofillContext();
-            widget.focusNode.requestFocus();
+            Future.delayed(Duration(milliseconds: 500),(){
+              widget.focusNode.requestFocus();
+            });
           }
         }
         if (state is AddContactSuccess) {
@@ -198,14 +201,11 @@ class _ContactMeBodyState extends State<ContactMeBody> {
                 Animation<double> animation,
               ) {
 
-                return Padding(
-                  padding: EdgeInsets.only(top: 12.spMin),
-                  child: ItemAnimationBuilder(
-                    animation: animation,
-                    child: Align(
-                      alignment:  Alignment.centerLeft,
-                      child: children[index],
-                    ),
+                return ItemAnimationBuilder(
+                  animation: animation,
+                  child: Align(
+                    alignment:  Alignment.centerLeft,
+                    child: children[index],
                   ),
                 );
               },

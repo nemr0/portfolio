@@ -8,4 +8,5 @@ extension ContextExtension on BuildContext{
   bool get portrait => MediaQuery.orientationOf(this) == Orientation.portrait;
   Size get screenUtilSize => mobile || (!mobile && portrait)?const Size(430, 932):const Size(832, 1280);
   TextTheme get textTheme => Theme.of(this).textTheme;
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }

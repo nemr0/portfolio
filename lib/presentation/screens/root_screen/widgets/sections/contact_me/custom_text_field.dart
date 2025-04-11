@@ -14,18 +14,19 @@ class CustomTextField extends StatelessWidget {
   final IconData? prefixIcon;
   final BorderRadius borderRadius;
   final List<String>? autoFillHints;
+  final double? overrideBottomPadding;
   const CustomTextField({
     super.key,
     required this.hint,
      this.controller,
 
-    this.validator,  this.minLines=1, this.maxLines=1,  this.keyboardType= TextInputType.text,  this.textInputAction=TextInputAction.next, this.focusNode, this.prefixIcon,  this.borderRadius=const BorderRadius.all(Radius.circular(10)),  this.autoFillHints,
+    this.validator,  this.minLines=1, this.maxLines=1,  this.keyboardType= TextInputType.text,  this.textInputAction=TextInputAction.next, this.focusNode, this.prefixIcon,  this.borderRadius=const BorderRadius.all(Radius.circular(10)),  this.autoFillHints,  this.overrideBottomPadding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: context.mobile ? 0 : context.width * .3),
+      padding: EdgeInsets.only(right: context.mobile ? 0 : context.width * .3,bottom: overrideBottomPadding??2),
       child: TextFormField(
         autofillHints: autoFillHints,
         focusNode: focusNode,
